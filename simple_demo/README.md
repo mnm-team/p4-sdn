@@ -3,6 +3,7 @@
 We demonstrates SDN via a simple example, showing how a controller can install rules in two switches to allow traffic between two end-points.
 
 The network topology used in this example:
+
 ![topo-simple-demo](topo-simple-demo.svg)
 
 ## Execution
@@ -12,7 +13,7 @@ We need to compile the P4 program to obtain the P4 Device config (\*.json) and t
 ### Compiling the P4 program:
 
 ```
-p4c-bm2-ss --p4v 16 --p4runtime-files build/simple\_demo.p4info.txt -o build/simple\_demo.json simple\_demo.p4
+p4c-bm2-ss --p4v 16 --p4runtime-files build/simple_demo.p4info.txt -o build/simple_demo.json simple_demo.p4
 ```
 
 ### Deploying P4 switches:
@@ -20,8 +21,8 @@ p4c-bm2-ss --p4v 16 --p4runtime-files build/simple\_demo.p4info.txt -o build/sim
 We can create a P4 switch at switch S1 by the following commands:
 
 ```
-simple\_switch\_grpc -i 1@eth1 -i 2@eth2 --pcap pcaps
---nanolog ipc:///log.ipc --device-id 1 simple\_demo.json
+simple_switch_grpc -i 1@eth1 -i 2@eth2 --pcap pcaps
+--nanolog ipc:///log.ipc --device-id 1 simple_demo.json
 --log-console --thrift-port 9090
 -- --grpc-server-addr 0.0.0.0:50051 --cpu-port 255
 ```
@@ -43,8 +44,8 @@ For more information, we can use the command `simple\_switch\_grpc --help`.
 Similarly, we can create a P4 switch at switch S2:
 
 ```
-simple\_switch\_grpc -i 1@eth1 -i 2@eth2 --pcap pcaps
---nanolog ipc:///log.ipc --device-id 2 simple\_demo.json
+simple_switch_grpc -i 1@eth1 -i 2@eth2 --pcap pcaps
+--nanolog ipc:///log.ipc --device-id 2 simple_demo.json
 --log-console --thrift-port 9090
 -- --grpc-server-addr 0.0.0.0:50051 --cpu-port 255
 ```
@@ -70,6 +71,6 @@ The ping should be successful.
 
 ## Explanation
 
-In the P4 program, we specify a table, naming `table\_forwarding`. This table has the key (match) as the `ingress port` of the incoming packet, and the actions being either `forward` or `NoAction` (do nothing), the `forward` action has the parameter `egress port`. Once deploying this P4 program in the P4 switc, the switch has a table with the rule structure that can match packets based on these defined key and actions. Note that the switch has such a table, but there is no rule in that table, except for the default rule (do nothing). At this point, the two hosts h1 and h2 cannot ping each other.
+In the P4 program, we specify a table, naming `table_forwarding`. This table has the key (match) as the `ingress port` of the incoming packet, and the actions being either `forward` or `NoAction` (do nothing), the `forward` action has the parameter `egress port`. Once deploying this P4 program in the P4 switc, the switch has a table with the rule structure that can match packets based on these defined key and actions. Note that the switch has such a table, but there is no rule in that table, except for the default rule (do nothing). At this point, the two hosts h1 and h2 cannot ping each other.
 
-When executing the controller, it installs two rules in each switch via the `table\_add` command (see [SimpleSwitchP4RuntimeAPI](https://nsg-ethz.github.io/p4-utils/p4utils.utils.sswitch_p4runtime_API.html#p4utils.utils.sswitch_p4runtime_API.SimpleSwitchP4RuntimeAPI.table_add)). Now there are rules in the switches s1 and s2, which can handle traffic between the hosts h1 and h2.
+When executing the controller, it installs two rules in each switch via the `table_add` command (see [SimpleSwitchP4RuntimeAPI](https://nsg-ethz.github.io/p4-utils/p4utils.utils.sswitch_p4runtime_API.html#p4utils.utils.sswitch_p4runtime_API.SimpleSwitchP4RuntimeAPI.table_add)). Now there are rules in the switches s1 and s2, which can handle traffic between the hosts h1 and h2.
