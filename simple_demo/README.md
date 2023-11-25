@@ -60,7 +60,7 @@ python controller.py
 
 ### Testing:
 
-We can test the communication between hosts h1 (IP: 192.168.1.1) and h2 (IP: 192.168.1.2) by the `ping` command. From host h1, do:
+We can test the communication between the hosts h1 (IP: 192.168.1.1) and h2 (IP: 192.168.1.2) via the `ping` command. From host h1, do:
 
 ```
 ping 192.168.1.2
