@@ -8,6 +8,8 @@ The library of this repository, p4utils, is based on the [p4-utils](https://gith
 
 The examples are designed for the Rechnernetze Praktikum (RNP) at MNM-Team, LMU. The specification of the infrastructure and details about the course are provided in the course's script. The course are usually held annually in the winter semester (e.g., [RNP WS2023/2024](https://www.nm.ifi.lmu.de/teaching/Praktika/2023ws/rnp/)).
 
++ We first [explain SDN](explaning_SDN) based on P4 and P4-Runtime, which is important to understand the basic of P4 and SDN, and to understand the subsequent examples.
+
 + The [simple\_demo](simple_demo) example shows a simple demonstration of SDN.
 
 + The simple\_hub, simple\_switch examples illustrate how a normal hub and switch can be implemented by P4-based SDN.
