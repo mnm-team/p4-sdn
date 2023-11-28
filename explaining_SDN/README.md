@@ -14,7 +14,7 @@ P4 (short for "Programming Protocol-independent Packet Processors") is a languag
 
 A P4 program according to the V1Model architecture has thus these five blocks, which a user can program to implement network functions for a P4 device:
 
-<img src="v1model-template.svg" alt="V1Model template" width="100%"/>
+<img src="v1model-template.png" alt="V1Model template" width="100%"/>
 
 Compiling a P4 program by a P4 compiler produces two artifacts: 
 + a data plane configuration (in our case, it has \*.json format) that implements the forwarding logic described in the input program and
