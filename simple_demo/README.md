@@ -1,14 +1,16 @@
-# First demo of P4-based SDN
+# A simple demo of P4-based SDN
 
-We demonstrates SDN via a simple example, showing how a controller can install rules in two switches to allow traffic between two end-points.
+We demonstrate SDN via a simple example, showing how a controller can install rules in two switches to allow traffic between two end-points.
 
 The network topology used in this example:
 
 ![topo-simple-demo](topo-simple-demo.svg)
 
+Note that, we assume using a network infrastructure based on virtual machines (VM). Each host, switch or controller is a VM. We can make a VM become a switch or a controller by executing corresponding programs in that VM, which will be illustrated below.
+
 ## Execution
 
-We need to compile the P4 program to obtain the P4 Device config (\*.json) and the P4Info files (\*.p4info.txt), which are to be consumed by P4 switches and controllers, respectively. 
+We need to compile the P4 program (\*.p4) to obtain the P4 device config (\*.json) and the P4Info file (\*.p4info.txt), which are to be consumed by P4 switches and controllers, respectively. 
 
 ### Compiling the P4 program:
 
@@ -17,8 +19,7 @@ p4c-bm2-ss --p4v 16 --p4runtime-files build/simple_demo.p4info.txt -o build/simp
 ```
 
 ### Deploying P4 switches:
-
-We can create a P4 switch at switch S1 by the following commands:
+After copying the config file `simple_demo.json` to switches S1 and S2, we can make switch S1 become a P4 switch by the following commands:
 
 ```
 simple_switch_grpc -i 1@eth1 -i 2@eth2 --pcap pcaps
@@ -52,8 +53,6 @@ simple_switch_grpc -i 1@eth1 -i 2@eth2 --pcap pcaps
 
 ### Executing the control application
 
-Now we can execute the control application:
-
 ```
 python controller.py
 ```
@@ -71,6 +70,45 @@ The ping should be successful.
 
 ## Explanation
 
-In the P4 program, we specify a table, naming `table_forwarding`. This table has the key (match) as the `ingress port` of the incoming packet, and the actions being either `forward` or `NoAction` (do nothing), the `forward` action has the parameter `egress port`. Once deploying this P4 program in the P4 switc, the switch has a table with the rule structure that can match packets based on these defined key and actions. Note that the switch has such a table, but there is no rule in that table, except for the default rule (do nothing). At this point, the two hosts h1 and h2 cannot ping each other.
+In the P4 program, we specify a table, naming `table_forwarding`.
 
-When executing the controller, it installs two rules in each switch via the `table_add` command (see [SimpleSwitchP4RuntimeAPI](https://nsg-ethz.github.io/p4-utils/p4utils.utils.sswitch_p4runtime_API.html#p4utils.utils.sswitch_p4runtime_API.SimpleSwitchP4RuntimeAPI.table_add)). Now there are rules in the switches s1 and s2, which can handle traffic between the hosts h1 and h2.
+```
+    table table_forwarding {
+        key = {
+            standard_metadata.ingress_port: exact;
+        }
+        actions = {
+            forward;
+            NoAction;
+        }
+        size = 2;
+        default_action = NoAction;
+    }
+```
+
+This table has the key (match) as the `ingress port` of the incoming packet, and the actions being either `forward` or `NoAction` (do nothing), the `forward` action has the parameter `egress port`. 
+Once deploying this P4 program in the P4 switch, the switch has a table with the rule structure that can match packets based on these defined key and actions. Note that the switch has such a table, but there is no rule in that table, except for the default rule (do nothing). At this point, the two hosts h1 and h2 cannot ping each other.
+
+Multiple tables can be defined, but only those used in the `apply` block will be effective:
+
+```
+    apply {
+        table_forwarding.apply();
+    }
+```
+
+Check [P4 cheat sheet](https://github.com/p4lang/tutorials/blob/master/p4-cheat-sheet.pdf) for a brief overview of what P4 can do.
+
+When executing the controller, it installs two rules in each switch via the `table_add` command (see [SimpleSwitchP4RuntimeAPI](https://nsg-ethz.github.io/p4-utils/p4utils.utils.sswitch_p4runtime_API.html#p4utils.utils.sswitch_p4runtime_API.SimpleSwitchP4RuntimeAPI.table_add)). 
+
+```
+# add rules in switch s1
+con[1].table_add('table_forwarding', 'forward', ['1'], ['2'])
+con[1].table_add('table_forwarding', 'forward', ['2'], ['1'])
+
+# add rules in switch s22
+con[2].table_add('table_forwarding', 'forward', ['1'], ['2'])
+con[2].table_add('table_forwarding', 'forward', ['2'], ['1'])
+```
+
+Now there are rules in the switches S1 and S2, which can handle traffic between the hosts h1 and h2.
