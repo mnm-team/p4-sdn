@@ -87,7 +87,7 @@ In the P4 program, we specify a table, naming `table_forwarding`.
 ```
 
 This table has the key (match) as the `ingress port` of the incoming packet, and the actions being either `forward` or `NoAction` (do nothing), the `forward` action has the parameter `egress port`. 
-Once deploying this P4 program in the P4 switch, the switch has a table with the rule structure that can match packets based on these defined key and actions. Note that the switch has such a table, but there is no rule in that table, except for the default rule (do nothing). At this point, the two hosts h1 and h2 cannot ping each other.
+Once deploying this P4 program in the P4 switch, the switch has a table with the rule structure that can match packets based on these defined key and actions. Note that the switch has such a table, but there is no rule in that table, except for the default rule (do nothing: `default_action = NoAction`). At this point, the two hosts h1 and h2 cannot ping each other.
 
 Multiple tables can be defined, but only those used in the `apply` block will be effective:
 
