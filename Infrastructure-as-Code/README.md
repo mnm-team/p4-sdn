@@ -8,7 +8,7 @@ Create a big outer VM, in which a network of KVM-based VMs constituting the test
 
 The test-bed is "packed" in a big VM, so that its network is isolated from the outside network, and also isolated from other test-beds in the same physical machine. Therefore, our testing will not influence the other networks and vice versa.
 
-![Isolated test-bed](isolated-testbed.svg)
+<img src="isolated-testbed.svg" alt="Isolated test-bed" width="70%"/>
 
 ## 1. Create outer VM 
 
