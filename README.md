@@ -6,7 +6,9 @@ We demonstrate SDN based on P4 and P4-Runtime, which are a data plane programmin
 
 The library of this repository, p4utils, is based on the [p4-utils](https://github.com/nsg-ethz/p4-utils) repository, which is again based on the [p4-shell](https://github.com/p4lang/p4runtime-shell) repository. We implement further APIs for the SDN controller, e.g., packet-in, packet-out, APIs related to idle timeout, and provide useful examples.
 
-The examples are designed for the Rechnernetze Praktikum (RNP) at MNM-Team, LMU. The specification of the infrastructure and details about the course are provided in the course's script. The course are usually held annually in the winter semester (e.g., [RNP WS2023/2024](https://www.nm.ifi.lmu.de/teaching/Praktika/2023ws/rnp/)).
+The examples are designed for the Rechnernetze Praktikum (RNP) at MNM-Team, LMU. The specification of the infrastructure and details about the course are provided in the course's script. The course are usually held annually in the winter semester (e.g., [RNP WS2023/2024](https://www.nm.ifi.lmu.de/teaching/Praktika/2023ws/rnp/)). 
+
+One can also create his/her own test-bed (e.g., in a laptop) by following instructions in [Infrastructure-as-Code](Infrastructure-as-Code). After finishing basic setup, a description of the desired test-bed in json format can be input to the existing script to bring it up. The VM-based test-bed allows customization of each individual component (e.g., host, switch, controller...) as one's wish.
 
 + We first [explain SDN](explaining_SDN) based on P4 and P4-Runtime, which is important to understand the basic of P4 and SDN, and to understand the subsequent examples.
 
