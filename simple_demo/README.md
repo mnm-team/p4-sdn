@@ -2,11 +2,11 @@
 
 We demonstrate SDN via a simple example, showing how a controller can install rules in two switches to allow traffic between two end-points.
 
-The network topology used in this example:
+The network topology used in this example is shown below. The dashed links between Controller and switches represent the management network, the solid links are for the actual connection in the data plane. Note that the controller can only control the P4-switches (s1 and s2), not the hosts (h1, h2). The numbers around a switch indicate its port number (port 1, port 2...).
 
 ![topo-simple-demo](topo-simple-demo.svg)
 
-Note that, we assume using a network infrastructure based on virtual machines (VM). Each host, switch or controller is a VM. We can make a VM become a switch or a controller by executing corresponding programs in that VM, which will be illustrated below.
+Note that, we assume using a network infrastructure based on virtual machines (VM). Each host, switch or controller is a VM. We can make a VM become a switch or a controller by executing corresponding programs in that VM, which will be illustrated below. Such a network infrastructure can be constructed by following the instruction in [Infrastructure-as-Code](../Infrastructure-as_code).
 
 ## Execution
 
