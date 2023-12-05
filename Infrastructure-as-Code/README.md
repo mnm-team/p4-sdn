@@ -1,4 +1,4 @@
-# Create a Testbed for P4-based SDN using KVM and openvswitch (instead of using Xen and Linux Bridge):
+# Create a Testbed for P4-based SDN using KVM and Open vSwitch (instead of using Xen and Linux Bridge):
 
 In another repository (https://github.com/mnm-team/sdn-conflicts/tree/main/topogen), we show how to create SDN infrastructure (OpenFlow-based SDN) using Xen. In this repo, we show an alternative to create a test-bed for P4-based SDN. In general, the script can be adapted to create test-beds for network testing, since the test-bed is built on virtual machines (VM), with appropriate software installed, a VM can be a switch (e.g., using Open vSwitch), a router (e.g., with FRRouting)...
 
@@ -49,4 +49,4 @@ Each switch or host corresponds to a VM. Their connections are realized via a br
 
 ![Explaining testbed 2](testbed-explain-2.svg)
 
-The test-bed can be desribed in json format. For example, host h1 is connected to bridge br\_s1h1, switch s1 is also connected to this bridge; thus, host h1 and switch s1 are connected. We use Open vSwitch to realize the bridge connected two VMs. The bridge br\_man (management bridge) is connected to all VMs and also to the outer VM.
+The test-bed can be described in json format. For example, host h1 is connected to bridge br\_s1h1, switch s1 is also connected to this bridge; thus, host h1 and switch s1 are connected. We use Open vSwitch to realize the bridge connecting two VMs. The bridge br\_man (management bridge) is connected to all VMs and also to the outer VM.
