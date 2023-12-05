@@ -30,7 +30,7 @@ However, we can also differentiate between different types of VM, e.g., host, sw
 
 The template image is created based on the debian11 image: https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.6.0-amd64-netinst.iso. We use debian11 for software compatibility in deploying P4 switches and the SDN controller. We can create a template image in a similar way as described in the file 1\_setup\_outer\_VM/0\_create\_outervm.bash. For our project (P4-based SDN project), we need to modify the template image to use the old simple scheme for network interface name (eth0, eth1...) instead of the new "persistent names" scheme (network interfaces are named as en0, en1, en0p1,....), as it is easier for parsing and for scripting in a program. The network interface naming is described in https://wiki.debian.org/NetworkInterfaceNames.
 
-If we want to recreate a fresh test-bed, we need to first destroy it using the script destroy\_testbed.bash, then run the script create\_testbed.bash as just described above.
+To recreate a fresh test-bed, we need to first destroy it using the script destroy\_testbed.bash, then run the script create\_testbed.bash as just described above.
 
 Once the test-bed is created, we can access to the outer VM, therefrom we can access to each VM using its name or its IP address specified in the json file (this json file is the input to the script create\_testbed.bash), e.g., `ssh h1` to access to the host h1.
 
