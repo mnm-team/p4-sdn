@@ -43,10 +43,10 @@ Follow the instruction in 2\_create\_testbed/installing\_controller\_and\_p4\_sw
 
 We illuminate the implementation via the following pictures.
 
-![Explaining testbed 1](testbed-explain-1.svg)
+<img src="testbed-explain-1.svg" alt="Explaining testbed 1" width="80%"/>
 
 Each switch or host corresponds to a VM. Their connections are realized via a bridge inbetween. The outer VM has connections to all VM for management purpose (e.g., start/stop a VM, configure its IP addresses...)
 
-![Explaining testbed 2](testbed-explain-2.svg)
+<img src="testbed-explain-2.svg" alt="Explaining testbed 2" width="80%"/>
 
 The test-bed can be described in json format. For example, host h1 is connected to bridge br\_s1h1, switch s1 is also connected to this bridge; thus, host h1 and switch s1 are connected. We use Open vSwitch to realize the bridge connecting two VMs. The bridge br\_man (management bridge) is connected to all VMs and also to the outer VM.
