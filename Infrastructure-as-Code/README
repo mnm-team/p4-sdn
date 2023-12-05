@@ -1,0 +1,31 @@
+# Create a Testbed for P4-based SDN using KVM and openvswitch (instead of using Xen and Linux Bridge):
+
+## Goal:
+
+Create a big outer VM, in which a network of KVM-based VMs constituting the test-bed is constructed, these internal KVM-based VMs can be hosts, switches, controllers, security servers.
+
+## 1. Create outer VM 
+
+The steps are described in the directory 1_setup_outer_VM.
+In essence, we assume the existence of the outer VM (or outer machine), then we need to run the script 1_create_user_res.bash and 2_install_basic_software.bash. The outer VM can be created using the provided way described in the script 0_create_outervm.bash
+
+The main user of both the outer and inner machines is *res*.
+
+After installing the basic software with the script: 2_install_basic_software.bash, log out and log in again to update the environment variables and the user group (user res belongs to group libvirt)
+
+## 2. Create test-bed (directory 2_create_testbed)
+
+File: create_testbed.bash
+
+The topology for test-bed is specify by the variable TOPO_JS (topology in json format), which is passed by variable $1 when executing this script.
+
+The test-bed is created using template image base-fresh.qcow2 for all VMs, which can be downloaded at: https://syncandshare.lrz.de/getlink/fig44bCmzi6p9PeaazCRC/base-fresh.qcow2.
+However, we can also differentiate between different types of VM, e.g., host, switch, server, controller; in that case, we can customize the base-fresh.qcow2 to make it become template-images for these types of VM. Adapt the variable BASE_HOST and BASE_SW in the script for the correct base images.
+
+The template image is created based on the debian11 image: https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.6.0-amd64-netinst.iso. We use debian11 for software compatibility in deploying P4 switches and the SDN controller. We can create a template image in a similar way as described in the file 1_setup_outer_VM/0_create_outervm.bash. For our project (P4-based SDN project), we need to modify the template image to use the old simple scheme for network interface name (eth0, eth1...) instead of the new "persistent names" schem (network interfaces are named as en0, en1, en0p1,....), as it is easier for parsing and for scripting in a program. The network interface naming is described in https://wiki.debian.org/NetworkInterfaceNames.
+
+If we want to recreate a fresh test-bed, we need to first destroy it using the script destroy_testbed.bash, then run the script create_testbed.bash as just described above.
+
+## 3. Installing P4 switches and SDN controller (optionally, specific to the P4-based SDN project)
+
+Follow the instruction in 2_create_testbed/installing_controller_and_p4_switches.bash to install the p4 switches and controller on the corresponding VMs in the test-bed. The instruction is based on https://github.com/p4lang/tutorials/tree/master/vm-ubuntu-20.04

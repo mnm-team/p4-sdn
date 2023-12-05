@@ -1,0 +1,50 @@
+[
+        {
+		"name":"h1",
+		"type":"host",
+      		"bridge":["br_man", "br_s1h1"],
+		"ip":"172.16.0.1"
+        },
+        {
+		"name":"h2",
+		"type":"host",
+      		"bridge":["br_man", "br_s1h2"],
+		"ip":"172.16.0.2"
+        },
+        {
+		"name":"h5",
+		"type":"host",
+      		"bridge":["br_man", "br_s3h5"],
+		"ip":"172.16.0.5"
+        },
+        {
+		"name":"server1",
+		"type":"server",
+      		"bridge":["br_man", "br_s1server"],
+		"ip":"172.16.0.81"
+        },
+        {
+		"name":"server3",
+		"type":"server",
+                "bridge": ["br_man", "br_s3server"],
+                "ip":"172.16.0.83"
+	},
+        {
+		"name":"s1",
+		"type":"switch",
+                "bridge":["br_man", "br_s1h1", "br_s1h2", "br_s1s3", "br_s1s4", "br_s1server"],
+                "ip":"172.16.0.51"
+        },
+        {
+		"name":"s3",
+		"type":"switch",
+                "bridge":["br_man", "br_s3h5", "br_s1s3", "br_s2s3", "br_s3s4", "br_s3s5", "br_s3server"],
+                "ip":"172.16.0.53"
+        },
+        {
+		"name":"con1",
+		"type":"controller",
+                "bridge":["br_man", "br_s1h1"],
+                "ip":"172.16.0.253"
+        }
+]

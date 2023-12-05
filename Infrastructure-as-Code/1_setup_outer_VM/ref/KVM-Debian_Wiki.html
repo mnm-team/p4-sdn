@@ -1,0 +1,426 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="https://wiki.debian.org/htdocs/favicon.ico">
+<script type="text/javascript" src="KVM-Debian_Wiki_files/bugstatus.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="index,nofollow">
+
+<title>KVM - Debian Wiki</title>
+<script type="text/javascript" src="KVM-Debian_Wiki_files/common.js"></script>
+
+<script type="text/javascript">
+<!--
+var search_hint = "Search";
+//-->
+</script>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="KVM-Debian_Wiki_files/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="KVM-Debian_Wiki_files/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="KVM-Debian_Wiki_files/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="projection" href="KVM-Debian_Wiki_files/projection.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="KVM-Debian_Wiki_files/debian-wiki-1.0.css">
+
+<!-- css only for MS IE6/IE7 browsers -->
+<!--[if lt IE 8]>
+   <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/htdocs/debwiki/css/msie.css">
+<![endif]-->
+
+
+<link rel="alternate" title="Debian Wiki: KVM" href="https://wiki.debian.org/KVM?diffs=1&amp;show_att=1&amp;action=rss_rc&amp;unique=0&amp;page=KVM&amp;ddiffs=1" type="application/rss+xml">
+
+
+<link rel="Start" href="https://wiki.debian.org/FrontPage">
+<link rel="Alternate" title="Wiki Markup" href="https://wiki.debian.org/KVM?action=raw">
+<link rel="Alternate" media="print" title="Print View" href="https://wiki.debian.org/KVM?action=print">
+<link rel="Search" href="https://wiki.debian.org/FindPage">
+<link rel="Index" href="https://wiki.debian.org/TitleIndex">
+<link rel="Glossary" href="https://wiki.debian.org/WordIndex">
+<link rel="Help" href="https://wiki.debian.org/HelpOnFormatting">
+</head>
+
+<body lang="en" dir="ltr">
+<div id="logo"><a href="https://www.debian.org/" title="Debian Homepage"><img src="KVM-Debian_Wiki_files/openlogo-50.png" alt="Debian" width="50" height="61"></a></div>
+<div id="header">
+<div id="wikisection">
+<p class="section"><a href="https://wiki.debian.org/FrontPage" title="Debian Wiki Homepage">Wiki</a></p>
+<div id="username"><a href="https://wiki.debian.org/KVM?action=login" id="login" rel="nofollow">Login</a></div>
+</div>
+<div id="navbar">
+
+<ul id="navibar">
+<li class="wikilink"><a href="https://wiki.debian.org/FrontPage">FrontPage</a></li><li class="wikilink"><a href="https://wiki.debian.org/RecentChanges">RecentChanges</a></li><li class="wikilink"><a href="https://wiki.debian.org/FindPage">FindPage</a></li><li class="wikilink"><a href="https://wiki.debian.org/HelpContents">HelpContents</a></li><li class="current"><a href="https://wiki.debian.org/KVM">KVM</a></li>
+</ul>
+
+</div>
+
+<form id="searchform" method="get" action="/KVM">
+<div>
+<input type="hidden" name="action" value="fullsearch">
+<input type="hidden" name="context" value="180">
+<label for="searchinput" style="display: none;">Search:</label>
+<input id="searchinput" type="text" name="value" value="Search" size="20" onfocus="searchFocus(this)" onblur="searchBlur(this)" onkeyup="searchChange(this)" onchange="searchChange(this)" alt="Search" class="disabled">
+<input id="titlesearch" name="titlesearch" type="submit" value="Titles" alt="Search Titles" disabled="disabled">
+<input id="fullsearch" name="fullsearch" type="submit" value="Text" alt="Search Full Text" disabled="disabled">
+</div>
+</form>
+<script type="text/javascript">
+<!--// Initialize search form
+var f = document.getElementById('searchform');
+f.getElementsByTagName('label')[0].style.display = 'none';
+var e = document.getElementById('searchinput');
+searchChange(e);
+searchBlur(e);
+//-->
+</script>
+
+<div id="logo"><a href="https://www.debian.org/" title="Debian Homepage"><img src="KVM-Debian_Wiki_files/openlogo-50.png" alt="Debian" width="50" height="61"></a></div>
+
+<div id="breadcrumbs"><a href="https://wiki.debian.org/FrontPage" title="Debian Wiki Homepage">Wiki</a><span class="sep">/</span>
+
+</div>
+
+<ul class="editbar"><li><a href="https://wiki.debian.org/KVM?action=login" id="login-1" rel="nofollow">Login</a></li><li class="toggleCommentsButton" style="display:none;"><a href="#" class="nbcomment" onclick="toggleComments();return false;">Comments</a></li><li><a class="nbinfo" href="https://wiki.debian.org/KVM?action=info" rel="nofollow">Info</a></li><li><a class="nbattachments" href="https://wiki.debian.org/KVM?action=AttachFile" rel="nofollow">Attachments</a></li><li>
+<form class="actionsmenu" method="GET" action="/KVM">
+<div>
+    
+    <select name="action" onchange="if ((this.selectedIndex != 0) &amp;&amp;
+                      (this.options[this.selectedIndex].disabled == false)) {
+                this.form.submit();
+            }
+            this.selectedIndex = 0;">
+        <option value="show" selected="selected">More Actions:</option><option value="raw">Raw Text</option>
+<option value="print">Print View</option>
+<option value="RenderAsDocbook">Render as Docbook</option>
+<option value="refresh">Delete Cache</option>
+<option value="show" disabled="disabled" class="disabled">------------------------</option>
+<option value="SpellCheck">Check Spelling</option>
+<option value="LikePages">Like Pages</option>
+<option value="LocalSiteMap">Local Site Map</option>
+<option value="show" disabled="disabled" class="disabled">------------------------</option>
+<option value="RenamePage" disabled="disabled" class="disabled">Rename Page</option>
+<option value="DeletePage" disabled="disabled" class="disabled">Delete Page</option>
+<option value="show" disabled="disabled" class="disabled">------------------------</option>
+<option value="show" disabled="disabled" class="disabled">Subscribe User</option>
+<option value="show" disabled="disabled" class="disabled">------------------------</option>
+<option value="show" disabled="disabled" class="disabled">Remove Spam</option>
+<option value="show" disabled="disabled" class="disabled">Revert to this revision</option>
+<option value="PackagePages">Package Pages</option>
+<option value="show" disabled="disabled" class="disabled">------------------------</option>
+<option value="Load">Load</option>
+<option value="Save">Save</option>
+<option value="SlideShow">SlideShow</option>
+    </select>
+    
+    
+</div>
+<script type="text/javascript">
+<!--// Init menu
+actionsMenuInit('More Actions:');
+//-->
+</script>
+</form>
+</li></ul>
+
+<h1 id="locationline">
+
+
+<ul id="pagelocation">
+<li><a href="https://wiki.debian.org/KVM">KVM</a></li>
+</ul>
+
+</h1>
+</div>
+
+<div id="page" lang="en" dir="ltr">
+<div dir="ltr" id="content" lang="en"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-1"></span><span class="anchor" id="line-2"></span><span class="anchor" id="line-3"></span><span class="anchor" id="line-4"></span><span class="anchor" id="line-5"></span><span class="anchor" id="line-6"></span><div><table style="&amp;quot; width: 100%; &amp;quot;"><tbody><tr>  <td style="&amp;quot; border: 0px hidden&amp;quot;"><p class="line891"><small><a href="https://wiki.debian.org/DebianWiki/EditorGuide#translation">Translation(s)</a>: English - <a href="https://wiki.debian.org/es/KVM">Español</a> - <a href="https://wiki.debian.org/ko/KVM">한국어</a> - <a href="https://wiki.debian.org/no/KVM">Norsk</a> - <a href="https://wiki.debian.org/ru/KVM">Русский</a></small></p></td>
+  <td style="&amp;quot; text-align: right; border: 0px hidden&amp;quot;"><p class="line862"> <img alt="(!)" height="16" src="KVM-Debian_Wiki_files/idea.png" title="(!)" width="16"> <a href="https://wiki.debian.org/KVM/Discussion">Discussion</a></p></td>
+</tr>
+</tbody></table></div><span class="anchor" id="line-7"></span><p class="line867"></p><hr><p class="line874"> <span class="anchor" id="line-8"></span><span class="anchor" id="line-9"></span></p><p class="line867"></p><div class="table-of-contents"><p class="table-of-contents-heading">Contents</p><ol><li>
+<a href="#Introduction">Introduction</a></li><li>
+<a href="#Installation">Installation</a></li><li>
+<a href="#User-specific_and_system-wide_VMs">User-specific and system-wide VMs</a></li><li>
+<a href="#Creating_a_new_guest">Creating a new guest</a></li><li>
+<a href="#Setting_up_bridge_networking">Setting up bridge networking</a><ol><li>
+<a href="#Between_VM_guests">Between VM guests</a></li><li>
+<a href="#Between_VM_host_and_guests">Between VM host and guests</a><ol><li>
+<a href="#Libvirt_default_network">Libvirt default network</a></li><li>
+<a href="#Manual_bridging">Manual bridging</a></li></ol></li><li>
+<a href="#Between_VM_host.2C_guests_and_the_world">Between VM host, guests and the world</a></li></ol></li><li>
+<a href="#Managing_VMs_from_the_command-line">Managing VMs from the command-line</a></li><li>
+<a href="#Managing_VM_guests_with_a_GUI">Managing VM guests with a GUI</a></li><li>
+<a href="#Automatic_guest_management_on_host_shutdown.2Fstartup">Automatic guest management on host shutdown/startup</a></li><li>
+<a href="#Performance_Tuning">Performance Tuning</a><ol><li>
+<a href="#CPU">CPU</a></li><li>
+<a href="#Disk_I.2FO">Disk I/O</a></li><li>
+<a href="#Network_I.2FO">Network I/O</a></li><li>
+<a href="#Memory">Memory</a></li></ol></li><li>
+<a href="#Migrating_guests_to_a_Debian_host">Migrating guests to a Debian host</a><ol><li>
+<a href="#Migrating_guests_from_RHEL.2FCentOS_5.x">Migrating guests from RHEL/CentOS 5.x</a></li></ol></li><li>
+<a href="#Troubleshooting">Troubleshooting</a></li><li>
+<a href="#See_also">See also</a></li><li>
+<a href="#External_links">External links</a></li></ol></div> <span class="anchor" id="line-10"></span><span class="anchor" id="line-11"></span><p class="line867">
+</p><h1 id="Introduction">Introduction</h1>
+<span class="anchor" id="line-12"></span><span class="anchor" id="line-13"></span><p class="line862">The Kernel Virtual Machine, or KVM, is a full virtualization solution for Linux on x86 (64-bit included) and <a href="https://wiki.debian.org/Arm64Qemu">ARM</a> hardware containing virtualization extensions (Intel VT or AMD-V). It consists of a loadable kernel module, <tt>kvm.ko</tt>, which provides the core virtualization infrastructure and a processor specific module, <tt>kvm-intel.ko</tt> or <tt>kvm-amd.ko</tt>. <span class="anchor" id="line-14"></span><span class="anchor" id="line-15"></span></p><p class="line862">In Debian, <a class="nonexistent" href="https://wiki.debian.org/Xen">?</a>Xen is an alternative to KVM. (<a href="https://wiki.debian.org/VirtualBox">VirtualBox</a> is not in Debian Bullseye (or Buster) and won't be in Debian Buster-Backports, <a class="interwiki open-bug" href="https://bugs.debian.org/794466" title="Open in virtualbox/4.3.30-dfsg-1, virtualbox/5.0.4-dfsg-4, virtualbox/5.0.6-dfsg-1, virtualbox-guest-additions-iso/5.1.22-1: #794466: virtualbox: might not be suitable for stable releases due to lack of cooperation from upstream on security support for older releases">794466</a>). <span class="anchor" id="line-16"></span><span class="anchor" id="line-17"></span></p><p class="line867">
+</p><h1 id="Installation">Installation</h1>
+<span class="anchor" id="line-18"></span><span class="anchor" id="line-19"></span><p class="line862">It is possible to install only QEMU and KVM for a very minimal setup, but most users will also want <a href="https://wiki.debian.org/libvirt">libvirt</a> for convenient configuration and management of the virtual machines (<a class="interwiki" href="https://packages.debian.org/libvirt-daemon-system" title="DebianPkg">libvirt-daemon-system</a> - libvirt, <a class="interwiki" href="https://packages.debian.org/virt-manager" title="DebianPkg">virt-manager</a> - a GUI for libvirt). Typically a user should install: <span class="anchor" id="line-20"></span><span class="anchor" id="line-21"></span></p><p class="line867"><span class="anchor" id="line-22"></span><span class="anchor" id="line-23"></span></p><pre><span class="anchor" id="line-1"></span>$ sudo apt install qemu-system libvirt-daemon-system</pre><span class="anchor" id="line-24"></span><span class="anchor" id="line-25"></span><p class="line874">When
+ installing on a server, you can add the --no-install-recommends apt 
+option, to prevent the installation of extraneous graphical packages: <span class="anchor" id="line-26"></span><span class="anchor" id="line-27"></span></p><p class="line867"><span class="anchor" id="line-28"></span><span class="anchor" id="line-29"></span></p><pre><span class="anchor" id="line-1-1"></span>$ sudo apt install --no-install-recommends qemu-system libvirt-clients libvirt-daemon-system</pre><span class="anchor" id="line-30"></span><span class="anchor" id="line-31"></span><p class="line862">The <tt class="backtick">libvirtd</tt> daemon (in <a class="interwiki" href="https://packages.debian.org/libvirt-daemon" title="DebianPkg">libvirt-daemon</a> on most architectures, and in <a class="interwiki" href="https://packages.debian.org/libvirt-bin" title="DebianPkg">libvirt-bin</a>
+ on others) will start automatically at boot time and load the 
+appropriate KVM modules, kvm-amd or kvm-intel, which are shipped with 
+the Linux kernel Debian package. If you intend to create Virtual 
+Machines (VMs) from the command-line, install <a class="interwiki" href="https://packages.debian.org/virtinst" title="DebianPkg">virtinst</a>. <span class="anchor" id="line-32"></span><span class="anchor" id="line-33"></span></p><p class="line874">In order to manage virtual machines as a regular user, that user needs to be added to the libvirt group: <span class="anchor" id="line-34"></span><span class="anchor" id="line-35"></span></p><p class="line867"><span class="anchor" id="line-36"></span><span class="anchor" id="line-37"></span></p><pre><span class="anchor" id="line-1-2"></span># adduser &lt;youruser&gt; libvirt</pre><span class="anchor" id="line-38"></span><span class="anchor" id="line-39"></span><p class="line874">You should then be able to list your domains, that is virtual machines managed by libvirt: <span class="anchor" id="line-40"></span><span class="anchor" id="line-41"></span></p><p class="line867"><span class="anchor" id="line-42"></span><span class="anchor" id="line-43"></span></p><pre><span class="anchor" id="line-1-3"></span># virsh list --all</pre><span class="anchor" id="line-44"></span><span class="anchor" id="line-45"></span><p class="line867">
+</p><h1 id="User-specific_and_system-wide_VMs">User-specific and system-wide VMs</h1>
+<span class="anchor" id="line-46"></span><span class="anchor" id="line-47"></span><p class="line874">By
+ default, if virsh is run as a normal user it will connect to libvirt 
+using qemu:///session URI string. This URI allows virsh to manage only 
+the set of VMs belonging to this particular user. To manage the system 
+set of VMs (i.e., VMs belonging to root) virsh should be run as root or 
+with qemu:///system URI: <span class="anchor" id="line-48"></span><span class="anchor" id="line-49"></span></p><p class="line867"><span class="anchor" id="line-50"></span><span class="anchor" id="line-51"></span></p><pre><span class="anchor" id="line-1-4"></span>$ virsh --connect qemu:///system list --all</pre><span class="anchor" id="line-52"></span><span class="anchor" id="line-53"></span><p class="line874">To
+ avoid having to use the --connect flag on every command, the URI string
+ can be set in the LIBVIRT_DEFAULT_URI environment variable: <span class="anchor" id="line-54"></span><span class="anchor" id="line-55"></span></p><p class="line867"><span class="anchor" id="line-56"></span><span class="anchor" id="line-57"></span></p><pre><span class="anchor" id="line-1-5"></span>$ export LIBVIRT_DEFAULT_URI='qemu:///system'</pre><span class="anchor" id="line-58"></span><span class="anchor" id="line-59"></span><p class="line867">
+</p><h1 id="Creating_a_new_guest">Creating a new guest</h1>
+<span class="anchor" id="line-60"></span><span class="anchor" id="line-61"></span><p class="line874">The easiest way to create and manage a VM guest is using a GUI application. Such as:  <span class="anchor" id="line-62"></span></p><ul><li><p class="line862">AQEMU <a class="interwiki" href="https://packages.debian.org/aqemu" title="DebianPkg">aqemu</a>. <span class="anchor" id="line-63"></span></p></li><li><p class="line862">Virtual Machine Manager <a class="interwiki" href="https://packages.debian.org/virt-manager" title="DebianPkg">virt-manager</a>. <span class="anchor" id="line-64"></span><span class="anchor" id="line-65"></span></p></li></ul><p class="line862">Alternatively, you can create a VM guest via the command line using <a class="interwiki" href="https://packages.debian.org/virtinst" title="DebianPkg">virtinst</a>. Below is an example showing the creation of a Bullseye guest with the name bullseye-amd64: <span class="anchor" id="line-66"></span><span class="anchor" id="line-67"></span></p><p class="line867"><span class="anchor" id="line-68"></span><span class="anchor" id="line-69"></span><span class="anchor" id="line-70"></span><span class="anchor" id="line-71"></span><span class="anchor" id="line-72"></span></p><pre><span class="anchor" id="line-1-6"></span>virt-install --virt-type kvm --name bullseye-amd64 \
+<span class="anchor" id="line-2"></span>--cdrom ~/iso/Debian/debian-11.0.0-amd64-netinst.iso \
+<span class="anchor" id="line-3"></span>--os-variant debian11 \
+<span class="anchor" id="line-4"></span>--disk size=10 --memory 1000</pre><span class="anchor" id="line-73"></span><span class="anchor" id="line-74"></span><p class="line862">Since the guest has no network connection yet, you will need to use the GUI <a class="interwiki" href="https://packages.debian.org/virt-viewer" title="DebianPkg">virt-viewer</a> to complete the install. <span class="anchor" id="line-75"></span><span class="anchor" id="line-76"></span></p><p class="line862">You can avoid having to download the ISO by using the <tt class="backtick">--location</tt> option: <span class="anchor" id="line-77"></span><span class="anchor" id="line-78"></span></p><p class="line867"><span class="anchor" id="line-79"></span><span class="anchor" id="line-80"></span><span class="anchor" id="line-81"></span><span class="anchor" id="line-82"></span><span class="anchor" id="line-83"></span></p><pre><span class="anchor" id="line-1-7"></span>virt-install --virt-type kvm --name bullseye-amd64 \
+<span class="anchor" id="line-2-1"></span>--location http://deb.debian.org/debian/dists/bullseye/main/installer-amd64/ \
+<span class="anchor" id="line-3-1"></span>--os-variant debian11 \
+<span class="anchor" id="line-4-1"></span>--disk size=10 --memory 1000</pre><span class="anchor" id="line-84"></span><span class="anchor" id="line-85"></span><p class="line874">To use a text console for the installation you can tell virt-install to use a serial port instead of the graphical console: <span class="anchor" id="line-86"></span><span class="anchor" id="line-87"></span></p><p class="line867"><span class="anchor" id="line-88"></span><span class="anchor" id="line-89"></span><span class="anchor" id="line-90"></span><span class="anchor" id="line-91"></span><span class="anchor" id="line-92"></span><span class="anchor" id="line-93"></span><span class="anchor" id="line-94"></span><span class="anchor" id="line-95"></span></p><pre><span class="anchor" id="line-1-8"></span>virt-install --virt-type kvm --name bullseye-amd64 \
+<span class="anchor" id="line-2-2"></span>--location http://deb.debian.org/debian/dists/bullseye/main/installer-amd64/ \
+<span class="anchor" id="line-3-2"></span>--os-variant debian11 \
+<span class="anchor" id="line-4-2"></span>--disk size=10 --memory 1000 \
+<span class="anchor" id="line-5"></span>--graphics none \
+<span class="anchor" id="line-6"></span>--console pty,target_type=serial \
+<span class="anchor" id="line-7"></span>--extra-args "console=ttyS0"</pre><span class="anchor" id="line-96"></span><span class="anchor" id="line-97"></span><p class="line862">For a fully automated install look into <a href="https://wiki.debian.org/DebianInstaller/Preseed">preseed</a> or <tt class="backtick">debootstrap</tt>. <span class="anchor" id="line-98"></span><span class="anchor" id="line-99"></span></p><p class="line867">
+</p><h1 id="Setting_up_bridge_networking">Setting up bridge networking</h1>
+<span class="anchor" id="line-100"></span><span class="anchor" id="line-101"></span><p class="line867">
+</p><h2 id="Between_VM_guests">Between VM guests</h2>
+<span class="anchor" id="line-102"></span><span class="anchor" id="line-103"></span><p class="line874">By
+ default, QEMU uses macvtap in VEPA mode to provide NAT internet access 
+or bridged access with other guests.  This setup allows guests to access
+ the Internet (if there is an internet connection on the host), but will
+ not allow the host or other machines on the host's LAN to see and 
+access the guests. <span class="anchor" id="line-104"></span><span class="anchor" id="line-105"></span></p><p class="line867">
+</p><h2 id="Between_VM_host_and_guests">Between VM host and guests</h2>
+<span class="anchor" id="line-106"></span><span class="anchor" id="line-107"></span><p class="line867">
+</p><h3 id="Libvirt_default_network">Libvirt default network</h3>
+<span class="anchor" id="line-108"></span><span class="anchor" id="line-109"></span><p class="line874">If
+ you use libvirt to manage your VMs, libvirt provides a NATed bridged 
+network named "default" that allows the host to communicate with the 
+guests. This network is available only for the system domains (that is 
+VMs created by root or using the qemu:///system connection URI). VMs 
+using this network end up in 192.168.122.1/24 and DHCP is provided to 
+them <span class="anchor" id="line-110"></span>via dnsmasq. This network is not automatically started. To start it use: <span class="anchor" id="line-111"></span><span class="anchor" id="line-112"></span></p><p class="line867"><span class="anchor" id="line-113"></span><span class="anchor" id="line-114"></span></p><pre><span class="anchor" id="line-1-9"></span> virsh --connect=qemu:///system net-start default</pre><span class="anchor" id="line-115"></span><span class="anchor" id="line-116"></span><p class="line874">To make the default network start automatically use: <span class="anchor" id="line-117"></span><span class="anchor" id="line-118"></span></p><p class="line867"><span class="anchor" id="line-119"></span><span class="anchor" id="line-120"></span></p><pre><span class="anchor" id="line-1-10"></span> virsh --connect=qemu:///system net-autostart default</pre><span class="anchor" id="line-121"></span><span class="anchor" id="line-122"></span><p class="line874">In order for things to work this way you need to have the recommended packages <span class="anchor" id="line-123"></span><a class="interwiki" href="https://packages.debian.org/dnsmasq-base" title="DebianPkg">dnsmasq-base</a>, <a class="interwiki" href="https://packages.debian.org/bridge-utils" title="DebianPkg">bridge-utils</a> and <a class="interwiki" href="https://packages.debian.org/firewalld" title="DebianPkg">firewalld</a> installed. <span class="anchor" id="line-124"></span><span class="anchor" id="line-125"></span></p><p class="line867">
+</p><h4 id="Accessing_guests_with_their_hostnames">Accessing guests with their hostnames</h4>
+<span class="anchor" id="line-126"></span><span class="anchor" id="line-127"></span><p class="line862">After
+ the default network is setup, you can configure libvirt's DNS server 
+dnsmasq, so that you can access the guests using their host names. This 
+is useful when you have multiple guests and want to access them using 
+simple hostnames, like <tt class="backtick">vm1.libvirt</tt> instead of memorizing their IP addresses. <span class="anchor" id="line-128"></span><span class="anchor" id="line-129"></span></p><p class="line862">First, configure libvirt's default network. Run <tt class="backtick">virsh&nbsp;--connect=qemu:///system&nbsp;net-edit&nbsp;default</tt> and add to the configuration the following line (e.g., after the <tt class="backtick">mac</tt> tag): <span class="anchor" id="line-130"></span><span class="anchor" id="line-131"></span></p><p class="line867"><span class="anchor" id="line-132"></span><span class="anchor" id="line-133"></span></p><pre><span class="anchor" id="line-1-11"></span>&lt;domain name='libvirt' localOnly='yes'/&gt;</pre><span class="anchor" id="line-134"></span><span class="anchor" id="line-135"></span><p class="line867"><tt class="backtick">libvirt</tt> is the name of the domain for the guests. You can set it to something else, but make sure not to set it to <tt class="backtick">local</tt>, because it may conflict with mDNS. Setting <tt class="backtick">hlocalOnly='yes'</tt> is important to make sure that requests to that domain are never forwarded upstream (to avoid request loops). <span class="anchor" id="line-136"></span><span class="anchor" id="line-137"></span></p><p class="line874">The resulting network configuration should look something like this: <span class="anchor" id="line-138"></span><span class="anchor" id="line-139"></span></p><p class="line867"><span class="anchor" id="line-140"></span><span class="anchor" id="line-141"></span><span class="anchor" id="line-142"></span><span class="anchor" id="line-143"></span><span class="anchor" id="line-144"></span><span class="anchor" id="line-145"></span><span class="anchor" id="line-146"></span><span class="anchor" id="line-147"></span><span class="anchor" id="line-148"></span><span class="anchor" id="line-149"></span><span class="anchor" id="line-150"></span><span class="anchor" id="line-151"></span><span class="anchor" id="line-152"></span><span class="anchor" id="line-153"></span><span class="anchor" id="line-154"></span><span class="anchor" id="line-155"></span><span class="anchor" id="line-156"></span><span class="anchor" id="line-157"></span></p><pre><span class="anchor" id="line-1-12"></span>&lt;network connections='1'&gt;
+<span class="anchor" id="line-2-3"></span>  &lt;name&gt;default&lt;/name&gt;
+<span class="anchor" id="line-3-3"></span>  &lt;uuid&gt;66b33e64-713f-4323-b406-bc636c054af5&lt;/uuid&gt;
+<span class="anchor" id="line-4-3"></span>  &lt;forward mode='nat'&gt;
+<span class="anchor" id="line-5-1"></span>    &lt;nat&gt;
+<span class="anchor" id="line-6-1"></span>      &lt;port start='1024' end='65535'/&gt;
+<span class="anchor" id="line-7-1"></span>    &lt;/nat&gt;
+<span class="anchor" id="line-8"></span>  &lt;/forward&gt;
+<span class="anchor" id="line-9"></span>  &lt;bridge name='virbr0' stp='on' delay='0'/&gt;
+<span class="anchor" id="line-10"></span>  &lt;mac address='52:54:00:af:9f:2a'/&gt;
+<span class="anchor" id="line-11"></span>  &lt;domain name='libvirt' localOnly='yes'/&gt;
+<span class="anchor" id="line-12"></span>  &lt;ip address='192.168.122.1' netmask='255.255.255.0'&gt;
+<span class="anchor" id="line-13"></span>    &lt;dhcp&gt;
+<span class="anchor" id="line-14"></span>      &lt;range start='192.168.122.2' end='192.168.122.254'/&gt;
+<span class="anchor" id="line-15"></span>    &lt;/dhcp&gt;
+<span class="anchor" id="line-16"></span>  &lt;/ip&gt;
+<span class="anchor" id="line-17"></span>&lt;/network&gt;</pre><span class="anchor" id="line-158"></span><span class="anchor" id="line-159"></span><p class="line874">You may have to restart the network for the new configuration to take. <span class="anchor" id="line-160"></span><span class="anchor" id="line-161"></span></p><p class="line874">Now configure the VM guests with their names. For example, if you want to name a guest 'vm1', login to it and run: <span class="anchor" id="line-162"></span><span class="anchor" id="line-163"></span></p><p class="line867"><span class="anchor" id="line-164"></span><span class="anchor" id="line-165"></span></p><pre><span class="anchor" id="line-1-13"></span>sudo hostnamectl set-hostname vm1.libvirt</pre><span class="anchor" id="line-166"></span><span class="anchor" id="line-167"></span><p class="line862">Next, configure the host's <a href="https://wiki.debian.org/NetworkManager">NetworkManager</a>, so that it uses libvirt's DNS server and correctly resolves the guests' hostnames. First, tell <a href="https://wiki.debian.org/NetworkManager">NetworkManager</a> to start its own version of dnsmasq by creating a configuration file <tt class="backtick">/etc/NetworkManager/conf.d/libvirt_dns.conf</tt> with the following content: <span class="anchor" id="line-168"></span><span class="anchor" id="line-169"></span></p><p class="line867"><span class="anchor" id="line-170"></span><span class="anchor" id="line-171"></span><span class="anchor" id="line-172"></span></p><pre><span class="anchor" id="line-1-14"></span>[main]
+<span class="anchor" id="line-2-4"></span>dns=dnsmasq</pre><span class="anchor" id="line-173"></span><span class="anchor" id="line-174"></span><p class="line862">Second, tell the host's dnsmasq that for all DNS requests regarding the <tt class="backtick">libvirt</tt> domain the libvirt's dnsmasq instance should be queried. This can be done by creating a configuration file <tt class="backtick">/etc/NetworkManager/dnsmasq.d/libvirt_dns.conf</tt> with the following content: <span class="anchor" id="line-175"></span><span class="anchor" id="line-176"></span></p><p class="line867"><span class="anchor" id="line-177"></span><span class="anchor" id="line-178"></span></p><pre><span class="anchor" id="line-1-15"></span>server=/libvirt/192.168.122.1</pre><span class="anchor" id="line-179"></span><span class="anchor" id="line-180"></span><p class="line867"><tt class="backtick">libvirt</tt>
+ here is the domain name you set in the configuration of libvirt's 
+default network. Note, the IP address must correspond to libvirt's 
+default network address. See the <tt class="backtick">ip</tt>-tag in the network configuration above. <span class="anchor" id="line-181"></span><span class="anchor" id="line-182"></span></p><p class="line862">Now, restart the host's <a href="https://wiki.debian.org/NetworkManager">NetworkManager</a> with <span class="anchor" id="line-183"></span><span class="anchor" id="line-184"></span></p><p class="line867"><span class="anchor" id="line-185"></span><span class="anchor" id="line-186"></span></p><pre><span class="anchor" id="line-1-16"></span>sudo systemctl restart NetworkManager</pre><span class="anchor" id="line-187"></span><span class="anchor" id="line-188"></span><p class="line862">From now on the guests can be accessed using their hostnames, like <tt class="backtick">ssh&nbsp;vm1.libvirt</tt>. <span class="anchor" id="line-189"></span><span class="anchor" id="line-190"></span></p><p class="line867"><a class="https" href="https://liquidat.wordpress.com/2017/03/03/howto-automated-dns-resolution-for-kvmlibvirt-guests-with-a-local-domain/">[Source</a>] <span class="anchor" id="line-191"></span><span class="anchor" id="line-192"></span></p><p class="line867">
+</p><h3 id="Manual_bridging">Manual bridging</h3>
+<span class="anchor" id="line-193"></span><span class="anchor" id="line-194"></span><p class="line874">To
+ enable communications between the VM host and VM guests, you can set up
+ a macvlan bridge on top of a dummy interface similar as below.  After 
+the configuration, you can set using interface dummy0 (macvtap) in 
+bridged mode as the network configuration in VM guests configuration. <span class="anchor" id="line-195"></span><span class="anchor" id="line-196"></span></p><p class="line867"><span class="anchor" id="line-197"></span><span class="anchor" id="line-198"></span><span class="anchor" id="line-199"></span><span class="anchor" id="line-200"></span><span class="anchor" id="line-201"></span><span class="anchor" id="line-202"></span></p><pre><span class="anchor" id="line-1-17"></span>modprobe dummy
+<span class="anchor" id="line-2-5"></span>ip link add dummy0 type dummy
+<span class="anchor" id="line-3-4"></span>ip link add link dummy0 macvlan0 type macvlan mode bridge
+<span class="anchor" id="line-4-4"></span>ifconfig dummy0 up
+<span class="anchor" id="line-5-2"></span>ifconfig macvlan0 192.168.1.2 broadcast 192.168.1.255 netmask 255.255.255.0 up</pre><span class="anchor" id="line-203"></span><span class="anchor" id="line-204"></span><p class="line867">
+</p><h2 id="Between_VM_host.2C_guests_and_the_world">Between VM host, guests and the world</h2>
+<span class="anchor" id="line-205"></span><span class="anchor" id="line-206"></span><p class="line862">In order to let communications between host, guests and outside world, you may <a href="https://wiki.debian.org/BridgeNetworkConnections">set up a bridge</a> and as described at <a href="https://wiki.debian.org/QEMU#Host_and_guests_on_same_network">QEMU page</a>. <span class="anchor" id="line-207"></span><span class="anchor" id="line-208"></span></p><p class="line874">For
+ example, you can modify the network configuration file 
+/etc/network/interfaces to setup the ethernet interface eth0 to a bridge
+ interface br0 similar as below.  After the configuration, you can set 
+using Bridge Interface br0 as the network connection in VM guest 
+configuration. <span class="anchor" id="line-209"></span><span class="anchor" id="line-210"></span></p><p class="line867"><span class="anchor" id="line-211"></span><span class="anchor" id="line-212"></span><span class="anchor" id="line-213"></span><span class="anchor" id="line-214"></span><span class="anchor" id="line-215"></span><span class="anchor" id="line-216"></span><span class="anchor" id="line-217"></span><span class="anchor" id="line-218"></span><span class="anchor" id="line-219"></span><span class="anchor" id="line-220"></span><span class="anchor" id="line-221"></span><span class="anchor" id="line-222"></span><span class="anchor" id="line-223"></span><span class="anchor" id="line-224"></span><span class="anchor" id="line-225"></span><span class="anchor" id="line-226"></span><span class="anchor" id="line-227"></span><span class="anchor" id="line-228"></span><span class="anchor" id="line-229"></span><span class="anchor" id="line-230"></span><span class="anchor" id="line-231"></span><span class="anchor" id="line-232"></span><span class="anchor" id="line-233"></span><span class="anchor" id="line-234"></span><span class="anchor" id="line-235"></span><span class="anchor" id="line-236"></span><span class="anchor" id="line-237"></span><span class="anchor" id="line-238"></span><span class="anchor" id="line-239"></span></p><pre><span class="anchor" id="line-1-18"></span>auto lo
+<span class="anchor" id="line-2-6"></span>iface lo inet loopback
+<span class="anchor" id="line-3-5"></span>
+<span class="anchor" id="line-4-5"></span># The primary network interface
+<span class="anchor" id="line-5-3"></span>auto eth0
+<span class="anchor" id="line-6-2"></span>
+<span class="anchor" id="line-7-2"></span>#make sure we don't get addresses on our raw device
+<span class="anchor" id="line-8-1"></span>iface eth0 inet manual
+<span class="anchor" id="line-9-1"></span>iface eth0 inet6 manual
+<span class="anchor" id="line-10-1"></span>
+<span class="anchor" id="line-11-1"></span>#set up bridge and give it a static ip
+<span class="anchor" id="line-12-1"></span>auto br0
+<span class="anchor" id="line-13-1"></span>iface br0 inet static
+<span class="anchor" id="line-14-1"></span>        address 192.168.1.2
+<span class="anchor" id="line-15-1"></span>        netmask 255.255.255.0
+<span class="anchor" id="line-16-1"></span>        network 192.168.1.0
+<span class="anchor" id="line-17-1"></span>        broadcast 192.168.1.255
+<span class="anchor" id="line-18"></span>        gateway 192.168.1.1
+<span class="anchor" id="line-19"></span>        bridge_ports eth0
+<span class="anchor" id="line-20"></span>        bridge_stp off
+<span class="anchor" id="line-21"></span>        bridge_fd 0
+<span class="anchor" id="line-22"></span>        bridge_maxwait 0
+<span class="anchor" id="line-23"></span>        dns-nameservers 8.8.8.8
+<span class="anchor" id="line-24"></span>
+<span class="anchor" id="line-25"></span>#allow autoconf for ipv6
+<span class="anchor" id="line-26"></span>iface br0 inet6 auto
+<span class="anchor" id="line-27"></span>        accept_ra 1</pre><span class="anchor" id="line-240"></span><span class="anchor" id="line-241"></span><p class="line874">Once that is correctly configured, you should be able to use the bridge on new VM deployments with: <span class="anchor" id="line-242"></span><span class="anchor" id="line-243"></span></p><p class="line867"><span class="anchor" id="line-244"></span><span class="anchor" id="line-245"></span></p><pre><span class="anchor" id="line-1-19"></span>virt-install --network bridge=br0 [...]</pre><span class="anchor" id="line-246"></span><span class="anchor" id="line-247"></span><p class="line867">
+</p><h1 id="Managing_VMs_from_the_command-line">Managing VMs from the command-line</h1>
+<span class="anchor" id="line-248"></span><span class="anchor" id="line-249"></span><p class="line862">You can use the <a class="interwiki" href="https://manpages.debian.org/man/1/virsh" title="DebianMan">virsh(1)</a> command to start and stop virtual machines. VMs can be generated using <a class="interwiki" href="https://packages.debian.org/virtinst" title="DebianPkg">virtinst</a>. For more details see the <a href="https://wiki.debian.org/libvirt">libvirt</a> page. Virtual machines can also be controlled using the kvm command in a similar fashion to <a href="https://wiki.debian.org/QEMU">QEMU</a>.  Below are some frequently used commands: <span class="anchor" id="line-250"></span><span class="anchor" id="line-251"></span></p><p class="line874">Start a configured VM guest "VMGUEST": <span class="anchor" id="line-252"></span><span class="anchor" id="line-253"></span><span class="anchor" id="line-254"></span></p><pre><span class="anchor" id="line-1-20"></span># virsh start VMGUEST</pre><span class="anchor" id="line-255"></span><span class="anchor" id="line-256"></span><p class="line874">Notify the VM guest "VMGUEST" to gracefully shutdown: <span class="anchor" id="line-257"></span><span class="anchor" id="line-258"></span><span class="anchor" id="line-259"></span></p><pre><span class="anchor" id="line-1-21"></span># virsh shutdown VMGUEST</pre><span class="anchor" id="line-260"></span><span class="anchor" id="line-261"></span><p class="line874">Force the VM guest "VMGUEST" to shutdown in case it is hung, i.e. graceful shutdown did not work: <span class="anchor" id="line-262"></span><span class="anchor" id="line-263"></span><span class="anchor" id="line-264"></span></p><pre><span class="anchor" id="line-1-22"></span># virsh destroy VMGUEST</pre><span class="anchor" id="line-265"></span><span class="anchor" id="line-266"></span><p class="line867">
+</p><h1 id="Managing_VM_guests_with_a_GUI">Managing VM guests with a GUI</h1>
+<span class="anchor" id="line-267"></span><span class="anchor" id="line-268"></span><p class="line874">On the other hand, if you want to use a graphical UI to manage the VMs, choose one of the following two packages:  <span class="anchor" id="line-269"></span></p><ul><li><p class="line862">AQEMU <a class="interwiki" href="https://packages.debian.org/aqemu" title="DebianPkg">aqemu</a>. <span class="anchor" id="line-270"></span></p></li><li><p class="line862">Virtual Machine Manager <a class="interwiki" href="https://packages.debian.org/virt-manager" title="DebianPkg">virt-manager</a>. <span class="anchor" id="line-271"></span><span class="anchor" id="line-272"></span></p></li></ul><p class="line867">
+</p><h1 id="Automatic_guest_management_on_host_shutdown.2Fstartup">Automatic guest management on host shutdown/startup</h1>
+<span class="anchor" id="line-273"></span><span class="anchor" id="line-274"></span><p class="line874">Guest behavior on host shutdown/startup is configured in /etc/default/libvirt-guests. <span class="anchor" id="line-275"></span><span class="anchor" id="line-276"></span></p><p class="line874">This file specifies whether guests should be shutdown or suspended, if they should be restarted on host startup, etc. <span class="anchor" id="line-277"></span><span class="anchor" id="line-278"></span></p><p class="line874">The first parameter defines where to find running guests. For instance: <span class="anchor" id="line-279"></span><span class="anchor" id="line-280"></span></p><p class="line867"><span class="anchor" id="line-281"></span><span class="anchor" id="line-282"></span><span class="anchor" id="line-283"></span><span class="anchor" id="line-284"></span></p><pre><span class="anchor" id="line-1-23"></span># URIs to check for running guests
+<span class="anchor" id="line-2-7"></span># example: URIS='default xen:/// vbox+tcp://host/system lxc:///'
+<span class="anchor" id="line-3-6"></span>URIS=qemu:///system</pre><span class="anchor" id="line-285"></span><span class="anchor" id="line-286"></span><p class="line867">
+</p><h1 id="Performance_Tuning">Performance Tuning</h1>
+<span class="anchor" id="line-287"></span><span class="anchor" id="line-288"></span><p class="line874">Below are some options which can improve the performance of VM guests. <span class="anchor" id="line-289"></span><span class="anchor" id="line-290"></span></p><p class="line867">
+</p><h2 id="CPU">CPU</h2>
+<span class="anchor" id="line-291"></span><span class="anchor" id="line-292"></span><ul><li>Assign virtual CPU core to dedicated physical CPU core <span class="anchor" id="line-293"></span><ul><li>Edit the VM guest configuration, assume the VM guest name is "VMGUEST" having 4 virtual CPU core <span class="anchor" id="line-294"></span><span class="anchor" id="line-295"></span><span class="anchor" id="line-296"></span><pre><span class="anchor" id="line-1-24"></span># virsh edit VMGUEST</pre><span class="anchor" id="line-297"></span><span class="anchor" id="line-298"></span></li><li class="gap"><p class="line862">Add below codes after the line "&lt;vcpu ..." <span class="anchor" id="line-299"></span><span class="anchor" id="line-300"></span><span class="anchor" id="line-301"></span><span class="anchor" id="line-302"></span><span class="anchor" id="line-303"></span><span class="anchor" id="line-304"></span><span class="anchor" id="line-305"></span><span class="anchor" id="line-306"></span></p><pre><span class="anchor" id="line-1-25"></span>&lt;cputune&gt;
+<span class="anchor" id="line-2-8"></span>  &lt;vcpupin vcpu='0' cpuset='0'/&gt;
+<span class="anchor" id="line-3-7"></span>  &lt;vcpupin vcpu='1' cpuset='4'/&gt;
+<span class="anchor" id="line-4-6"></span>  &lt;vcpupin vcpu='2' cpuset='1'/&gt;
+<span class="anchor" id="line-5-4"></span>  &lt;vcpupin vcpu='3' cpuset='5'/&gt;
+<span class="anchor" id="line-6-3"></span>&lt;/cputune&gt;</pre><span class="anchor" id="line-307"></span>where
+ vcpu are the virtual cpu core id; cpuset are the allocated physical CPU
+ core id.  Adjust the number of lines of vcpupin to reflect the vcpu 
+count and cpuset to reflect the actual physical cpu core allocation. <span class="anchor" id="line-308"></span><span class="anchor" id="line-309"></span>In
+ general, the higher half physical CPU core are the hyperthreading cores
+ which cannot provide full core performance while have the benefit of 
+increasing the memory cache hit rate. <span class="anchor" id="line-310"></span><span class="anchor" id="line-311"></span>A general rule of thumb to set cpuset is: <span class="anchor" id="line-312"></span><span class="anchor" id="line-313"></span></li><li class="gap">For
+ the first vcpu, assign a lower half cpuset number.  For example, if the
+ system has 4 core 8 thread, the valid value of cpuset is between 0 to 
+7, the lower half is therefore between 0 to 3. <span class="anchor" id="line-314"></span></li><li>For
+ the second and the every second vcpu, assign its higher half cpuset 
+number.  For example, if you assigned the first cpuset to 0, then the 
+second cpuset should be set to 4. <span class="anchor" id="line-315"></span><span class="anchor" id="line-316"></span><p class="line862">For
+ the third vcpu and above, you may need to determine which physical cpu 
+core share the memory cache more to the first vcpu as described <a class="http" href="http://www-01.ibm.com/support/knowledgecenter/linuxonibm/liaat/liaattunpinproccachetop.htm?lang=en">here</a> and assign it to the cpuset number to increase the memory cache hit rate. <span class="anchor" id="line-317"></span><span class="anchor" id="line-318"></span></p></li></ul></li></ul><p class="line867">
+</p><h2 id="Disk_I.2FO">Disk I/O</h2>
+<span class="anchor" id="line-319"></span><span class="anchor" id="line-320"></span><p class="line874">Disk
+ I/O is usually a performance bottleneck due to its characteristics.  
+Unlike CPU and RAM, a VM host may not allocate a dedicated storage 
+hardware for a VM.  Worse, disk is the slowest component among them.  
+There are two types of disk bottleneck: throughput and access time.  A 
+modern hard disk can provide 100MB/s throughput which is sufficient for 
+most systems, whereas it can only provide around 60 transactions per 
+seconds (tps). <span class="anchor" id="line-321"></span><span class="anchor" id="line-322"></span></p><p class="line862">One
+ way to improve disk I/O latency is to use a small but fast Solid State 
+Drive (SSD) as a cache for larger but slower traditional spinning disks.
+  The <a href="https://wiki.debian.org/LVM">LVM</a> <a class="interwiki" href="https://manpages.debian.org/man/lvmcache" title="DebianMan">lvmcache</a> manual page describes how to set this up. <span class="anchor" id="line-323"></span><span class="anchor" id="line-324"></span></p><p class="line874">For
+ the VM Host, you can benchmark different disk I/O parameters to get the
+ best tps for your disk.  Below is an example of disk tuning and 
+benchmarking using fio: <span class="anchor" id="line-325"></span><span class="anchor" id="line-326"></span></p><ul><li style="list-style-type:none"><span class="anchor" id="line-327"></span><span class="anchor" id="line-328"></span><span class="anchor" id="line-329"></span><span class="anchor" id="line-330"></span><span class="anchor" id="line-331"></span><span class="anchor" id="line-332"></span><span class="anchor" id="line-333"></span><pre><span class="anchor" id="line-1-26"></span># echo mq-deadline &gt; /sys/block/sda/queue/scheduler
+<span class="anchor" id="line-2-9"></span># echo 1 &gt; /proc/sys/vm/dirty_background_ratio
+<span class="anchor" id="line-3-8"></span># echo 50 &gt; /proc/sys/vm/dirty_ratio
+<span class="anchor" id="line-4-7"></span># echo 500 &gt; /proc/sys/vm/dirty_expire_centisecs
+<span class="anchor" id="line-5-5"></span># /sbin/blockdev --setra 256 /dev/sda
+<span class="anchor" id="line-6-4"></span># fio --randrepeat=1 --ioengine=libaio --direct=1 --gtod_reduce=1 --name=test --filename=/opt/fio.tmp --bs=4k --iodepth=64 --size=8G --readwrite=randrw --rwmixread=75 --runtime=60</pre><span class="anchor" id="line-334"></span><span class="anchor" id="line-335"></span></li></ul><p class="line874">For
+ Windows VM guests, you may wish to switch between the slow but 
+cross-platform Windows built-in IDE driver and the fast but KVM specific
+ VirtIO driver.  As a result, the installation method for Windows VM 
+guests provided below is a little bit complicated because it provides a 
+way to install both drivers and use one for your needs.  Under 
+virt-manager: <span class="anchor" id="line-336"></span><span class="anchor" id="line-337"></span></p><ul><li>Native driver for Windows VM guests <span class="anchor" id="line-338"></span><ul><li>Create new VM guest with below configuration: <span class="anchor" id="line-339"></span><ul><li>IDE storage for Windows OS container, assume with filename WINDOWS.qcow2 <span class="anchor" id="line-340"></span></li><li>IDE CDROM, attach Windows OS ISO to CDROM <span class="anchor" id="line-341"></span></li></ul></li><li>Start VM guest and install the Windows OS as usual <span class="anchor" id="line-342"></span></li><li>Shutdown VM guest <span class="anchor" id="line-343"></span></li><li>Reconfigure VM guest with below configuration: <span class="anchor" id="line-344"></span><ul><li>Add a dummy VirtIO / VirtIO SCSI storage with 100MB size, e.g. DUMMY.qcow2 <span class="anchor" id="line-345"></span></li><li><p class="line862">Attach <a class="https" href="https://fedoraproject.org/wiki/Windows_Virtio_Drivers#Direct_download">VirtIO driver CD ISO</a> to the IDE CDROM <span class="anchor" id="line-346"></span></p></li></ul></li><li>Restart VM guest <span class="anchor" id="line-347"></span></li><li>Install the VirtIO driver from the IDE CDROM when Windows prompt for new hardware driver <span class="anchor" id="line-348"></span></li><li>For VM guest of Windows 10 and above <span class="anchor" id="line-349"></span><ul><li>Run "cmd" as Administrator and run below command <span class="anchor" id="line-350"></span><span class="anchor" id="line-351"></span><span class="anchor" id="line-352"></span><pre><span class="anchor" id="line-1-27"></span>&gt; bcdedit /set {current} safeboot minimal</pre><span class="anchor" id="line-353"></span></li></ul></li><li>Shutdown VM guest <span class="anchor" id="line-354"></span></li><li>Reconfigure VM guest with below configuration: <span class="anchor" id="line-355"></span><ul><li>Remove IDE storage for Windows OS, DO NOT delete WINDOWS.qcow2 <span class="anchor" id="line-356"></span></li><li>Remove VirtIO storage for dummy storage, you can delete DUMMY.qcow2 <span class="anchor" id="line-357"></span></li><li>Remove IDE storage for CD ROM <span class="anchor" id="line-358"></span></li><li>Add a new VirtIO / VirtIO SCSI storage and attach WINDOWS.qcow2 to it <span class="anchor" id="line-359"></span></li></ul></li><li>Restart the VM guest <span class="anchor" id="line-360"></span></li><li>For VM guest of Windows 10 and above <span class="anchor" id="line-361"></span><ul><li>Login the safe mode of Windows 10 VM guest and run below command <span class="anchor" id="line-362"></span><span class="anchor" id="line-363"></span><span class="anchor" id="line-364"></span><pre><span class="anchor" id="line-1-28"></span>&gt; bcdedit /deletevalue {current} safeboot</pre><span class="anchor" id="line-365"></span></li><li>Restart the VM guest <span class="anchor" id="line-366"></span><span class="anchor" id="line-367"></span></li></ul></li></ul></li><li class="gap">Native driver for Linux VM guests <span class="anchor" id="line-368"></span><ul><li>Select VirtIO / VirtIO SCSI storage for the storage containers <span class="anchor" id="line-369"></span></li><li>Restart the VM guest <span class="anchor" id="line-370"></span><span class="anchor" id="line-371"></span></li></ul></li><li class="gap">VirtIO / VirtIO SCSI storage <span class="anchor" id="line-372"></span><ul><li>VirtIO
+ SCSI storage provides richer features than VirtIO storage when the VM 
+guest is attached with multiple storage.  The performance are the same 
+if the VM guest was only attached with a single storage. <span class="anchor" id="line-373"></span><span class="anchor" id="line-374"></span></li></ul></li><li class="gap">Disk Cache <span class="anchor" id="line-375"></span><ul><li>Select "None" for disk cache mode, "Native" for IO mode, "Unmap" for Discard mode and Detect zeroes method. <span class="anchor" id="line-376"></span><span class="anchor" id="line-377"></span></li></ul></li><li class="gap">Dedicate I/O Threads <span class="anchor" id="line-378"></span><span class="anchor" id="line-379"></span><ul><li style="list-style-type:none">Specifying I/O thread can reduce blocking symptom during disk I/O significantly.  1 I/O thread is sufficient for most cases: <span class="anchor" id="line-380"></span><span class="anchor" id="line-381"></span></li><li class="gap">Edit the VM guest configuration, assume the VM guest name is "VMGUEST" <span class="anchor" id="line-382"></span><span class="anchor" id="line-383"></span><span class="anchor" id="line-384"></span><span class="anchor" id="line-385"></span><pre><span class="anchor" id="line-1-29"></span># virsh edit VMGUEST</pre><span class="anchor" id="line-386"></span><span class="anchor" id="line-387"></span></li><li class="gap"><p class="line862">After the first line "&lt;domain ...&gt;", add "iothreads" line: <span class="anchor" id="line-388"></span><span class="anchor" id="line-389"></span><span class="anchor" id="line-390"></span><span class="anchor" id="line-391"></span></p><pre><span class="anchor" id="line-1-30"></span>  &lt;iothreads&gt;1&lt;/iothreads&gt;</pre><span class="anchor" id="line-392"></span><span class="anchor" id="line-393"></span></li><li class="gap"><p class="line862">After
+ the line of disk controller, for example, for Virtio-SCSI controller, 
+after the line "&lt;controller type='scsi' ...&gt;", add "driver" line: <span class="anchor" id="line-394"></span><span class="anchor" id="line-395"></span><span class="anchor" id="line-396"></span><span class="anchor" id="line-397"></span></p><pre><span class="anchor" id="line-1-31"></span>  &lt;driver iothread='1'/&gt;</pre><span class="anchor" id="line-398"></span><span class="anchor" id="line-399"></span></li></ul></li></ul><p class="line867">
+</p><h2 id="Network_I.2FO">Network I/O</h2>
+<span class="anchor" id="line-400"></span><span class="anchor" id="line-401"></span><p class="line874">Using virt-manager: <span class="anchor" id="line-402"></span><span class="anchor" id="line-403"></span></p><ul><li>Native driver for Windows VM guests <span class="anchor" id="line-404"></span><ul><li>Select VirtIO for the network adapter <span class="anchor" id="line-405"></span></li><li><p class="line862">Attach <a class="https" href="https://fedoraproject.org/wiki/Windows_Virtio_Drivers#Direct_download">VirtIO driver CD ISO</a> to the IDE CDROM <span class="anchor" id="line-406"></span></p></li><li>Restart the VM guest, Windows found a new network adapter hardware, install the VirtIO driver from the IDE CDROM <span class="anchor" id="line-407"></span><span class="anchor" id="line-408"></span></li></ul></li><li class="gap">Native driver for Linux VM guests <span class="anchor" id="line-409"></span><ul><li>Select VirtIO for the network adapter <span class="anchor" id="line-410"></span></li><li>Restart the VM guest <span class="anchor" id="line-411"></span><span class="anchor" id="line-412"></span></li></ul></li></ul><p class="line867">
+</p><h2 id="Memory">Memory</h2>
+<span class="anchor" id="line-413"></span><span class="anchor" id="line-414"></span><ul><li>Huge Page Memory support <span class="anchor" id="line-415"></span><ul><li>Calculate the huge page counts required.  Each huge page is 2MB size, as a result we can use below formula for the calculation. <span class="anchor" id="line-416"></span><span class="anchor" id="line-417"></span><span class="anchor" id="line-418"></span><span class="anchor" id="line-419"></span><pre><span class="anchor" id="line-1-32"></span>Huge Page Counts = Total VM Guest Memory In MB / 2</pre><span class="anchor" id="line-420"></span><span class="anchor" id="line-421"></span>e.g.
+ 4 VM guests, each VM guest using 1024MB, then huge page counts = 4 x 
+1024 / 2 = 2048.  Note that the system may be hang if the acquired 
+memory is more than that of the system available. <span class="anchor" id="line-422"></span><span class="anchor" id="line-423"></span></li><li class="gap"><p class="line862">Configure <a class="nonexistent" href="https://wiki.debian.org/HugePages">?</a>HugePages
+ memory support by using below command.  Since Huge memory might not be 
+allocated if it is too fragmented, it is better to append the code to 
+/etc/rc.local <span class="anchor" id="line-424"></span><span class="anchor" id="line-425"></span><span class="anchor" id="line-426"></span><span class="anchor" id="line-427"></span><span class="anchor" id="line-428"></span><span class="anchor" id="line-429"></span><span class="anchor" id="line-430"></span></p><pre><span class="anchor" id="line-1-33"></span>echo 2048 &gt; /proc/sys/vm/nr_hugepages
+<span class="anchor" id="line-2-10"></span>mkdir -p /mnt/hugetlbfs
+<span class="anchor" id="line-3-9"></span>mount -t hugetlbfs hugetlbfs /mnt/hugetlbfs
+<span class="anchor" id="line-4-8"></span>mkdir -p /mnt/hugetlbfs/libvirt/bin
+<span class="anchor" id="line-5-6"></span>systemctl restart libvirtd</pre><span class="anchor" id="line-431"></span><span class="anchor" id="line-432"></span></li><li class="gap">Reboot the system to enable huge page memory support.  Verify huge page memory support by below command. <span class="anchor" id="line-433"></span><span class="anchor" id="line-434"></span><span class="anchor" id="line-435"></span><span class="anchor" id="line-436"></span><span class="anchor" id="line-437"></span><span class="anchor" id="line-438"></span><span class="anchor" id="line-439"></span><pre><span class="anchor" id="line-1-34"></span># cat /proc/meminfo | grep HugePages_
+<span class="anchor" id="line-2-11"></span>HugePages_Total:    2048
+<span class="anchor" id="line-3-10"></span>HugePages_Free:     2048
+<span class="anchor" id="line-4-9"></span>HugePages_Rsvd:        0
+<span class="anchor" id="line-5-7"></span>HugePages_Surp:        0</pre><span class="anchor" id="line-440"></span><span class="anchor" id="line-441"></span></li><li class="gap">Edit the VM guest configuration, assume the VM guest name is "VMGUEST" <span class="anchor" id="line-442"></span><span class="anchor" id="line-443"></span><span class="anchor" id="line-444"></span><pre><span class="anchor" id="line-1-35"></span># virsh edit VMGUEST</pre><span class="anchor" id="line-445"></span><span class="anchor" id="line-446"></span></li><li class="gap"><p class="line862">Add below codes after the line "&lt;currentMemory ..." <span class="anchor" id="line-447"></span><span class="anchor" id="line-448"></span><span class="anchor" id="line-449"></span><span class="anchor" id="line-450"></span><span class="anchor" id="line-451"></span></p><pre><span class="anchor" id="line-1-36"></span>&lt;memoryBacking&gt;
+<span class="anchor" id="line-2-12"></span>  &lt;hugepages/&gt;
+<span class="anchor" id="line-3-11"></span>&lt;/memoryBacking&gt;</pre><span class="anchor" id="line-452"></span><span class="anchor" id="line-453"></span></li><li class="gap">Start the VM guest "VMGUEST" and verify it is using huge page memory by below command. <span class="anchor" id="line-454"></span><span class="anchor" id="line-455"></span><span class="anchor" id="line-456"></span><span class="anchor" id="line-457"></span><span class="anchor" id="line-458"></span><span class="anchor" id="line-459"></span><span class="anchor" id="line-460"></span><span class="anchor" id="line-461"></span><pre><span class="anchor" id="line-1-37"></span># virsh start VMGUEST
+<span class="anchor" id="line-2-13"></span># cat /proc/meminfo | grep HugePages_
+<span class="anchor" id="line-3-12"></span>HugePages_Total:    2048
+<span class="anchor" id="line-4-10"></span>HugePages_Free:     1536
+<span class="anchor" id="line-5-8"></span>HugePages_Rsvd:        0
+<span class="anchor" id="line-6-5"></span>HugePages_Surp:        0</pre><span class="anchor" id="line-462"></span><span class="anchor" id="line-463"></span><span class="anchor" id="line-464"></span><span class="anchor" id="line-465"></span><pre><span class="anchor" id="line-1-38"></span>Huge Page Counts = Total VM Guest Memory In MB / 2</pre><span class="anchor" id="line-466"></span><span class="anchor" id="line-467"></span></li></ul></li></ul><p class="line867">
+</p><h1 id="Migrating_guests_to_a_Debian_host">Migrating guests to a Debian host</h1>
+<span class="anchor" id="line-468"></span><span class="anchor" id="line-469"></span><p class="line867">
+</p><h2 id="Migrating_guests_from_RHEL.2FCentOS_5.x">Migrating guests from RHEL/CentOS 5.x</h2>
+<span class="anchor" id="line-470"></span><span class="anchor" id="line-471"></span><p class="line862">There are a few minor things in guest XML configuration files (<em>/etc/libvirt/qemu/*.xml</em> you need to modify: <span class="anchor" id="line-472"></span><span class="anchor" id="line-473"></span></p><ul><li><p class="line891"><em>Machine</em> variable in &lt;os&gt; section should say <em>pc</em>, not <em>rhel5.4.0</em> or similar <span class="anchor" id="line-474"></span></p></li><li><p class="line891"><em>Emulator</em> entry should point to <em>/usr/bin/kvm</em>, not <em>/usr/libexec/qemu-kvm</em> <span class="anchor" id="line-475"></span><span class="anchor" id="line-476"></span></p></li></ul><p class="line874">In other words, the relevant sections should look something like this: <span class="anchor" id="line-477"></span><span class="anchor" id="line-478"></span></p><p class="line867"><span class="anchor" id="line-479"></span><span class="anchor" id="line-480"></span><span class="anchor" id="line-481"></span><span class="anchor" id="line-482"></span><span class="anchor" id="line-483"></span><span class="anchor" id="line-484"></span><span class="anchor" id="line-485"></span><span class="anchor" id="line-486"></span></p><pre><span class="anchor" id="line-1-39"></span>  &lt;os&gt;
+<span class="anchor" id="line-2-14"></span>    &lt;type arch='x86_64' machine='pc'&gt;hvm&lt;/type&gt;
+<span class="anchor" id="line-3-13"></span>
+<span class="anchor" id="line-4-11"></span>  --- snip ---
+<span class="anchor" id="line-5-9"></span>
+<span class="anchor" id="line-6-6"></span>  &lt;devices&gt;
+<span class="anchor" id="line-7-3"></span>    &lt;emulator&gt;/usr/bin/kvm&lt;/emulator&gt;</pre><span class="anchor" id="line-487"></span><span class="anchor" id="line-488"></span><p class="line862">If you had configured a bridge network on the CentOS host, please refer to <a href="https://wiki.debian.org/BridgeNetworkConnections">this wiki article</a> on how to make it work on Debian. <span class="anchor" id="line-489"></span><span class="anchor" id="line-490"></span></p><p class="line867">
+</p><h1 id="Troubleshooting">Troubleshooting</h1>
+<span class="anchor" id="line-491"></span><span class="anchor" id="line-492"></span><p class="line867"><strong>No network bridge available</strong> <span class="anchor" id="line-493"></span><span class="anchor" id="line-494"></span></p><p class="line862">virt-manager
+ uses a virtual network for its guests, by default this is routed to 
+192.168.122.0/24 and you should see this by typing <tt>ip&nbsp;route</tt> as root. <span class="anchor" id="line-495"></span><span class="anchor" id="line-496"></span></p><p class="line874">If
+ this route is not present in the kernel routing table then the guests 
+will fail to connect and you will not be able to complete a guest 
+creation. <span class="anchor" id="line-497"></span><span class="anchor" id="line-498"></span></p><p class="line862">Fixing
+ this is simple, open up virt-manager and go to "Edit" -&gt; "Host 
+details" -&gt; "Virtual networks" tab. From there you may create a 
+virtual network of your own or attempt to fix the default one. Usually 
+the problem exists where the default network is not started. <span class="anchor" id="line-499"></span><span class="anchor" id="line-500"></span></p><p class="line867"><strong>cannot create bridge 'virbr0': File exists</strong>: <span class="anchor" id="line-501"></span><span class="anchor" id="line-502"></span></p><p class="line874">To solve this problem you may remove the virbr0 by running: <span class="anchor" id="line-503"></span><span class="anchor" id="line-504"></span></p><pre><span class="anchor" id="line-1-40"></span>brctl delbr virbr0</pre><span class="anchor" id="line-505"></span><span class="anchor" id="line-506"></span><p class="line862">Open virt-manager and go to "Edit" -&gt; "Host details" -&gt; "Virtual networks" start the default network. <span class="anchor" id="line-507"></span><span class="anchor" id="line-508"></span></p><p class="line874">You can check the netstatus <span class="anchor" id="line-509"></span><span class="anchor" id="line-510"></span></p><pre><span class="anchor" id="line-1-41"></span>virsh net-list --all</pre><span class="anchor" id="line-511"></span><span class="anchor" id="line-512"></span><p class="line862">Optionally, you can use bridge network <a href="https://wiki.debian.org/BridgeNetworkConnections">BridgeNetworkConnections</a> <span class="anchor" id="line-513"></span><span class="anchor" id="line-514"></span></p><p class="line867"><strong>Windows guest frequently hang or BSOD</strong> <span class="anchor" id="line-515"></span><span class="anchor" id="line-516"></span></p><p class="line862">Some
+ Windows guest using some high-end N-way CPU may found frequently hang 
+or BSOD, this is a known kernel bug while unfortunately not fixed in 
+Jessie (TBC in Stretch).  Below workaround can be applied by adding a 
+section <em>&lt;hyperv&gt;...&lt;/hyperv&gt;</em> in the guest configuration via command <em>virsh edit GUESTNAME</em>: <span class="anchor" id="line-517"></span><span class="anchor" id="line-518"></span></p><p class="line867"><span class="anchor" id="line-519"></span><span class="anchor" id="line-520"></span><span class="anchor" id="line-521"></span><span class="anchor" id="line-522"></span><span class="anchor" id="line-523"></span><span class="anchor" id="line-524"></span><span class="anchor" id="line-525"></span><span class="anchor" id="line-526"></span><span class="anchor" id="line-527"></span><span class="anchor" id="line-528"></span></p><pre><span class="anchor" id="line-1-42"></span>&lt;domain ...&gt;
+<span class="anchor" id="line-2-15"></span>  ...
+<span class="anchor" id="line-3-14"></span>  &lt;features&gt;
+<span class="anchor" id="line-4-12"></span>    ...
+<span class="anchor" id="line-5-10"></span>    &lt;hyperv&gt;
+<span class="anchor" id="line-6-7"></span>      &lt;relaxed state='on'/&gt;
+<span class="anchor" id="line-7-4"></span>    &lt;/hyperv&gt;
+<span class="anchor" id="line-8-2"></span>  &lt;/features&gt;
+<span class="anchor" id="line-9-2"></span>  ...</pre><span class="anchor" id="line-529"></span><span class="anchor" id="line-530"></span><p class="line867">
+</p><h1 id="See_also">See also</h1>
+<span class="anchor" id="line-531"></span><ul><li><p class="line891"><a href="https://wiki.debian.org/libvirt">libvirt</a> <span class="anchor" id="line-532"></span></p></li><li><p class="line891"><a href="https://wiki.debian.org/QEMU">QEMU</a> <span class="anchor" id="line-533"></span><span class="anchor" id="line-534"></span></p></li></ul><p class="line862">You can find an <a href="https://wiki.debian.org/Groupware/Kopano#Using_KVM_for_testing">example</a> for testing. You can't do it remotely. <span class="anchor" id="line-535"></span><span class="anchor" id="line-536"></span></p><p class="line867">
+</p><h1 id="External_links">External links</h1>
+<span class="anchor" id="line-537"></span><p class="line874">Please, add links to external documentation. This is not a place for links to non-free commercial products. <span class="anchor" id="line-538"></span><span class="anchor" id="line-539"></span></p><ul><li><p class="line891"><a class="https" href="https://www.linux-kvm.org/">https://www.linux-kvm.org/</a> - Kernel Based Virtual Machine homepage; <span class="anchor" id="line-540"></span></p></li><li><p class="line891"><a class="https" href="https://www.linux-kvm.org/page/HOWTO">https://www.linux-kvm.org/page/HOWTO</a> - Howto's <span class="anchor" id="line-541"></span></p></li><li><p class="line891"><a class="irc" href="irc://irc.libera.chat/%23kvm">#kvm</a> - <a href="https://wiki.debian.org/IRC">IRC</a> channel <span class="anchor" id="line-542"></span></p></li><li><p class="line891"><a class="https" href="https://web.archive.org/web/20080103004709/http://kvm.qumranet.com/kvmwiki/Debian">https://web.archive.org/web/20080103004709/http://kvm.qumranet.com/kvmwiki/Debian</a> - KVM on Debian Sid (old KVM wiki) <span class="anchor" id="line-543"></span><span class="anchor" id="line-544"></span></p></li></ul><p class="line867"></p><hr><p class="line874"> <span class="anchor" id="line-545"></span><span class="anchor" id="line-546"></span></p><p class="line867"><a href="https://wiki.debian.org/CategorySystemAdministration">CategorySystemAdministration</a> | <a href="https://wiki.debian.org/CategoryVirtualization">CategoryVirtualization</a> | <a href="https://wiki.debian.org/CategorySoftware">CategorySoftware</a> <span class="anchor" id="line-547"></span><span class="anchor" id="bottom"></span></p></div><div id="pagebottom"></div>
+</div>
+
+
+<div id="footer">
+<p id="pageinfo" class="info" lang="en" dir="ltr">KVM  (<a class="nbinfo" href="https://wiki.debian.org/KVM?action=info" rel="nofollow">last modified 2023-09-25 11:15:48</a>)</p>
+
+<ul id="credits">
+<li>Debian <a href="https://www.debian.org/legal/privacy">privacy policy</a>, Wiki <a href="https://wiki.debian.org/Teams/DebianWiki">team</a>, <a href="https://bugs.debian.org/wiki.debian.org">bugs</a> and <a href="https://salsa.debian.org/debian/wiki.debian.org">config</a>.</li><li>Powered by <a href="https://moinmo.in/" title="This site uses the MoinMoin Wiki software.">MoinMoin</a> and <a href="https://moinmo.in/Python" title="MoinMoin is written in Python.">Python</a>, with hosting provided by <a href="https://www.man-da.de/">Metropolitan Area Network Darmstadt</a>.</li>
+</ul>
+
+
+</div>
+
+
+
+</body></html>

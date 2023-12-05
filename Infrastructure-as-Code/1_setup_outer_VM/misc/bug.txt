@@ -1,0 +1,6 @@
+error: Failed to start network default                                                                   
+error: internal error: Network is already in use by interface enp1s0
+
+--> sudo vi /etc/libvirt/qemu/networks/default.xml
+change the IP range to be different from that of enp1s0, then:
+sudo virsh net-start default

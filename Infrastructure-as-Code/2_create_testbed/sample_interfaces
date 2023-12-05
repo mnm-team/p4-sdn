@@ -1,0 +1,21 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo eth0
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug enp1s0
+iface enp1s0 inet dhcp
+
+# Fallback unpredictable
+iface eth0 inet static
+address IP_REPLACE
+netmask 255.255.255.0
+gateway 172.16.0.254
+dns-domain genua.de
+dns-nameservers 10.254.0.68
+

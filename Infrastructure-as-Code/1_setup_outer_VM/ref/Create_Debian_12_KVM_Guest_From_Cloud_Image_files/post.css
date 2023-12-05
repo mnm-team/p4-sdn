@@ -1,0 +1,694 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+/*
+ol, ul {
+	list-style: none;
+}
+*/
+ol {
+  list-style: numeric;
+}
+ul {
+  list-style: disc;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+* {
+  box-sizing: border-box;
+}
+strong {
+  font-weight: 600;
+}
+em {
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/fonts/MaterialIcons-Regular.eot);
+  /* For IE6-8 */
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url(/fonts/MaterialIcons-Regular.woff2) format('woff2'), url(/fonts/MaterialIcons-Regular.woff) format('woff'), url(/fonts/MaterialIcons-Regular.ttf) format('truetype');
+}
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+/*
+ * Styling specific to the header on each page.
+ */
+@font-face {
+  font-family: 'Cabin';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+  src: url(https://fonts.gstatic.com/s/cabin/v18/u-4X0qWljRw-PfU81xCKCpdpbgZJl6XFpfEd7eA9BIxxkV2EH7alwg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Slabo 27px';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/slabo27px/v7/mFT0WbgBwKPR_Z4hGN2qgx8D0A.ttf) format('truetype');
+}
+h1.title a {
+  font-family: 'Slabo 27px';
+}
+h2.subtitle {
+  font-family: "Cabin";
+}
+.title {
+  grid-area: title;
+  color: white;
+  width: 100%;
+  text-align: center;
+}
+.title h1 {
+  margin-top: 2rem;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.title h2 {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin-top: 0rem;
+  color: #969696;
+}
+.title a,
+.title a:hover {
+  text-decoration: none;
+  color: white;
+  font-size: inherit;
+}
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/robotomono/v13/L0xuDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vq_ROW9.ttf) format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/robotocondensed/v25/ieVg2ZhZI2eCN5jzbjEETS9weq8-19eDpCEYag.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/robotocondensed/v25/ieVj2ZhZI2eCN5jzbjEETS9weq8-19e7CA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/robotocondensed/v25/ieVg2ZhZI2eCN5jzbjEETS9weq8-19eDtCYYag.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/robotocondensed/v25/ieVi2ZhZI2eCN5jzbjEETS9weq8-33mZKCM.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/robotocondensed/v25/ieVl2ZhZI2eCN5jzbjEETS9weq8-59U.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/robotocondensed/v25/ieVi2ZhZI2eCN5jzbjEETS9weq8-32meKCM.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 100;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v30/KFOiCnqEu92Fr1Mu51QrIzc.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51TjARc9.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v30/KFOkCnqEu92Fr1Mu52xP.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51S7ABc9.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51TzBhc9.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51TLBBc9.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v30/KFOkCnqEu92Fr1MmgWxP.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5vAw.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Me5Q.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9vAw.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlvAw.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmYUtvAw.ttf) format('truetype');
+}
+.title {
+  background-color: black;
+}
+html {
+  font-size: 12px;
+}
+body {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  font-family: 'Roboto';
+}
+h1 {
+  font-family: 'Roboto Condensed';
+  font-size: 2.5rem;
+  font-weight: 300;
+}
+h2 {
+  font-family: 'Roboto Condensed';
+  font-size: 1.75rem;
+  font-weight: 300;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+div.tags + h2 {
+  margin-top: 2.5rem;
+}
+h3 {
+  font-family: 'Roboto Condensed';
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-decoration: underline;
+  text-underline-offset: 0.75rem;
+  text-decoration-color: rgba(0, 0, 0, 0.1);
+  margin-top: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+h4 {
+  font-family: 'Roboto Condensed';
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-top: 1.5rem;
+  margin-bottom: 0rem;
+}
+h4 + ul {
+  margin-top: 0rem;
+  padding-top: 0rem;
+}
+p,
+li,
+a {
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+a {
+  text-decoration: none;
+}
+code {
+  font-size: 0.825rem;
+  font-family: "Roboto Mono";
+}
+pre {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+p + p {
+  margin-top: 1rem;
+}
+ul,
+ol {
+  padding-left: 2rem;
+}
+a:hover {
+  text-decoration: underline;
+}
+.master-grid {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 0rem;
+  grid-template-areas: "title" "story-content" "disqus" "footer";
+}
+.footer {
+  font-family: 'Roboto';
+  grid-area: footer;
+  width: 100%;
+  color: white;
+  background-color: black;
+  text-align: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+.footer a {
+  color: aqua;
+}
+.story-content {
+  grid-area: story-content;
+  box-sizing: border-box;
+  padding: 0.1rem;
+}
+.story-content h1 {
+  margin-top: 1rem;
+}
+.dates {
+  display: block;
+  text-align: center;
+  margin-top: 2rem;
+  width: 100%;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+.story {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+.story h1 {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+.story .tags {
+  text-align: center;
+  margin-top: 0rem;
+  margin-bottom: 1rem;
+  line-height: 2;
+}
+.story .tags a {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.125rem;
+  padding-bottom: 0.25rem;
+  border-radius: 1rem;
+  background-color: #738a94;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  margin-right: 0.2rem;
+  white-space: nowrap;
+}
+.story .tags a:hover {
+  background-color: #646464;
+  transition: background 0.3s ease-in-out;
+}
+.story img {
+  display: block;
+  margin: 0 auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  max-width: 100%;
+}
+.story pre {
+  margin-bottom: 1rem;
+}
+.disqus-comments {
+  width: 100%;
+  grid-area: disqus;
+}
+pre {
+  color: white;
+  display: block;
+  background-color: black;
+  font-family: "Roboto Mono";
+  box-sizing: border-box;
+  padding: 0.75rem;
+  line-height: 1.5;
+  font-size: 1rem;
+  font-weight: 450;
+  width: 100%;
+  white-space: pre;
+  overflow-x: auto;
+  border-radius: 5px;
+}
+code {
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  padding-right: 0.3rem;
+  padding-left: 0.3rem;
+  border-radius: 5px;
+  color: black;
+  background-color: #dcdcdc;
+  font-weight: 300;
+}
+pre code {
+  padding: 0;
+  border-radius: 0;
+  color: inherit;
+  background-color: inherit;
+  font-weight: inherit;
+}
+pre[class*="language-"] {
+  font-size: 0.9rem;
+  /* this fixes issue with indentation of first line in code block */
+}
+pre[class*="language-"] code {
+  padding: 0rem;
+}
+iframe {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+note {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  padding: 1em;
+  background-color: #64c8ff;
+  border-radius: 5px;
+  color: #000000;
+  display: block;
+}
+note a,
+note a:visited,
+note a:hover {
+  color: #000000;
+  text-decoration: underline;
+}
+note code {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+note:before {
+  display: inline;
+  content: "Note: ";
+  font-weight: 700;
+}
+warning {
+  box-sizing: border-box;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1em;
+  background-color: rgba(255, 0, 0, 0.7);
+  border-radius: 5px;
+  color: #000000;
+  display: block;
+}
+warning a,
+warning a:visited,
+warning a:hover {
+  color: #000000;
+  text-decoration: underline;
+}
+warning code {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+warning:before {
+  display: inline;
+  content: "Warning: ";
+  font-weight: 700;
+}
+.copy-to-text-div a {
+  font-size: 0.9rem;
+  color: #b3b3b3;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+/*
+ * At a certain point, add margins left and right
+ * to create a centered page effect
+ */
+@media screen and (min-width: 280px) {
+  .story-content,
+  .disqus-comments {
+    padding: 1rem;
+  }
+  pre {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .disqus-comments {
+    box-sizing: border-box;
+  }
+}
+/*
+ * At an even wider point bump up font sizes.
+ */
+@media screen and (min-width: 600px) {
+  html {
+    font-size: 14.4px;
+  }
+  .story h1 {
+    margin-top: 2rem;
+  }
+  .story .tags {
+    margin-top: 0rem;
+    margin-bottom: 2rem;
+  }
+  .story .tags a {
+    font-size: 1rem;
+  }
+  .story pre {
+    margin-bottom: 2rem;
+  }
+  iframe {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .dates {
+    font-size: 1rem;
+  }
+  .title h1 {
+    margin-top: 3rem;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .title h2 {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-top: 0rem;
+    color: #969696;
+  }
+}
+@media screen and (min-width: 800px) {
+  html {
+    font-size: 17.28px;
+  }
+  .master-grid {
+    display: grid;
+    grid-template-columns: 1fr 50rem 1fr;
+    grid-gap: 0rem;
+    grid-template-areas: "title title title" ". story-content ." ". disqus ." "footer footer footer";
+  }
+}
+/*
+@media screen and (min-width:1420px)
+{
+    .master-grid {
+        grid-template-columns: 550px 1fr;
+        grid-column-gap: 10px;
+        grid-template-areas:
+                             "title story-content"
+                             "title  disqus"
+                             "footer disqus";
+
+    }
+}
+*/
+/*# sourceMappingURL=post.css.map */

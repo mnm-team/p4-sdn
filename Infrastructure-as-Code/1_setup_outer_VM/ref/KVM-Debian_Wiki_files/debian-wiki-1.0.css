@@ -1,0 +1,38 @@
+html {}
+
+/* # dump methode to hide the "pageinfo" would be to use css like */
+#pageinfo {
+/* 	display: none; */
+}
+
+
+/* admonition start */
+
+#content div.debian {
+    border: 1pt solid #ff9ec2;
+    background-color: #ffe4f1;
+    color: black;
+    
+    margin: 10pt 30pt 10pt 30pt;
+    background-repeat: no-repeat;
+    background-position: 8px 8px;
+    min-height: 64px; /*64=48+8+8 but doesn't work with IE*/
+    padding-left: 64px;
+}
+
+#content div.debian p {
+    margin-top: 8px; /*to align text with bg graphic*/
+}
+
+#content div.debian { background-image: url("//wiki.debian.org/Portal/IDB?action=AttachFile&do=get&target=official-doc.png"); }
+
+/* admonition end */
+
+/* bugstatus start */
+
+.closed-bug {
+    text-decoration: line-through !important;
+}
+
+/* bugstatus end */
+

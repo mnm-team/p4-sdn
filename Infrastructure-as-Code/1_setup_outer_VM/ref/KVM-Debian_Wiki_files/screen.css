@@ -1,0 +1,130 @@
+/*
+ *      www.debian.org redesign
+ *
+ *      Kalle Soderman, 2008 debhome.css
+ *
+ *      Copyleft : This work is free, you can copy, spread, and modify it under
+ *      the terms of the Free Art License http://artlibre.org/licence/lal/en/
+ */
+
+#splash {
+	margin-top:0px;
+	margin-bottom: 1em;
+	text-align:center;
+	overflow:hidden;
+	height: 150px;
+}
+#splash h1 {
+	background-image: url('Pics/debian-61_glossy-large.png');
+	background-position:top center;
+	padding-top:190px;
+	overflow:hidden;
+	text-align:center;
+	background-repeat:no-repeat;
+	display:block;
+	margin:0;
+	height:0;
+}
+#maincol {
+	background-image: url('Pics/cropped-swirls.png');
+	background-position:top center;
+	background-repeat: repeat-x;
+}
+#announce {
+	text-align: center;
+	float: left;
+	width: 41%;
+	min-width: 260px;
+	margin-bottom: 1.5em;
+}
+#intro {
+	padding-top: 0;
+}
+#intro p {
+	margin-top: 0em;
+	padding:0;
+}
+#hometoc {
+	list-style:none;
+	margin: 0 0 2em 0;
+	padding: 0;
+	width:100%;
+	font-size: 0.75em;
+	overflow: hidden;
+	line-height: 1.5em;
+	border: 0;
+}
+#hometoc a {
+	text-decoration: none;
+}
+#hometoc a:hover {
+	text-decoration: underline;
+}
+ul#hometoc-cola a, ul#hometoc-colb a, ul#hometoc-colc a, ul#hometoc-cold a, ul#hometoc-cole a {
+	padding-left: 5px;
+}
+ul#hometoc-cola, ul#hometoc-colb,ul#hometoc-colc, ul#hometoc-cold, ul#hometoc-cole {
+	float:left;
+	width: 19.2%;
+	min-width: 11em;
+	height: 14em; /* Update when adding items */
+	margin:0 1% 0 0;
+	padding: 0;
+	background-image:url('Pics/gradient.png');
+	background-position: 0 -40px;
+	background-repeat: repeat-x; 
+/*	border-top: 2px solid #c6c8e0;
+	border-bottom: 1px solid #c6c8e0;
+*/
+	border-top: 1px solid #c6c8e0;
+	list-style: none;
+}
+ul#hometoc-cole {
+	width: 18.9%;
+	margin-right:0;
+}
+#hometoc-wrap {
+	padding:1em 1em 1em 1em;
+	border-top: 1px solid white;
+}
+#hometoc a {
+	margin: 0;
+}
+#hometoc ul{
+	list-style: none;
+	padding: 1em 0 0 0;
+}
+#hometoc ul ul {
+	padding: 0;
+}
+#hometoc li {
+	text-indent:0;
+	background-color: transparent;
+	font-weight:bold;
+}
+#hometoc li ul {
+	margin: 0;
+	padding: 0:
+
+}
+#hometoc li li {
+	margin:0;
+	text-indent:0;
+	padding:0;
+	font-weight:normal;
+	border:0;
+	background-image:none;
+	background-color:transparent;
+}
+.infobar {
+	margin: 0 0 2em 0;
+	padding: 1em 5px 1em 5px;
+	line-height: 1em;
+	font-size: 0.75em;
+	border: 1px solid #d2d3d7;
+	border-bottom: 1px solid #d2d3d7;
+	background-image:url('Pics/gradient.png');
+	background-position: 0 -35px;
+	background-repeat: repeat-x;
+	clear: both;
+}

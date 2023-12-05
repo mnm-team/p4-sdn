@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+        
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="HandheldFriendly" content="True">
+
+        <link rel="apple-touch-icon" sizes="57x57" href="https://blog.programster.org/favicon/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="https://blog.programster.org/favicon/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="https://blog.programster.org/favicon/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="https://blog.programster.org/favicon/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="https://blog.programster.org/favicon/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="https://blog.programster.org/favicon/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="https://blog.programster.org/favicon/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="https://blog.programster.org/favicon/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="https://blog.programster.org/favicon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="https://blog.programster.org/favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="https://blog.programster.org/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="https://blog.programster.org/favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://blog.programster.org/favicon/favicon-16x16.png">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+
+        <title>Create Debian 12 (Bookworm) KVM Guest From Cloud Image | Programster's Blog</title>
+<link rel="stylesheet" type="text/css" href="Create_Debian_12_KVM_Guest_From_Cloud_Image_files/common.css">
+
+
+<!-- jquery -->
+<script type="text/javascript" async="" src="Create_Debian_12_KVM_Guest_From_Cloud_Image_files/js"></script><script async="" src="Create_Debian_12_KVM_Guest_From_Cloud_Image_files/analytics.js"></script><script src="Create_Debian_12_KVM_Guest_From_Cloud_Image_files/jquery.min.js"></script>
+
+<!-- Notify JS (requires jquery) -->
+<script src="Create_Debian_12_KVM_Guest_From_Cloud_Image_files/notify.js"></script><style type="text/css" id="notify-bootstrap">.notifyjs-bootstrap-base {
+	font-weight: bold;
+	padding: 8px 15px 8px 14px;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	background-color: #fcf8e3;
+	border: 1px solid #fbeed5;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	white-space: nowrap;
+	padding-left: 25px;
+	background-repeat: no-repeat;
+	background-position: 3px 7px;
+}
+.notifyjs-bootstrap-error {
+	color: #B94A48;
+	background-color: #F2DEDE;
+	border-color: #EED3D7;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAtRJREFUeNqkVc1u00AQHq+dOD+0poIQfkIjalW0SEGqRMuRnHos3DjwAH0ArlyQeANOOSMeAA5VjyBxKBQhgSpVUKKQNGloFdw4cWw2jtfMOna6JOUArDTazXi/b3dm55socPqQhFka++aHBsI8GsopRJERNFlY88FCEk9Yiwf8RhgRyaHFQpPHCDmZG5oX2ui2yilkcTT1AcDsbYC1NMAyOi7zTX2Agx7A9luAl88BauiiQ/cJaZQfIpAlngDcvZZMrl8vFPK5+XktrWlx3/ehZ5r9+t6e+WVnp1pxnNIjgBe4/6dAysQc8dsmHwPcW9C0h3fW1hans1ltwJhy0GxK7XZbUlMp5Ww2eyan6+ft/f2FAqXGK4CvQk5HueFz7D6GOZtIrK+srupdx1GRBBqNBtzc2AiMr7nPplRdKhb1q6q6zjFhrklEFOUutoQ50xcX86ZlqaZpQrfbBdu2R6/G19zX6XSgh6RX5ubyHCM8nqSID6ICrGiZjGYYxojEsiw4PDwMSL5VKsC8Yf4VRYFzMzMaxwjlJSlCyAQ9l0CW44PBADzXhe7xMdi9HtTrdYjFYkDQL0cn4Xdq2/EAE+InCnvADTf2eah4Sx9vExQjkqXT6aAERICMewd/UAp/IeYANM2joxt+q5VI+ieq2i0Wg3l6DNzHwTERPgo1ko7XBXj3vdlsT2F+UuhIhYkp7u7CarkcrFOCtR3H5JiwbAIeImjT/YQKKBtGjRFCU5IUgFRe7fF4cCNVIPMYo3VKqxwjyNAXNepuopyqnld602qVsfRpEkkz+GFL1wPj6ySXBpJtWVa5xlhpcyhBNwpZHmtX8AGgfIExo0ZpzkWVTBGiXCSEaHh62/PoR0p/vHaczxXGnj4bSo+G78lELU80h1uogBwWLf5YlsPmgDEd4M236xjm+8nm4IuE/9u+/PH2JXZfbwz4zw1WbO+SQPpXfwG/BBgAhCNZiSb/pOQAAAAASUVORK5CYII=);
+}
+.notifyjs-bootstrap-success {
+	color: #468847;
+	background-color: #DFF0D8;
+	border-color: #D6E9C6;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAutJREFUeNq0lctPE0Ecx38zu/RFS1EryqtgJFA08YCiMZIAQQ4eRG8eDGdPJiYeTIwHTfwPiAcvXIwXLwoXPaDxkWgQ6islKlJLSQWLUraPLTv7Gme32zoF9KSTfLO7v53vZ3d/M7/fIth+IO6INt2jjoA7bjHCJoAlzCRw59YwHYjBnfMPqAKWQYKjGkfCJqAF0xwZjipQtA3MxeSG87VhOOYegVrUCy7UZM9S6TLIdAamySTclZdYhFhRHloGYg7mgZv1Zzztvgud7V1tbQ2twYA34LJmF4p5dXF1KTufnE+SxeJtuCZNsLDCQU0+RyKTF27Unw101l8e6hns3u0PBalORVVVkcaEKBJDgV3+cGM4tKKmI+ohlIGnygKX00rSBfszz/n2uXv81wd6+rt1orsZCHRdr1Imk2F2Kob3hutSxW8thsd8AXNaln9D7CTfA6O+0UgkMuwVvEFFUbbAcrkcTA8+AtOk8E6KiQiDmMFSDqZItAzEVQviRkdDdaFgPp8HSZKAEAL5Qh7Sq2lIJBJwv2scUqkUnKoZgNhcDKhKg5aH+1IkcouCAdFGAQsuWZYhOjwFHQ96oagWgRoUov1T9kRBEODAwxM2QtEUl+Wp+Ln9VRo6BcMw4ErHRYjH4/B26AlQoQQTRdHWwcd9AH57+UAXddvDD37DmrBBV34WfqiXPl61g+vr6xA9zsGeM9gOdsNXkgpEtTwVvwOklXLKm6+/p5ezwk4B+j6droBs2CsGa/gNs6RIxazl4Tc25mpTgw/apPR1LYlNRFAzgsOxkyXYLIM1V8NMwyAkJSctD1eGVKiq5wWjSPdjmeTkiKvVW4f2YPHWl3GAVq6ymcyCTgovM3FzyRiDe2TaKcEKsLpJvNHjZgPNqEtyi6mZIm4SRFyLMUsONSSdkPeFtY1n0mczoY3BHTLhwPRy9/lzcziCw9ACI+yql0VLzcGAZbYSM5CCSZg1/9oc/nn7+i8N9p/8An4JMADxhH+xHfuiKwAAAABJRU5ErkJggg==);
+}
+.notifyjs-bootstrap-info {
+	color: #3A87AD;
+	background-color: #D9EDF7;
+	border-color: #BCE8F1;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QYFAhkSsdes/QAAA8dJREFUOMvVlGtMW2UYx//POaWHXg6lLaW0ypAtw1UCgbniNOLcVOLmAjHZolOYlxmTGXVZdAnRfXQm+7SoU4mXaOaiZsEpC9FkiQs6Z6bdCnNYruM6KNBw6YWewzl9z+sHImEWv+vz7XmT95f/+3/+7wP814v+efDOV3/SoX3lHAA+6ODeUFfMfjOWMADgdk+eEKz0pF7aQdMAcOKLLjrcVMVX3xdWN29/GhYP7SvnP0cWfS8caSkfHZsPE9Fgnt02JNutQ0QYHB2dDz9/pKX8QjjuO9xUxd/66HdxTeCHZ3rojQObGQBcuNjfplkD3b19Y/6MrimSaKgSMmpGU5WevmE/swa6Oy73tQHA0Rdr2Mmv/6A1n9w9suQ7097Z9lM4FlTgTDrzZTu4StXVfpiI48rVcUDM5cmEksrFnHxfpTtU/3BFQzCQF/2bYVoNbH7zmItbSoMj40JSzmMyX5qDvriA7QdrIIpA+3cdsMpu0nXI8cV0MtKXCPZev+gCEM1S2NHPvWfP/hL+7FSr3+0p5RBEyhEN5JCKYr8XnASMT0xBNyzQGQeI8fjsGD39RMPk7se2bd5ZtTyoFYXftF6y37gx7NeUtJJOTFlAHDZLDuILU3j3+H5oOrD3yWbIztugaAzgnBKJuBLpGfQrS8wO4FZgV+c1IxaLgWVU0tMLEETCos4xMzEIv9cJXQcyagIwigDGwJgOAtHAwAhisQUjy0ORGERiELgG4iakkzo4MYAxcM5hAMi1WWG1yYCJIcMUaBkVRLdGeSU2995TLWzcUAzONJ7J6FBVBYIggMzmFbvdBV44Corg8vjhzC+EJEl8U1kJtgYrhCzgc/vvTwXKSib1paRFVRVORDAJAsw5FuTaJEhWM2SHB3mOAlhkNxwuLzeJsGwqWzf5TFNdKgtY5qHp6ZFf67Y/sAVadCaVY5YACDDb3Oi4NIjLnWMw2QthCBIsVhsUTU9tvXsjeq9+X1d75/KEs4LNOfcdf/+HthMnvwxOD0wmHaXr7ZItn2wuH2SnBzbZAbPJwpPx+VQuzcm7dgRCB57a1uBzUDRL4bfnI0RE0eaXd9W89mpjqHZnUI5Hh2l2dkZZUhOqpi2qSmpOmZ64Tuu9qlz/SEXo6MEHa3wOip46F1n7633eekV8ds8Wxjn37Wl63VVa+ej5oeEZ/82ZBETJjpJ1Rbij2D3Z/1trXUvLsblCK0XfOx0SX2kMsn9dX+d+7Kf6h8o4AIykuffjT8L20LU+w4AZd5VvEPY+XpWqLV327HR7DzXuDnD8r+ovkBehJ8i+y8YAAAAASUVORK5CYII=);
+}
+.notifyjs-bootstrap-warn {
+	color: #C09853;
+	background-color: #FCF8E3;
+	border-color: #FBEED5;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAABJlBMVEXr6eb/2oD/wi7/xjr/0mP/ykf/tQD/vBj/3o7/uQ//vyL/twebhgD/4pzX1K3z8e349vK6tHCilCWbiQymn0jGworr6dXQza3HxcKkn1vWvV/5uRfk4dXZ1bD18+/52YebiAmyr5S9mhCzrWq5t6ufjRH54aLs0oS+qD751XqPhAybhwXsujG3sm+Zk0PTwG6Shg+PhhObhwOPgQL4zV2nlyrf27uLfgCPhRHu7OmLgAafkyiWkD3l49ibiAfTs0C+lgCniwD4sgDJxqOilzDWowWFfAH08uebig6qpFHBvH/aw26FfQTQzsvy8OyEfz20r3jAvaKbhgG9q0nc2LbZxXanoUu/u5WSggCtp1anpJKdmFz/zlX/1nGJiYmuq5Dx7+sAAADoPUZSAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfdBgUBGhh4aah5AAAAlklEQVQY02NgoBIIE8EUcwn1FkIXM1Tj5dDUQhPU502Mi7XXQxGz5uVIjGOJUUUW81HnYEyMi2HVcUOICQZzMMYmxrEyMylJwgUt5BljWRLjmJm4pI1hYp5SQLGYxDgmLnZOVxuooClIDKgXKMbN5ggV1ACLJcaBxNgcoiGCBiZwdWxOETBDrTyEFey0jYJ4eHjMGWgEAIpRFRCUt08qAAAAAElFTkSuQmCC);
+}
+</style>
+
+<!-- own custom JS libs -->
+<script src="Create_Debian_12_KVM_Guest_From_Cloud_Image_files/AjaxLib.js"></script>
+<script src="Create_Debian_12_KVM_Guest_From_Cloud_Image_files/HelperLib.js"></script>
+
+<!-- progressive web app manifest -->
+<!--<link rel="manifest" href="manifest.json">-->
+
+
+
+
+        
+        <meta name="Description" content="Create a Debian 12 KVM guest using the cloud image.">
+        <meta name="keywords" content="debian,kvm,cloud-init">
+
+        <!-- prismjs syntax highlighting -->
+        <link type="text/css" rel="stylesheet" href="Create_Debian_12_KVM_Guest_From_Cloud_Image_files/prism.css">
+        <link type="text/css" rel="stylesheet" href="Create_Debian_12_KVM_Guest_From_Cloud_Image_files/prism-color-overrides.css">
+        <script src="Create_Debian_12_KVM_Guest_From_Cloud_Image_files/prism.js"></script>
+        <!-- custom css stylesheets and overrides -->
+        <link rel="stylesheet" type="text/css" href="Create_Debian_12_KVM_Guest_From_Cloud_Image_files/post.css">
+
+        <script src="Create_Debian_12_KVM_Guest_From_Cloud_Image_files/clipboard.min.js"></script>
+
+
+    <script src="Create_Debian_12_KVM_Guest_From_Cloud_Image_files/embed.js" data-timestamp="1701766743901"></script><style type="text/css">.cc-window{opacity:1;-webkit-transition:opacity 1s ease;-moz-transition:opacity 1s ease;-ms-transition:opacity 1s ease;-o-transition:opacity 1s ease;transition:opacity 1s ease}.cc-window.cc-invisible{opacity:0}.cc-animate.cc-revoke{-webkit-transition:transform 1s ease;-moz-transition:transform 1s ease;-ms-transition:transform 1s ease;-o-transition:transform 1s ease;transition:transform 1s ease}.cc-animate.cc-revoke.cc-top{transform:translateY(-2em)}.cc-animate.cc-revoke.cc-bottom{transform:translateY(2em)}.cc-animate.cc-revoke.cc-active.cc-top{transform:translateY(0)}.cc-animate.cc-revoke.cc-active.cc-bottom{transform:translateY(0)}.cc-revoke:hover{transform:translateY(0)}.cc-grower{max-height:0;overflow:hidden;-webkit-transition:max-height 1s;-moz-transition:max-height 1s;-ms-transition:max-height 1s;-o-transition:max-height 1s;transition:max-height 1s}.cc-window,.cc-revoke{position:fixed;overflow:hidden;box-sizing:border-box;font-family:Helvetica, Calibri, Arial, sans-serif;font-size:16px;line-height:1.5em;display:flex;flex-wrap:nowrap;z-index:9998}.cc-revoke{z-index:9999}.cc-window.cc-static{position:static}.cc-window.cc-floating{padding:2em;max-width:24em;flex-direction:column}.cc-window.cc-banner{padding:1em 1.8em;width:100%;flex-direction:row}.cc-revoke{padding:0.5em}.cc-revoke:hover{text-decoration:underline}.cc-header{font-size:18px;font-weight:bold}.cc-btn,.cc-link,.cc-close,.cc-revoke{cursor:pointer}.cc-link{opacity:0.8;display:inline-block;padding:0.2em;text-decoration:underline}.cc-link:hover{opacity:1}.cc-link:active,.cc-link:visited{color:initial}.cc-btn{display:block;padding:0.4em 0.8em;font-size:0.9em;font-weight:bold;border-width:2px;border-style:solid;text-align:center;white-space:nowrap}.cc-highlight .cc-btn:first-child{background-color:transparent;border-color:transparent}.cc-highlight .cc-btn:first-child:hover,.cc-highlight .cc-btn:first-child:focus{background-color:transparent;text-decoration:underline}.cc-close{display:block;position:absolute;top:0.5em;right:0.5em;font-size:1.6em;opacity:0.9;line-height:0.75}.cc-close:hover,.cc-close:focus{opacity:1}.cc-revoke.cc-top{top:0;left:3em;border-bottom-left-radius:0.5em;border-bottom-right-radius:0.5em}.cc-revoke.cc-bottom{bottom:0;left:3em;border-top-left-radius:0.5em;border-top-right-radius:0.5em}.cc-revoke.cc-left{left:3em;right:unset}.cc-revoke.cc-right{right:3em;left:unset}.cc-top{top:1em}.cc-left{left:1em}.cc-right{right:1em}.cc-bottom{bottom:1em}.cc-floating>.cc-link{margin-bottom:1em}.cc-floating .cc-message{display:block;margin-bottom:1em}.cc-window.cc-floating .cc-compliance{flex:1 0 auto}.cc-window.cc-banner{align-items:center}.cc-banner.cc-top{left:0;right:0;top:0}.cc-banner.cc-bottom{left:0;right:0;bottom:0}.cc-banner .cc-message{display:block;flex:1 1 auto;max-width:100%;margin-right:1em}.cc-compliance{display:flex;align-items:center;justify-content:space-between}.cc-floating .cc-compliance>.cc-btn{flex:1}.cc-btn+.cc-btn{margin-left:0.5em}.cc-window.cc-type-categories{display:inline-flex;flex-direction:column;overflow:visible}.cc-window.cc-type-categories .form{text-align:right}.cc-window.cc-type-categories .cc-btn{margin:0}.cc-window.cc-type-categories .cc-btn.cc-save{margin:0;display:inline-block}.cc-categories{display:inline-flex}.cc-categories .cc-category{display:flex;max-width:100%;margin:0 2px;position:relative}.cc-categories .cc-btn{border-right:none;outline:none;text-transform:capitalize}.cc-categories .cc-btn input[type=checkbox]{float:left;height:26px;width:calc( 100% - 22px);display:block;position:absolute;top:0;left:2px;cursor:pointer}.cc-categories .cc-btn:not(.cc-info):not(.cc-save){padding-left:26px}.cc-categories .cc-info{border-left:none;border-right:2px solid lightgrey;padding:4px;font-variant:all-small-caps}.cc-categories .cc-info:focus+.cc-tooltip{display:block}.cc-categories .cc-tooltip{display:none;position:absolute;z-index:3;width:190px;bottom:46px;padding:8px;border:thin solid lightgrey;box-shadow:1px 1px 4px rgba(150,150,150,0.7)}.cc-categories .cc-tooltip:after{content:"";width:10px;height:10px;transform:rotate(45deg);position:absolute;bottom:-7px;left:10px;box-shadow:2px 1px 1px rgba(200,200,200,0.5)}.cc-categories .cc-tooltip p{margin:0}@media print{.cc-window,.cc-revoke{display:none}}@media screen and (max-width: 900px){.cc-btn{white-space:normal}}@media screen and (max-width: 414px) and (orientation: portrait), screen and (max-width: 736px) and (orientation: landscape){.cc-window.cc-top{top:0}.cc-window.cc-bottom{bottom:0}.cc-window.cc-banner,.cc-window.cc-floating,.cc-window.cc-right,.cc-window.cc-left{left:0;right:0}.cc-window.cc-banner{flex-direction:column;align-items:unset}.cc-window.cc-banner .cc-compliance{flex:1 1 auto}.cc-window.cc-banner .cc-message{margin-right:0;margin-bottom:1em}.cc-window.cc-floating{max-width:none}.cc-window.cc-type-categories{flex-direction:column}.cc-window .cc-message{margin-bottom:1em}.cc-window .cc-categories{flex-direction:column;width:100%;margin-right:8px}.cc-window .cc-category{margin:4px 0}.cc-window .cc-category .cc-btn:not(.cc-info){width:calc( 100% - 16px);min-width:140px}}@media screen and (max-width: 854px){.cc-window.cc-type-categories .cc-btn.cc-save{margin:8px 0}}@media screen and (max-width: 790px){.cc-window.cc-type-categories .cc-categories{display:flex;flex-direction:column}.cc-categories .cc-category{margin:4px 0}.form{width:100%;max-width:350px}.cc-btn:not(.cc-info):not(.cc-save){width:calc( 100% - 16px)}}.cc-floating.cc-theme-classic{padding:1.2em;border-radius:5px}.cc-floating.cc-type-info.cc-theme-classic .cc-compliance{text-align:center;display:inline;flex:none}.cc-theme-classic{overflow:visible;justify-content:space-between}.cc-theme-classic .cc-btn{position:relative;border-radius:5px;outline:none}.cc-theme-classic .cc-btn:last-child{min-width:140px}.cc-theme-classic .cc-category .cc-btn{border-radius:5px 0 0 5px;padding-right:2px;padding-left:28px;font-weight:normal;border-right:none;box-sizing:border-box}.cc-theme-classic .cc-category .cc-btn input[type=checkbox]{position:absolute;left:0;top:-1px;width:100%;height:26px;opacity:0;cursor:pointer;z-index:1}.cc-theme-classic .cc-category .cc-btn input[type=checkbox]+.cc-btn-checkbox{display:block;font-size:2rem;position:absolute;top:2px;left:6px;z-index:0;outline:none}.cc-theme-classic .cc-category .cc-btn input[type=checkbox]+.cc-btn-checkbox:before{content:"\1F5F5"}.cc-theme-classic .cc-category .cc-btn input[type=checkbox]:checked+.cc-btn-checkbox:after{content:"\2713";position:absolute;top:-4px;left:0;font-size:2.3rem;text-shadow:0 1px 3px rgba(150,150,150,0.5)}.cc-theme-classic .cc-category .cc-btn.cc-info{margin:0;padding:0 4px;border-radius:0 5px 5px 0}.cc-theme-classic .cc-category .cc-btn:last-child{min-width:0}.cc-theme-classic .cc-category .cc-tooltip{border-radius:5px}.cc-theme-classic .cc-category .cc-tooltip:after{border-bottom:thin solid lightgrey;border-right:thin solid lightgrey}.cc-floating.cc-type-info.cc-theme-classic .cc-btn{display:inline-block}.cc-theme-edgeless.cc-window{padding:0}.cc-floating.cc-theme-edgeless .cc-message{margin:2em;margin-bottom:1.5em}.cc-banner.cc-theme-edgeless .cc-btn{margin:0;padding:0.8em 1.8em;height:100%}.cc-banner.cc-theme-edgeless .cc-message{margin-left:1em}.cc-floating.cc-theme-edgeless .cc-btn+.cc-btn{margin-left:0}.cc-window.cc-theme-edgeless.cc-type-categories .cc-categories .cc-btn{padding:0.4em 0.8em;padding-left:26px}.cc-window.cc-theme-edgeless.cc-type-categories .cc-categories .cc-btn.cc-info{padding:0.4em 4px}.cc-window.cc-theme-edgeless.cc-type-categories .cc-categories .cc-tooltip{border:none}
+</style><style id="530831885"></style><script async="" id="dsq_recs_scr" src="Create_Debian_12_KVM_Guest_From_Cloud_Image_files/recommendations.js"></script><style type="text/css" id="core-notify">.notifyjs-corner {
+	position: fixed;
+	margin: 5px;
+	z-index: 1050;
+}
+
+.notifyjs-corner .notifyjs-wrapper,
+.notifyjs-corner .notifyjs-container {
+	position: relative;
+	display: block;
+	height: inherit;
+	width: inherit;
+	margin: 3px;
+}
+
+.notifyjs-wrapper {
+	z-index: 1;
+	position: absolute;
+	display: inline-block;
+	height: 0;
+	width: 0;
+}
+
+.notifyjs-container {
+	display: none;
+	z-index: 1;
+	position: absolute;
+}
+
+.notifyjs-hidable {
+	cursor: pointer;
+}
+
+[data-notify-text],[data-notify-html] {
+	position: relative;
+}
+
+.notifyjs-arrow {
+	position: absolute;
+	z-index: 2;
+	width: 0;
+	height: 0;
+}</style><meta http-equiv="origin-trial" content="AymqwRC7u88Y4JPvfIF2F37QKylC04248hLCdJAsh8xgOfe/dVJPV3XS3wLFca1ZMVOtnBfVjaCMTVudWM//5g4AAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"></head>
+    <body><div class="cc-revoke cc-bottom cc-animate cc-color-override-530831885 cc-theme-block" style="display: none;">Cookie Policy</div><div role="dialog" aria-live="polite" aria-label="cookieconsent" aria-describedby="cookieconsent:desc" class="cc-window cc-banner cc-type-opt-in cc-theme-block cc-bottom cc-color-override-530831885" style=""><!--googleoff: all--><span id="cookieconsent:desc" class="cc-message">This website uses cookies to ensure you get the best experience on our website. <a aria-label="learn more about cookies" role="button" tabindex="0" class="cc-link" href="https://www.cookiesandyou.com/" rel="noopener noreferrer nofollow" target="_blank">Learn more</a></span><div class="cc-compliance cc-highlight"><a aria-label="dismiss cookie message" role="button" tabindex="0" class="cc-btn cc-DISMISS">Got it!</a><a aria-label="allow cookies" role="button" tabindex="0" class="cc-btn cc-ALLOW">Allow cookies</a></div><!--googleon: all--></div>
+        <div class="master-grid">
+                <div class="title">
+                    <h1 class="title"><a href="https://blog.programster.org/">Programster's Blog</a></h1>
+                    <h2 class="subtitle">Tutorials focusing on Linux, programming, and open-source</h2>
+                </div>
+
+            <div class="story-content">
+                <div class="story">
+                                            <h1>Create Debian 12 (Bookworm) KVM Guest From Cloud Image</h1>
+
+                        <div class="tags">
+                                                            <a href="https://blog.programster.org/tag/debian">Debian</a>
+                                                            <a href="https://blog.programster.org/tag/kvm">KVM</a>
+                                                            <a href="https://blog.programster.org/tag/cloud-init">cloud-init</a>
+                                                    </div>
+
+                        <h2>Table of Contents</h2>
+
+<ol>
+<li><a href="#about">About</a>
+
+<ol>
+<li><a href="#similar-posts">Similar Posts</a></li>
+</ol></li>
+<li><a href="#steps">Steps</a>
+
+<ol>
+<li><a href="#download-the-cloud-image">Download The Cloud Image</a></li>
+<li><a href="#install-packages">Install Packages</a></li>
+<li><a href="#pick-a-name">Pick A Name</a></li>
+<li><a href="#optional-increase-disk-size">Optional - Increase Disk Size</a></li>
+<li><a href="#create-cloud-config-file">Create Cloud Config File</a></li>
+<li><a href="#create-the-cloud-init-iso-file">Create The Cloud Init ISO File</a></li>
+<li><a href="#create-the-guest">Create The Guest</a></li>
+<li><a href="#login">Login</a></li>
+<li><a href="#exit-console">Exit Console</a></li>
+<li><a href="#cleanup">Cleanup</a></li>
+</ol></li>
+<li><a href="#debugging-tips">Debugging / Tips</a>
+
+<ol>
+<li><a href="#changing-network-settings">Changing Network Settings</a></li>
+<li><a href="#clones-getting-same-dhcp-ip">Clones Getting Same DHCP IP</a></li>
+<li><a href="#hostname-and-hosts-file">Hostname And Hosts File</a></li>
+<li><a href="#ssh-not-working">SSH Not Working</a></li>
+<li><a href="#set-timezone">Set Timezone</a></li>
+</ol></li>
+<li><a href="#references">References</a></li>
+<li><a href="#appendix">Appendix</a>
+
+<ol>
+<li><a href="#cloud-config-generator-php-script">Cloud Config Generator PHP Script</a></li>
+</ol></li>
+</ol>
+
+<h2 id="about">About</h2>
+
+<p>This tutorial will show you how to install Debian 12 on your KVM server through the use of one of
+the <a href="https://cloud.debian.org/images/cloud/">official Debian cloud images</a>.</p>
+
+<h3 id="similar-posts">Similar Posts</h3>
+
+<ul>
+<li><a href="https://blog.programster.org/create-ubuntu-22-kvm-guest-from-cloud-image">Create Ubuntu 22.04 KVM Guest From Cloud</a></li>
+<li><a href="https://blog.programster.org/create-debian-11-kvm-guest-from-cloud-image">Create Debian 11 (Bullseye) KVM Guest From Cloud Image</a></li>
+</ul>
+
+<h2 id="steps">Steps</h2>
+
+<h4 id="download-the-cloud-image">Download The Cloud Image</h4>
+
+<p>Download the Debian 12 cloud Image:</p>
+
+<div class="code-toolbar"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">wget</span> https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2
+
+<span class="token function">sudo</span> <span class="token function">mv</span> -i debian-12-generic-amd64.qcow2 <span class="token punctuation">\</span>
+  debian-12.qcow2
+</code><div class="copy-to-text-div"><center><a href="javascript:void(0);" onclick="animateCopiedText(this);" data-clipboard-text="wget https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2
+
+sudo mv -i debian-12-generic-amd64.qcow2 \
+  debian-12.qcow2">Copy to clipboard</a></center></div></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div>
+
+<p><note>I really wanted to use the <code>genericcloud</code> image, but found that I could not get it to run
+cloud-init (which I needed in order to configure my user/password), so I ended up using the
+<code>generic</code> image which is the same except it includes some hardware drivers as noted
+<a href="https://gitlab.com/libosinfo/osinfo-db/-/merge_requests/268">here</a>.</note></p>
+
+<h4 id="install-packages">Install Packages</h4>
+
+<p>We need to ensure we have cloud-utils and whois packages for later.</p>
+
+<div class="code-toolbar"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> update <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> cloud-utils whois -y
+</code><div class="copy-to-text-div"><center><a href="javascript:void(0);" onclick="animateCopiedText(this);" data-clipboard-text="sudo apt update &amp;&amp; sudo apt install cloud-utils whois -y">Copy to clipboard</a></center></div></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div>
+
+<p><note>The <code>cloud-utils</code> package is required for us to be able to run the <code>cloud-localds</code><br>
+command, which allows us to create the cloud init ISO image later. It also allows us to validate 
+our cloud-init configuration. The <code>whois</code> allows us to be able to run <code>mkpasswd</code> command later
+if we want to use it to generate the hashed version of our password for the cloud-init 
+configuration. This was the command for Debian 10. Your distro may have a different name for the 
+required packages.</note></p>
+
+<h4 id="pick-a-name">Pick A Name</h4>
+
+<p>First, pick a name for your new VPS. I always create a "template" guest, from which I then just
+clone it in future to create the other guests, so I am going to call it <em>template-debian-12</em>.</p>
+
+<div class="code-toolbar"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token assign-left variable">VM_NAME</span><span class="token operator">=</span><span class="token string">"template-debian-12"</span>
+</code><div class="copy-to-text-div"><center><a href="javascript:void(0);" onclick="animateCopiedText(this);" data-clipboard-text="VM_NAME=&quot;template-debian-12&quot;">Copy to clipboard</a></center></div></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div>
+
+<h4 id="increase-disk-size">Optional - Increase Disk Size</h4>
+
+<p>The qcow2 image we pulled down was for a very small virtual machine that will quickly run 
+out of space if you start using it for anything. I would recommend increasing the disk size to 
+whatever you want for the VM. In this case I'm setting 20 GB.</p>
+
+<div class="code-toolbar"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token assign-left variable">DESIRED_SIZE</span><span class="token operator">=</span>20G
+
+<span class="token function">sudo</span> qemu-img resize <span class="token punctuation">\</span>
+  debian-12.qcow2 <span class="token punctuation">\</span>
+  <span class="token variable">$DESIRED_SIZE</span>
+</code><div class="copy-to-text-div"><center><a href="javascript:void(0);" onclick="animateCopiedText(this);" data-clipboard-text="DESIRED_SIZE=20G
+
+sudo qemu-img resize \
+  debian-12.qcow2 \
+  $DESIRED_SIZE">Copy to clipboard</a></center></div></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div>
+
+<h4 id="create-cloud-config-file">Create Cloud Config File</h4>
+
+<p>I found lots of people had cloud-config files and it was frustrating trying to mix/match them
+and issues with hashing my password. I also didn't like having to be careful with making sure not
+to break the required YAML formatting/indentation etc. In the end I created a PHP script that I 
+could easily tweak in order to generate my cloud-config.cfg file using some simple settings I 
+defined at the top.</p>
+
+<p>Download the script (which can also be found <a href="#cloud-config-generator-php-script">in the appendix</a>).</p>
+
+<div class="code-toolbar"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">wget</span> https://files.programster.org/tutorials/cloud-init/create-debian-12-kvm-guest-from-cloud-image/generate.php
+</code><div class="copy-to-text-div"><center><a href="javascript:void(0);" onclick="animateCopiedText(this);" data-clipboard-text="wget https://files.programster.org/tutorials/cloud-init/create-debian-12-kvm-guest-from-cloud-image/generate.php">Copy to clipboard</a></center></div></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div>
+
+<p>Fill in the settings at the top of the script as appropriate. E.g. the section outlined below:</p>
+
+<div class="code-toolbar"><pre class="language-php" tabindex="0"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token comment"># Fill in these settings as appropriate to you.</span>
+
+<span class="token comment"># Set the hostname for the guest.</span>
+<span class="token variable">$hostname</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"template-debian-12"</span><span class="token punctuation">;</span>
+
+<span class="token comment"># Specify your username and password</span>
+<span class="token variable">$username</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"debian"</span><span class="token punctuation">;</span>
+<span class="token variable">$password</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"debian"</span><span class="token punctuation">;</span>
+
+<span class="token comment"># Set a random salt string here for password hashing</span>
+<span class="token variable">$randomSaltString</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'setARandomStringHere'</span><span class="token punctuation">;</span>
+
+<span class="token comment"># Specify the public keys of the private-keys you wish to login with.</span>
+<span class="token variable">$sshPublicKeys</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token string single-quoted-string">'ssh-rsa AAAAB3Nz...'</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">##### End of settings. Do not edit below this line #######</span>
+<span class="token comment">##########################################################</span>
+</span></code><div class="copy-to-text-div"><center><a href="javascript:void(0);" onclick="animateCopiedText(this);" data-clipboard-text="&lt;?php
+
+# Fill in these settings as appropriate to you.
+
+# Set the hostname for the guest.
+$hostname = &quot;template-debian-12&quot;;
+
+# Specify your username and password
+$username = &quot;debian&quot;;
+$password = &quot;debian&quot;;
+
+# Set a random salt string here for password hashing
+$randomSaltString = 'setARandomStringHere';
+
+# Specify the public keys of the private-keys you wish to login with.
+$sshPublicKeys = [
+    'ssh-rsa AAAAB3Nz...',
+];
+
+##### End of settings. Do not edit below this line #######
+##########################################################">Copy to clipboard</a></center></div></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div>
+
+<p>Then run the script to generate your <code>cloud-init.cfg</code> file:</p>
+
+<div class="code-toolbar"><pre class="language-bash" tabindex="0"><code class="language-bash">php generate.php
+</code><div class="copy-to-text-div"><center><a href="javascript:void(0);" onclick="animateCopiedText(this);" data-clipboard-text="php generate.php">Copy to clipboard</a></center></div></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div>
+
+<p><note>I saw some example files that had <code>autoinstall</code>. This appears to be related to automated
+installation, and may be ubuntu-specific. Either way, cloud-init just ignores that key, and we
+don't need it at all anyway.</note></p>
+
+<p><note>The users array often has 'default' in addition in examples I saw, but this results in an
+additional <code>debian</code> user that I do not need or wish to have.</note></p>
+
+<p><note>You can use <code>cloud-init schema --config-file cloud-init.cfg</code> the validate your generated cloud init config file.</note></p>
+
+<h4 id="create-the-cloud-init-iso-file">Create The Cloud Init ISO File</h4>
+
+<p>Create the ISO file from the cloud config file we just created:</p>
+
+<div class="code-toolbar"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">sudo</span> cloud-localds <span class="token punctuation">\</span>
+  cloud-init.iso <span class="token punctuation">\</span>
+  cloud-init.cfg
+</code><div class="copy-to-text-div"><center><a href="javascript:void(0);" onclick="animateCopiedText(this);" data-clipboard-text="sudo cloud-localds \
+  cloud-init.iso \
+  cloud-init.cfg">Copy to clipboard</a></center></div></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div>
+
+<h4 id="create-the-guest">Create The Guest</h4>
+
+<p>Now you can finally run the command to create the guest:</p>
+
+<div class="code-toolbar"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">sudo</span> virt-install <span class="token punctuation">\</span>
+  --name <span class="token variable">$VM_NAME</span> <span class="token punctuation">\</span>
+  --memory <span class="token number">1024</span> <span class="token punctuation">\</span>
+  --disk /path/to/debian12.qcow2,device<span class="token operator">=</span>disk,bus<span class="token operator">=</span>virtio <span class="token punctuation">\</span>
+  --disk /path/to/cloud-init.iso,device<span class="token operator">=</span>cdrom <span class="token punctuation">\</span>
+  --os-type linux <span class="token punctuation">\</span>
+  --os-variant debian10 <span class="token punctuation">\</span>
+  --virt-type kvm <span class="token punctuation">\</span>
+  --graphics none <span class="token punctuation">\</span>
+  --network <span class="token assign-left variable">network</span><span class="token operator">=</span>default,model<span class="token operator">=</span>virtio <span class="token punctuation">\</span>
+  --import
+</code><div class="copy-to-text-div"><center><a href="javascript:void(0);" onclick="animateCopiedText(this);" data-clipboard-text="sudo virt-install \
+  --name $VM_NAME \
+  --memory 1024 \
+  --disk /path/to/debian12.qcow2,device=disk,bus=virtio \
+  --disk /path/to/cloud-init.iso,device=cdrom \
+  --os-type linux \
+  --os-variant debian10 \
+  --virt-type kvm \
+  --graphics none \
+  --network network=default,model=virtio \
+  --import">Copy to clipboard</a></center></div></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div>
+
+<p><note>The --os-variant is listed as <code>debian10</code> because my Debian 10 KVM does not have <code>debian12</code>
+in the list outputted from running <code>sudo osinfo-query os</code>
+(which I could only run after installing the <code>libosinfo-bin</code> package).</note></p>
+
+<h4 id="login">Login</h4>
+
+<p>After running the previous command, you will be taken to the login screen in the console, which
+you can log in with the username <code>root</code>. You will <strong>not</strong> be prompted for a password.</p>
+
+<p>Now you really need to manually create your account username, and set a strong random password
+for the root user.</p>
+
+<h4 id="exit-console">Exit Console</h4>
+
+<p>If you need to get out of the console just press <code>ctrl</code> + <code>]</code>.</p>
+
+<h4 id="cleanup">Cleanup</h4>
+
+<p>After that, it's probably a good idea to cleanup so raw passwords aren't lying around.</p>
+
+<div class="code-toolbar"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">rm</span> /var/lib/libvirt/images/<span class="token variable">$VM_NAME</span>/cloud-init.iso <span class="token punctuation">\</span>
+  <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> <span class="token function">rm</span> /var/lib/libvirt/images/<span class="token variable">$VM_NAME</span>/cloud-init.cfg
+</code><div class="copy-to-text-div"><center><a href="javascript:void(0);" onclick="animateCopiedText(this);" data-clipboard-text="sudo rm /var/lib/libvirt/images/$VM_NAME/cloud-init.iso \
+  &amp;&amp; sudo rm /var/lib/libvirt/images/$VM_NAME/cloud-init.cfg">Copy to clipboard</a></center></div></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div>
+
+<h2 id="debugging-tips">Debugging / Tips</h2>
+
+<h4 id="changing-network-settings">Changing Network Settings</h4>
+
+<p>One of the first things I wanted to do is change the network settings to remove the 
+restriction to a certain static MAC address, which prevents networking working on
+cloned guests, as they get a new, different MAC address.. This can be done by
+editing the netplan file at:</p>
+
+<div class="code-toolbar"><pre class="language-bash" tabindex="0"><code class="language-bash">/etc/netplan/50-cloud-init.yaml
+</code><div class="copy-to-text-div"><center><a href="javascript:void(0);" onclick="animateCopiedText(this);" data-clipboard-text="/etc/netplan/50-cloud-init.yaml">Copy to clipboard</a></center></div></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div>
+
+<h3 id="clones-getting-same-dhcp-ip">Clones Getting Same DHCP IP</h3>
+
+<p>Debian 12 has switched to using the machine ID concept for identifying itself to your DHCP server. 
+This means that if you create a clone and don't reset the machine ID, then both guests will identify
+the same, and be provided the same IP address by the DHCP server. To resolve this, reset your
+machine ID when you create a clone:</p>
+
+<div class="code-toolbar"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">sudo</span> truncate -s <span class="token number">0</span> /etc/machine-id
+</code><div class="copy-to-text-div"><center><a href="javascript:void(0);" onclick="animateCopiedText(this);" data-clipboard-text="sudo truncate -s 0 /etc/machine-id">Copy to clipboard</a></center></div></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div>
+
+<p>Then reboot. Your server will generate a new replacement machine ID on the next boot.</p>
+
+<h4 id="hostname-and-hosts-file">Hostname And Hosts File</h4>
+
+<p>It appears that setting the hostname in the cloud-init config will set the hostname that the
+machine will boot as. However, it will may not add the entry to the <code>/etc/hosts</code> file, so you may
+wish to do this quickly to prevent your machine taking unnecessarily long when performing some
+operations. Alternatively, you may figure out how to update the cloud-init.cfg file to update
+the hosts file correctly using the
+<a href="https://cloudinit.readthedocs.io/en/latest/topics/modules.html#update-etc-hosts">Etc hosts module</a>.</p>
+
+<h4 id="ssh-not-working">SSH Not Working</h4>
+
+<p>If you find that openssh isn't working, you may need to run the 
+following command to get your server to generate its host key so that
+you can SSH into the server.
+<a href="https://www.xmodulo.com/sshd-error-could-not-load-host-key.html">More info here</a>.</p>
+
+<div class="code-toolbar"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">sudo</span> dpkg-reconfigure openssh-server
+</code><div class="copy-to-text-div"><center><a href="javascript:void(0);" onclick="animateCopiedText(this);" data-clipboard-text="sudo dpkg-reconfigure openssh-server">Copy to clipboard</a></center></div></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div>
+
+<p>I would also suggest checking that you are happy with your <code>/etc/ssh/sshd_config</code> file's settings.</p>
+
+<h4 id="set-timezone">Set Timezone</h4>
+
+<p>Another thing that you may wish to do is set the timezone:</p>
+
+<div class="code-toolbar"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">sudo</span> dpkg-reconfigure tzdata
+</code><div class="copy-to-text-div"><center><a href="javascript:void(0);" onclick="animateCopiedText(this);" data-clipboard-text="sudo dpkg-reconfigure tzdata">Copy to clipboard</a></center></div></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div>
+
+<h2 id="references">References</h2>
+
+<ul>
+<li><a href="https://www.theurbanpenguin.com/using-cloud-images-in-kvm/">The Urban Penguin - Using Cloud Images in KVM</a></li>
+<li><a href="https://serverfault.com/questions/440618/how-to-change-default-user-ubuntu-via-cloudinit-on-aws">Serverfault - How to change default user (ubuntu) via CloudInit on AWS</a></li>
+<li><a href="https://gitlab.com/libosinfo/osinfo-db/-/merge_requests/268">Gitlab - Add "generic", "genericcloud", and "nocloud" debian 10 images</a></li>
+<li><a href="https://zhimin-wen.medium.com/provision-a-vm-with-cloud-image-and-cloud-init-36f356a33b90">zhimin-wen.medium.com - Provision a VM with Cloud Image and Cloud-init</a></li>
+<li><a href="https://forum.proxmox.com/threads/cloud-init-unable-to-run-on-debian-11-cloud-image.126435/">Proxmox Forum - cloud-init unable to run on Debian 11 cloud image</a></li>
+</ul>
+
+<h2 id="appendix">Appendix</h2>
+
+<h4 id="cloud-config-generator-php-script">Cloud Config Generator PHP Script</h4>
+
+<p>Below is a copy of the PHP script I use to create the cloud-init config file, just in case it
+disappears from the hosted location etc.</p>
+
+<div class="code-toolbar"><pre class="language-php" tabindex="0"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token comment"># Fill in these settings as appropriate to you.</span>
+
+<span class="token comment"># Set the hostname for the guest.</span>
+<span class="token variable">$hostname</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"template-debian-12"</span><span class="token punctuation">;</span>
+
+<span class="token comment"># Specify your username and password</span>
+<span class="token variable">$username</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"debian"</span><span class="token punctuation">;</span>
+<span class="token variable">$password</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"debian"</span><span class="token punctuation">;</span>
+
+<span class="token comment"># Set a random salt string here for password hashing</span>
+<span class="token variable">$randomSaltString</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'setARandomStringHere'</span><span class="token punctuation">;</span>
+
+<span class="token comment"># Specify the public keys of the private-keys you wish to login with.</span>
+<span class="token variable">$sshPublicKeys</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token string single-quoted-string">'ssh-rsa AAAAB3Nz...'</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">##### End of settings. Do not edit below this line #######</span>
+<span class="token comment">##########################################################</span>
+
+<span class="token comment"># Need to hash passwords this way</span>
+<span class="token variable">$hashedPassword</span> <span class="token operator">=</span> <span class="token function">crypt</span><span class="token punctuation">(</span><span class="token variable">$password</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'$6$rounds=4096$'</span> <span class="token operator">.</span> <span class="token variable">$randomSaltString</span> <span class="token operator">.</span> <span class="token string single-quoted-string">'$'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment"># Cloud-init users and groups documentation: https://bit.ly/3XFhEM0</span>
+<span class="token variable">$mainUser</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token string single-quoted-string">'name'</span> <span class="token operator">=&gt;</span> <span class="token variable">$username</span><span class="token punctuation">,</span>
+
+    <span class="token comment"># This will set the password even if the user already exists. If you don't want to allow overwriting an</span>
+    <span class="token comment"># existing user password, use 'passwd' instead</span>
+    <span class="token string single-quoted-string">'hashed_passwd'</span> <span class="token operator">=&gt;</span> <span class="token variable">$hashedPassword</span><span class="token punctuation">,</span>
+
+    <span class="token comment"># Allow the user to run sudo commands without a password.</span>
+    <span class="token string single-quoted-string">'sudo'</span> <span class="token operator">=&gt;</span> <span class="token string single-quoted-string">'ALL=(ALL) NOPASSWD:ALL'</span><span class="token punctuation">,</span>
+
+    <span class="token comment"># Add the user to groups if you wish</span>
+    <span class="token comment">#'groups' =&gt; [],</span>
+
+    <span class="token string single-quoted-string">'shell'</span> <span class="token operator">=&gt;</span> <span class="token string double-quoted-string">"/bin/bash"</span><span class="token punctuation">,</span>
+
+    <span class="token comment"># Specify the lock password, which specifies whether the user can log in to the terminal with a password</span>
+    <span class="token comment"># (not to be confused with ssh_pwauth, which is for SSH connections).</span>
+    <span class="token comment"># Debian 12 likes the older lock-passwd instead of lock_passwd it appears.</span>
+    <span class="token string single-quoted-string">'lock-passwd'</span> <span class="token operator">=&gt;</span> <span class="token constant boolean">false</span><span class="token punctuation">,</span> <span class="token comment"># old versions are lock-passwd, new versions are lock_passwd</span>
+
+    <span class="token string single-quoted-string">'ssh_authorized_keys'</span> <span class="token operator">=&gt;</span> <span class="token variable">$sshPublicKeys</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token variable">$users</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token variable">$mainUser</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token variable">$config</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token string single-quoted-string">'hostname'</span> <span class="token operator">=&gt;</span> <span class="token variable">$hostname</span><span class="token punctuation">,</span>
+
+    <span class="token comment"># Set this to true if you wish for cloud-init to set the /etc/hosts file on every boot.</span>
+    <span class="token comment"># THis would set the new hostname.</span>
+    <span class="token comment"># https://cloudinit.readthedocs.io/en/latest/reference/modules.html#update-etc-hosts</span>
+    <span class="token string single-quoted-string">'manage_etc_hosts'</span> <span class="token operator">=&gt;</span> <span class="token constant boolean">false</span><span class="token punctuation">,</span>
+
+    <span class="token comment"># Allow password authentication for SSH.</span>
+    <span class="token string single-quoted-string">'ssh_pwauth'</span> <span class="token operator">=&gt;</span> <span class="token constant boolean">false</span><span class="token punctuation">,</span>
+
+    <span class="token comment"># disable root login</span>
+    <span class="token string single-quoted-string">'disable_root'</span> <span class="token operator">=&gt;</span> <span class="token constant boolean">true</span><span class="token punctuation">,</span>
+
+    <span class="token string single-quoted-string">'users'</span> <span class="token operator">=&gt;</span> <span class="token variable">$users</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+
+<span class="token variable">$content</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'#cloud-config'</span> <span class="token operator">.</span> <span class="token constant">PHP_EOL</span><span class="token punctuation">;</span>
+
+<span class="token comment">// create the yaml content, removing the optional YAML start/end dividers that nobody appears to use.</span>
+<span class="token variable">$yamlContent</span> <span class="token operator">=</span> <span class="token function">yaml_emit</span><span class="token punctuation">(</span><span class="token variable">$config</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$lines</span> <span class="token operator">=</span> <span class="token function">explode</span><span class="token punctuation">(</span><span class="token constant">PHP_EOL</span><span class="token punctuation">,</span> <span class="token variable">$yamlContent</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">unset</span><span class="token punctuation">(</span><span class="token variable">$lines</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">unset</span><span class="token punctuation">(</span><span class="token variable">$lines</span><span class="token punctuation">[</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token variable">$lines</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$content</span> <span class="token operator">=</span> <span class="token variable">$content</span> <span class="token operator">.</span> <span class="token function">implode</span><span class="token punctuation">(</span><span class="token constant">PHP_EOL</span><span class="token punctuation">,</span> <span class="token variable">$lines</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">file_put_contents</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'cloud-init.cfg'</span><span class="token punctuation">,</span> <span class="token variable">$content</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</span></code><div class="copy-to-text-div"><center><a href="javascript:void(0);" onclick="animateCopiedText(this);" data-clipboard-text="&lt;?php
+
+# Fill in these settings as appropriate to you.
+
+# Set the hostname for the guest.
+$hostname = &quot;template-debian-12&quot;;
+
+# Specify your username and password
+$username = &quot;debian&quot;;
+$password = &quot;debian&quot;;
+
+# Set a random salt string here for password hashing
+$randomSaltString = 'setARandomStringHere';
+
+# Specify the public keys of the private-keys you wish to login with.
+$sshPublicKeys = [
+    'ssh-rsa AAAAB3Nz...',
+];
+
+##### End of settings. Do not edit below this line #######
+##########################################################
+
+# Need to hash passwords this way
+$hashedPassword = crypt($password, '$6$rounds=4096$' . $randomSaltString . '$');
+
+# Cloud-init users and groups documentation: https://bit.ly/3XFhEM0
+$mainUser = [
+    'name' =&gt; $username,
+
+    # This will set the password even if the user already exists. If you don't want to allow overwriting an
+    # existing user password, use 'passwd' instead
+    'hashed_passwd' =&gt; $hashedPassword,
+
+    # Allow the user to run sudo commands without a password.
+    'sudo' =&gt; 'ALL=(ALL) NOPASSWD:ALL',
+
+    # Add the user to groups if you wish
+    #'groups' =&gt; [],
+
+    'shell' =&gt; &quot;/bin/bash&quot;,
+
+    # Specify the lock password, which specifies whether the user can log in to the terminal with a password
+    # (not to be confused with ssh_pwauth, which is for SSH connections).
+    # Debian 12 likes the older lock-passwd instead of lock_passwd it appears.
+    'lock-passwd' =&gt; false, # old versions are lock-passwd, new versions are lock_passwd
+
+    'ssh_authorized_keys' =&gt; $sshPublicKeys,
+];
+
+$users = [
+    $mainUser
+];
+
+$config = [
+    'hostname' =&gt; $hostname,
+
+    # Set this to true if you wish for cloud-init to set the /etc/hosts file on every boot.
+    # THis would set the new hostname.
+    # https://cloudinit.readthedocs.io/en/latest/reference/modules.html#update-etc-hosts
+    'manage_etc_hosts' =&gt; false,
+
+    # Allow password authentication for SSH.
+    'ssh_pwauth' =&gt; false,
+
+    # disable root login
+    'disable_root' =&gt; true,
+
+    'users' =&gt; $users,
+];
+
+
+$content = '#cloud-config' . PHP_EOL;
+
+// create the yaml content, removing the optional YAML start/end dividers that nobody appears to use.
+$yamlContent = yaml_emit($config);
+$lines = explode(PHP_EOL, $yamlContent);
+unset($lines[0]);
+unset($lines[count($lines)-1]);
+$content = $content . implode(PHP_EOL, $lines);
+
+file_put_contents('cloud-init.cfg', $content);">Copy to clipboard</a></center></div></pre><div class="toolbar"><div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy"><span>Copy</span></button></div></div></div>
+
+                        <div class="dates">
+                        Last updated: 10th July 2023                        <br>
+                        First published: 24th June 2023</div>
+
+                                    </div>
+            </div>
+
+            
+            <div class="disqus-comments">
+                <div id="disqus_recommendations" style="margin-bottom: 12px;"><iframe id="dsq-app8634" name="dsq-app8634" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" style="width: 100% !important; border: medium !important; overflow: hidden !important; height: 270px !important; display: inline !important; box-sizing: border-box !important;" width="100%" src="Create_Debian_12_KVM_Guest_From_Cloud_Image_files/a_003.html" horizontalscrolling="no" verticalscrolling="no"></iframe></div><div id="disqus_thread"><iframe id="dsq-app5932" name="dsq-app5932" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" style="width: 1px !important; min-width: 100% !important; border: medium !important; overflow: hidden !important; height: 457px !important;" width="100%" src="Create_Debian_12_KVM_Guest_From_Cloud_Image_files/a_004.html" horizontalscrolling="no" verticalscrolling="no"></iframe></div>
+                <script>
+                    /**
+                     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+                     */
+
+                    var disqus_config = function () {
+                        this.page.url = "http://blog.programster.org/create-debian-12-kvm-guest-from-cloud-image";  // Replace PAGE_URL with your page's canonical URL variable
+                        this.page.identifier = "ghost-4Hn2L30t9rd5fNA0g6lydII2"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                    };
+
+                    (function() {  // DON'T EDIT BELOW THIS LINE
+                        var d = document, s = d.createElement('script');
+
+                        s.src = 'https://programster.disqus.com/embed.js';
+
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </div>
+
+        
+            <!-- display google adsense if wide enough page -->
+            <div class="adverts"></div>
+            
+
+ <div class="footer">
+    Programster's Blog Ⓒ 2023</div>
+
+
+
+                </div>
+
+        <!-- script to add copy to clipboard to all pre elements -->
+        <script type="text/javascript">
+            var preElements = $('pre');
+
+            // convert sanitized html into html.
+            // http://stackoverflow.com/questions/1248849/converting-sanitised-html-back-to-displayable-html
+            function htmlDecode(input){
+                var e = document.createElement('div');
+                e.innerHTML = input;
+                return e.childNodes[0].nodeValue;
+            }
+
+            var preElementHandler = function(index, preElement) {
+                var preInnerHtml = preElement.innerHTML;
+
+                if (htmlDecode(preInnerHtml) === null)
+                {
+                    var codeElement = preElement.getElementsByTagName("code")[0];
+                    var codeText = codeElement.innerHTML;
+                }
+                else
+                {
+                    var codeText = preInnerHtml;
+                }
+
+                var textToCopy = htmlDecode(codeText.trim());
+                var hoverLink = document.createElement("div");
+                var centerTag = document.createElement("center");
+                hoverLink.setAttribute("class", "copy-to-text-div");
+                var innerLink = document.createElement("a");
+                innerLink.href = 'javaScript:void(0);';
+                innerLink.setAttribute("onclick", "animateCopiedText(this);");
+                innerLink.setAttribute("data-clipboard-text", textToCopy);
+                innerLink.innerHTML = "Copy to clipboard";
+
+                var clipboard = new Clipboard(innerLink);
+
+                $(preElement).append(innerLink);
+                clipboard.on('error', function(e) {
+                    alert("There was an error copying text to your clipboard. Please use Chrome or Firefox.")
+                });
+
+                centerTag.append(innerLink);
+                hoverLink.append(centerTag);
+                preElement.append(hoverLink);
+            };
+
+            $.each(preElements, preElementHandler);
+
+
+            function animateCopiedText(clickedElement)
+            {
+                var start = null;
+
+                var animationElement = document.createElement('p');
+                animationElement.innerHTML = "Copied!";
+                animationElement.style.position = "absolute";
+                // https://stackoverflow.com/questions/442404/retrieve-the-position-x-y-of-an-html-element
+                // https://stackoverflow.com/questions/6802956/how-to-position-a-div-in-a-specific-coordinates
+
+                animationElement.style.left = clickedElement.offsetLeft + 'px';
+                animationElement.style.top = clickedElement.offsetTop + 'px';
+
+                clickedElement.appendChild(animationElement);
+
+                var animationDuration = 1000; // milliseconds
+
+                function step(timestamp)
+                {
+                    if (!start)
+                    {
+                        start = timestamp;
+                    }
+
+                    var distanceToTravel = 100; // pixels
+                    var alphaToChange = 1.0;
+
+                    var timediffFromStart = timestamp - start;
+                    var progressPercentage = timediffFromStart / animationDuration;
+                    var posDiff = 10 + (progressPercentage * distanceToTravel);
+                    var alphaDiff = progressPercentage * alphaToChange;
+                    animationElement.style.top = clickedElement.offsetTop + posDiff + 'px';
+                    var alpha = 1.0 - alphaDiff;
+                    animationElement.style.color = "rgba(0,0,0," + alpha + ")";
+
+                    if (timediffFromStart < animationDuration)
+                    {
+                        window.requestAnimationFrame(step);
+                    }
+                    else
+                    {
+                        animationElement.parentNode.removeChild(animationElement);
+                    }
+                }
+
+                window.requestAnimationFrame(step);
+            }
+
+        </script>
+
+        
+        
+<script src="Create_Debian_12_KVM_Guest_From_Cloud_Image_files/cookieconsent.min.js" data-cfasync="false"></script>
+<script>
+    const CC = window.CookieConsent;
+
+    const cc = new CC({
+        "palette": {
+            "popup": {
+                "background": "#252e39"
+            },
+            "button": {
+                "background": "#14a7d0"
+            }
+        },
+        "cookie": {
+            "domain" : "programster.org",
+        },
+        "type": "opt-in",
+        "revokable": true
+    })
+
+</script>
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-6394026-4', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+<!-- register service worker for PWA -->
+<script>
+
+if (false)
+{
+    window.addEventListener('load', async e => {
+        if ('serviceWorker' in navigator)
+        {
+            try
+            {
+                navigator.serviceWorker.register('ServiceWorker.js');
+                console.log("service worker registered");
+            }
+            catch (error)
+            {
+                console.log("service worker registration failed.");
+                console.log(error);
+            }
+        }
+        else
+        {
+            console.log("service worker not in navigator.");
+        }
+    });
+}
+
+</script>
+
+
+<script>HelperLib.bailOutIfInternetExplorer();</script>
+
+
+
+            
+
+
+
+
+        <iframe style="display: none;"></iframe><iframe style="display: none;"></iframe></body></html>
