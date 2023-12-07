@@ -8,7 +8,7 @@ The approach of Software-defined Networking is to decouple the control plane fro
 
 ## P4
 
-P4 (short for "Programming Protocol-independent Packet Processors") is a language for programming the data plane of network devices. There are multiple architectures for P4 devices. We use the V1Model architecture containing six programmable blocks as shown in the below picture: Parser, Checksum Verification, Ingress Match-Action, Egress Match-Action, Checksum Update, Deparser.
+P4 (short for "Programming Protocol-independent Packet Processors") is a language for programming the data plane of network devices. There are multiple architectures for P4 devices. We use the V1Model architecture containing six programmable blocks as shown in the below picture: Parser, Checksum Verification, Ingress Match-Action, Egress Match-Action, Checksum Update, Deparser. A brief description of these blocks is shown in a tutorial at https://github.com/p4lang/tutorials/blob/master/P4_tutorial.pdf (starting from slide 19). Much more detail can be found in the P4 language specication: https://staging.p4.org/p4-spec/docs/P4-16-v1.2.4.html
 
 <img src="v1model.png" alt="V1Model" width="100%"/>
 
