@@ -1,6 +1,6 @@
 {
     "p4rt_path" : "build/l2_learning.p4info.txt",
     "json_path" : "build/l2_learning.json",
-    "topo" : "topo_rnp_noloop.json",
+    "topo" : "topo_noloop.json",
     "switches" : ["s1", "s2", "s3"]
 }

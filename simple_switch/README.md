@@ -12,6 +12,6 @@ The digest method is explained at https://p4.org/p4-spec/p4runtime/main/P4Runtim
 
 The network topology used in this example:
 
-![topo-rnp-noloop](topo_rnp_noloop.svg)
+![topo-noloop](topo_noloop.svg)
 
 
