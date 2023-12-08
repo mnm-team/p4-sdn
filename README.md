@@ -14,9 +14,9 @@ One can also create his/her own test-bed (e.g., in a laptop) by following instru
 
 + The [simple\_demo](simple_demo) example shows a simple demonstration of SDN.
 
-+ The simple\_hub, simple\_switch examples illustrate how a normal hub and switch can be implemented by P4-based SDN.
++ The [simple\_switch](simple_switch) examples illustrate how a normal switch can be implemented by P4-based SDN.
 
-+ As a hub or switch cannot work properly in a network topology containing loops, we show a more advanced example, arpcache, to cope with that problem.
++ As a switch cannot work properly in a network topology containing loops, we show a more advanced example, [ARPcache](ARPcache), to cope with that problem.
 
 + The controller can measure the data throughput of a switch's port, or the number of packets matched by a certain rule in a switch.
 
