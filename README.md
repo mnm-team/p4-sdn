@@ -28,7 +28,6 @@ One can also create his/her own test-bed (e.g., in a laptop) by following instru
 
 ## TODO: 
 
-+ `simple_switch_CLI` in `simple_demo`
 + explain functions in `simple_switch` and its working mechanism
 + explain ARPcache
 + Topics for projects, theses

@@ -38,7 +38,7 @@ the “physical” interfaces of the (virtual) machine,
 + `--log-console`: enabling logging on stdout,
 + `--thrift-port 9090`: TCP port on which to run the Thrift runtime server,
 + `--grpc-server-addr 0.0.0.0:50051`: bind gRPC server to the given address,
-+ `--cpu-port 255`: the logical port where packet-in and packet-out comes to/from controller from/to the switch.
++ `--cpu-port 255`: the logical port where a switch can send a packet to a controller (packet-in), or a controller can send a packet to a switch (packet-out).
 
 For more information, we can use the command `simple\_switch\_grpc --help`.
 
@@ -112,3 +112,19 @@ con[2].table_add('table_forwarding', 'forward', ['2'], ['1'])
 ```
 
 Now there are rules in the switches s1 and s2, which can handle traffic between the hosts h1 and h2.
+
+## Using `simple_switch_CLI` for data plane debugging
+
+The command `simple_switch_CLI` is useful for debugging purpose in the data plane. For example, while switch S1 is running, we can open another terminal window to observe or manipulate its rule tables as follows:
+
+```
+ssh root@s1
+simple_switch_CLI
+show_tables #show the existing tables in this switch
+table_dump table_forwarding #show the contents of the rule table named table_forwarding
+table_add table_forwarding forward 1 => 2 # add to table table_forwarding a rule, 
+                 # match key = 1, action = forward, action parameter = 1
+```
+
+More commands and their details are described at the p4language GitHub [link](https://github.com/p4lang/behavioral-model/blob/main/docs/runtime_CLI.md).
+
