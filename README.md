@@ -24,7 +24,7 @@ One can also create his/her own test-bed (e.g., in a laptop) by following instru
 
 + SDN boosts the adoption of policy-based network management, and recently intent-based networking. In this regard, we provide an example, in which the SDN controller exposes useful REST APIs for controlling the data plane. Check it out in [Intent-based Networking](Intent-based-Networking).
 
-For deeper diving in the area, we propose a selection of [ideas](ideas). They are relevant for small projects in the RNP-Praktikum, some even for theses.
+For deeper diving in the area, we propose a selection of [ideas](ideas). They are relevant for small projects in the RNP-Praktikum, some can be developed further for theses.
 
 ## TODO: 
 
