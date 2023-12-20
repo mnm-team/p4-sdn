@@ -13,7 +13,7 @@
 
 ## Intent-based Networking
   
-+ Implementing the northbound APIs for control applications to interact with the controller, and to deploy rules automatically in P4-devices. Some northbound APIs are implemented in [Intent-based-Networking](../Intent-based-Networking), e.g., allow or deny traffic between two certain hosts, allow stateful connection only...
++ Implementing the northbound APIs for control applications to interact with the controller, and to deploy rules automatically in P4-devices. Some northbound APIs are implemented in [Intent-based-Networking](../Intent-based-Networking), e.g., allow or deny traffic between two certain hosts. Further APIs to be realized: allow stateful connection only, rate-limiting, one-way connection...
 
 + Long-term (for theses): Translate high-level policies (intent) into low-level one (rules in P4-devices)
 
