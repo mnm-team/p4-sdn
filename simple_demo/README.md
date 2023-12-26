@@ -86,7 +86,8 @@ In the P4 program, we specify a table, naming `table_forwarding`.
     }
 ```
 
-This table has the key (match) as the `ingress port` of the incoming packet, and the actions being either `forward` or `NoAction` (do nothing), the `forward` action has the parameter `egress port`. 
+This table has the key (match) as the `ingress port` of the incoming packet, and the actions being either `forward` or `NoAction` (do nothing), the `forward` action has the parameter `egress port`. Its size is 2, meaning that the table can host at most 2 rules, each rule has the match fields specified in `key`, and action defined in `actions`. If not specified, the default table size is 1024. The given table size informs the hardware (if a hardware P4 switch is used) to prepare the resource for the table.
+
 Once deploying this P4 program in the P4 switch, the switch has a table with the rule structure that can match packets based on these defined key and actions. Note that the switch has such a table, but there is no rule in that table, except for the default rule (do nothing: `default_action = NoAction`). At this point, the two hosts h1 and h2 cannot ping each other.
 
 Multiple tables can be defined, but only those used in the `apply` block will be effective:
