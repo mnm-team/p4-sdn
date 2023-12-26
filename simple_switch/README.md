@@ -14,6 +14,21 @@ The network topology used in this example:
 
 ![topo-noloop](topo_noloop.svg)
 
+## Compiling and executing
+
+Following the instructions in [simple\_demo](../simple_demo) to compile the P4 source: `l2_learning.p4`, executing P4-switches and the controller `l2_learning_controller.py`
+
+Note that, switch s1 has three ports, these must be specified when bringing up switch s1:
+
+```
+simple_switch_grpc -i 1@eth1 -i 2@eth2 -i 3@eth3 --pcap pcaps
+--nanolog ipc:///log.ipc --device-id 1 l2_learning.json
+--log-console --thrift-port 9090
+-- --grpc-server-addr 0.0.0.0:50051 --cpu-port 255
+```
+
+## Explanation
+
 Consider the `apply` block of the P4 program:
 
 ```

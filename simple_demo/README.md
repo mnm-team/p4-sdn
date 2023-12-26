@@ -51,6 +51,12 @@ simple_switch_grpc -i 1@eth1 -i 2@eth2 --pcap pcaps
 -- --grpc-server-addr 0.0.0.0:50051 --cpu-port 255
 ```
 
+Be sure that the corresponding interfaces of switches s1 and s2 are up. E.g., the interface `eth1` can be brought up by the command:
+```
+ip link set eth1 up
+```
+
+
 ### Executing the control application
 
 ```
