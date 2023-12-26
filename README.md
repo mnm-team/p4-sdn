@@ -28,6 +28,5 @@ For deeper diving in the area, we propose a selection of [ideas](ideas). They ar
 
 ## TODO: 
 
-+ explain functions in `simple_switch` and its working mechanism
 + explain ARPcache
 + Topics for projects, theses

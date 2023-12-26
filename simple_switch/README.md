@@ -32,7 +32,6 @@ Consider the `apply` block of the P4 program:
 First, the `smac` table is used to match incoming packets, then `dmac` is checked, if a packet is not matched by any rule in the `dmac` table, the `broadcast` table will be applied on it.
 
 The `smac` table:
-
 ```
     table smac {
 
@@ -48,7 +47,6 @@ The `smac` table:
         default_action = mac_learn;
     }
 ```
-
 has a match field being the source Ethernet address (MAC address), and the two actions: `mac_learn` or `NoAction`. The `mac_learn` action:
 ```
     action mac_learn(){
@@ -75,7 +73,7 @@ records the MAC address of an incoming packet and its `ingress_port` (the port v
 
 Once receiving a digest of a new packet (containing a source MAC address and an incoming port of that packet in a switch) sent by the default rule of the `smac` table of a switch, the controller knows that that MAC address is reachable via that port of that switch, the controller installs the corresponding rules in the `smac` and `dmac` tables:
 ```
-                self.con[sw].controller.table_add("smac", "NoAction", [str(mac_addr)])
-                self.con[sw].controller.table_add("dmac", "forward", [str(mac_addr)], [str(ingress_port)])
+        self.con[sw].controller.table_add("smac", "NoAction", [str(mac_addr)])
+        self.con[sw].controller.table_add("dmac", "forward", [str(mac_addr)], [str(ingress_port)])
 ```
 That is how the controller "learns" the MAC addresses of the end-points in the network. Gradually, it learns all MAC addresses and installs all necessary rules in the `smac` and `dmac` table. When a packet then arrives at a switch, the matching rule in the `smac` table does nothing (`NoAction`), the `dmac` table is `hit` by an existing rule and forwards the packet accordingly, thus the `broadcast` table will not be invoked.
