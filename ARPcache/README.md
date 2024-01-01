@@ -16,7 +16,7 @@ The operating mechanism of ARPcache is simple. We set the default behaviour of P
 + the controller sends the packets to all other end-points via the packet-out mechanism, using its knowledge of the network topology. At the same time, the controller "caches" the information: that end-point is directly connected to that switch via that port in the format: end-point's IP, end-point's MAC, switch ID, port number.
 + All end-points receive that packet. Only the "pertinent" end-point sends answers to the original sender (and the other end-points should drop that packet). The switch directly connected to the answering end-point asks the controller what to do via the packet-in mechanism, the controller knows the address of the recipient that it cached in the previous step, so it calculates a path between the sender and the receivers based on the topology information and installs forwarding rules in all switches along that path. Now, the communication between the sender and the receiver can be carried out as usual. In this step, the controller also caches the information of the other end-point in the same format as before: end-point's IP, end-point's MAC, switch ID, port number. Gradually, the controller caches all end-points' information and can install corresponding rules once being asked by an SDN-switches.
 
-## Consider a concrete replay
+## Considering a concrete replay
 
 Consider a concrete case in the network topology above.
 + PC1 wants to talk with PC3 (e.g., via the ping command: ping 192.168.1.3), firstly it sends an ARP Request message asking for the MAC address of PC3. This ARP message contains the IP and MAC addresses of PC1.
