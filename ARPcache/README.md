@@ -1,12 +1,12 @@
 # Implementing ARPcache
 
-The network topology used in this example contains a loop:
+The network topology used in this example contains a loop S1-S2-S3-S1:
 
 ![network topology](topo.svg)
 
 We should to be familiar with the [simple\_demo](../simple_demo) and [simple\_switch](../simple_switch) examples before diving in this ARPcache.
 
-The normal learning switch in [simple\_switch](../simple_switch) broadcasts a packet on all ports (except for the incoming port) if it has not learnt the MAC address of that packet. In a network topology containing loops like the one shown in the picture above, such behaviour would amplify new packets in many rounds and could make the network overloaded and unresponsive. 
+The normal learning switch in [simple\_switch](../simple_switch) broadcasts a packet on all ports (except for the incoming port) if it has not learnt the MAC address of that packet. In a network topology containing loops like the one shown in the above picture, such behaviour would amplify new packets in many rounds, which could cause the network to be overloaded and unresponsive. 
 
 In SDN, we can exploit the knowledge of the controller about the network topology to overcome the amplifying of packets in a network containing loops (normally, the controller has a built-in function of detecting the connections between switches (and even connections to hosts), namely topology discovery (see an explanation by Volkan here https://volkan.yazi.ci/blog/post/2013/08/06/sdn-discovery/); in our examples, we haven't implemented that function but simulated it via the encoding of the topology in a json file (topo\_loop.json)). 
 
@@ -91,4 +91,5 @@ It is important to specify the CPU-port to be the same port declared in the P4 c
 Generating traffic between end-points, e.g., using netcat:
 
 PC1: `nc -lk 12345 -vn`
+
 PC2: `nc 192.168.1.1 12345 -vn`
