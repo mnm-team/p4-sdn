@@ -27,3 +27,8 @@ Testing different scenarios, e.g., a network with mixture from P4-based SDN and 
 [MEADcast](https://www.iariajournals.org/security/tocv12n12.html) is a sender centric multicast scheme with awareness of privacy aspects.  In MEADcast, the management tasks are performed by the sender, leaving the recipients untouched, i.e., they don't have to be changed or take part in the management task as in traditional multicast or other multicast schemes. The more MEADcast-capable routers the network has, the more efficient the communication via MEADcast is.
 
 As a language for programming the data plane, P4 is also an elegent option for implementing MEADcast routers.
+
+
+## Topology discovery
+
+Discover the introduction or removal of links between P4-switches based on LLDP (Link Layer Discovery Protocol) messages as described in https://volkan.yazi.ci/blog/post/2013/08/06/sdn-discovery/, and update the controller's global view of the network topology accordingly.
