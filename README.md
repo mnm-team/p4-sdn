@@ -27,6 +27,4 @@ One can also create his/her own test-bed (e.g., in a laptop) by following instru
 For deeper diving in the area, we propose a selection of [ideas](ideas). They are relevant for small projects in the RNP-Praktikum, some can be developed further for theses.
 
 ## TODO: 
-
-+ explain ARPcache
-+ Topics for projects, theses
++ Topics for projects, theses (see [ideas](ideas))
