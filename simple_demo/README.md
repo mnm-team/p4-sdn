@@ -40,7 +40,7 @@ the “physical” interfaces of the (virtual) machine,
 + `--grpc-server-addr 0.0.0.0:50051`: bind gRPC server to the given address,
 + `--cpu-port 255`: the logical port where a switch can send a packet to a controller (packet-in), or a controller can send a packet to a switch (packet-out).
 
-For more information, we can use the command `simple\_switch\_grpc --help`.
+For more information, we can use the command `simple_switch_grpc --help`.
 
 Similarly, we can create a P4 switch at switch s2:
 

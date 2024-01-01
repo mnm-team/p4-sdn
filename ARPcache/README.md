@@ -14,9 +14,9 @@ The operating mechanism of ARPcache is simple. We set the default behaviour of P
 + the end-point sends a packet into the network,
 + the switch, directly connected to that end-point, does not know how to handle that packet, it sends that packet to the controller (via the packet-in mechanism),
 + the controller sends the packets to all other end-points via the packet-out mechanism, using its knowledge of the network topology. At the same time, the controller "caches" the information: that end-point is directly connected to that switch via that port in the format: end-point's IP, end-point's MAC, switch ID, port number.
-+ All end-points receive that packet. Only the "pertinent" end-point sends answers to the original sender (and the other end-points should drop that packet). The switch directly connected to the answering end-point asks the controller what to do via the packet-in mechanism, the controller knows the address of the recipient that it cached in the previous step, so it calculates a path between the sender and the receivers based on the topology information and installs forwarding rules in all switches along that path. Now, the communcation between the sender and the receiver can be carried out as usual. In this step, the controller also caches the information of the other end-point in the same format as before: end-point's IP, end-point's MAC, switch ID, port number. Gradually, the controller caches all end-points' information and can install corresponding rules once being asked by an SDN-switches.
++ All end-points receive that packet. Only the "pertinent" end-point sends answers to the original sender (and the other end-points should drop that packet). The switch directly connected to the answering end-point asks the controller what to do via the packet-in mechanism, the controller knows the address of the recipient that it cached in the previous step, so it calculates a path between the sender and the receivers based on the topology information and installs forwarding rules in all switches along that path. Now, the communication between the sender and the receiver can be carried out as usual. In this step, the controller also caches the information of the other end-point in the same format as before: end-point's IP, end-point's MAC, switch ID, port number. Gradually, the controller caches all end-points' information and can install corresponding rules once being asked by an SDN-switches.
 
-## Consider a concret replay
+## Consider a concrete replay
 
 Consider a concrete case in the network topology above.
 + PC1 wants to talk with PC3 (e.g., via the ping command: ping 192.168.1.3), firstly it sends an ARP Request message asking for the MAC address of PC3. This ARP message contains the IP and MAC addresses of PC1.
@@ -33,11 +33,62 @@ Consider a concrete case in the network topology above.
 
 ## Implementation
 
+To enable the packet-in and packet-out mechanisms in a P4-device, we need to declare the following instructions in the P4 program:
+```
+@controller_header("packet_in")
+header packet_in_header_t {
+    bit<9>  ingress_port;
+    bit<7>      _pad;
+}
 
+@controller_header("packet_out")
+header packet_out_header_t {
+    bit<9> egress_port; // egress_port is 9-bit wide
+    //bit<16> egress_port;
+    bit<7>      _pad; //padding
+}
+```
+and specify them as parts of the general packet header:
+```
+struct headers {
+    packet_out_header_t packet_out;
+    packet_in_header_t packet_in;
+    @name(".ethernet")
+    ethernet_t   ethernet;
+    ...
+}
+```
+To send a packet from a P4-device to the controller, we need to specify the CPU port (short for Control Plane Unit port, I guess) and employ the corresponding action:
+```
+#define CPU_PORT 255
 
+...
 
-demo with nc:
-PC1: nc -lk 12345 -vn
-PC2: nc 192.168.1.1 12345 -vn
+action send_to_cpu() {
+    standard_metadata.egress_spec = CPU_PORT;
+}
+```
+Importantly, when starting the P4-device, the same CPU port must be given, e.g.,:
+```
+sudo simple_switch_grpc -i 1@eth1 -i 2@eth2 -i 3@eth3 --pcap pcaps --nanolog ipc:///tmp/s1-log.ipc --device-id 1 build/packetout.json --log-console --thrift-port 9090 -- --grpc-server-addr 0.0.0.0:50051 --cpu-port 255
+```
 
-Explain packet-in and packet-out in code.
+The controller (file `arpcache.py`) continuously listens for packet-in events and processes them via the function `process_packet_in`. It parses packet-in messages (mainly ARP messages) by the function `update_arpdb` (update ARP database) and broadcasts ARP Request to end-points via the `broadcast_arp_request_to_endpoints` function, which invokes the `send_packet_out` function. If the controller has all necessary information in its ARPcache database to answer "questions" from P4-switches regarding forwarding decision, it will install forwarding rules in these switches using the `install_path_rule_for_arp_reply` function.
+
+## Execution
+
+Compiling the P4 code:
+```
+p4c-bm2-ss --p4v 16 --p4runtime-files build/packetinout.p4info.txt -o build/packetinout.json packetinout.p4
+```
+
+Making switches S1, S2, S3 become P4-switches, the command below applies for switch S1 (see [simple\_demo](../simple_demo) for detailed description of the options): 
+```
+sudo simple_switch_grpc -i 1@eth1 -i 2@eth2 -i 3@eth3 --pcap pcaps --nanolog ipc:///tmp/s1-log.ipc --device-id 1 build/packetout.json --log-console --thrift-port 9090 -- --grpc-server-addr 0.0.0.0:50051 --cpu-port 255
+```
+It is important to specify the CPU-port to be the same port declared in the P4 code (file `packetinout.p4`), being 255 in this case.
+
+Generating traffic between end-points, e.g., using netcat:
+
+PC1: `nc -lk 12345 -vn`
+PC2: `nc 192.168.1.1 12345 -vn`
