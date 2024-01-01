@@ -31,4 +31,4 @@ As a language for programming the data plane, P4 is also an elegent option for i
 
 ## Topology discovery
 
-Discover the introduction or removal of links between P4-switches based on LLDP (Link Layer Discovery Protocol) messages as described in https://volkan.yazi.ci/blog/post/2013/08/06/sdn-discovery/, and update the controller's global view of the network topology accordingly.
+Discover the introduction or removal of links between P4-switches based on LLDP (Link Layer Discovery Protocol) messages as described in https://volkan.yazi.ci/blog/post/2013/08/06/sdn-discovery/, and update the controller's global view of the network topology accordingly. This is useful in many cases, e.g., preventing traffic to be sent to a black-hole and being dropped without acknowledgement, due to a link being down, or calculating a new shortest path between end-points.
