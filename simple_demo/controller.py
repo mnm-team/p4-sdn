@@ -1,3 +1,13 @@
+__author__ = 'Cuong Tran'
+__email__ = 'cuongtran@mnm-team.org'
+__licence__ = 'GPL2.0'
+
+'''
+__version__ = '1.0' 202312
+
+'''
+
+
 from p4utils.utils.helper import load_topo
 from p4utils.utils.sswitch_p4runtime_API import SimpleSwitchP4RuntimeAPI
 import logging

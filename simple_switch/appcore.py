@@ -1,3 +1,13 @@
+__author__ = 'Cuong Tran'
+__email__ = 'cuongtran@mnm-team.org'
+__licence__ = 'GPL2.0'
+
+'''
+__version__ = '1.0' 202312
+
+'''
+
+
 import threading
 import queue
 import json

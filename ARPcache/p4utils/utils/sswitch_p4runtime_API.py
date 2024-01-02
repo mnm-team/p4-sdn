@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+# the comment abC means "added by Cuong", additional APIs are implemented in the end of this file,
+# in addition to the existing one available at https://github.com/nsg-ethz/p4-utils/tree/master/p4utils
+
+
 """__ p4utils.utils.p4runtime_API.html
 
 This module provides a *P4Runtime API* for the *Simple Switch* target. It builds
