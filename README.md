@@ -18,7 +18,7 @@ One can also create his/her own test-bed (e.g., in a laptop) by following instru
 
 + As a switch cannot work properly in a network topology containing loops, we present a more advanced example, [ARPcache](ARPcache), to cope with that problem.
 
-+ The controller can measure the data throughput of a switch's port, or the number of packets matched by a certain rule in a switch.
++ The controller can measure the data throughput of a switch's port, or the number of packets matched by a certain rule in a switch. [Counters](counter) are used for these purposes.
 
 + In some case, we might want to remove idle rules, i.e., rules that do not match any packet for some lapse of time. The rule\_timeout example demonstrates how this can be achieved.
 
