@@ -13,8 +13,9 @@
 # limitations under the License.
 
 
-# the comment abC means "added by Cuong", modifiations are carried out
-# to the existing implementation available at https://github.com/p4lang/p4runtime-shell/blob/main/p4runtime_sh/shell.py
+# the comment abC means "added by Cuong" (cuongtran@mnm-team.org), modifiations are carried out
+# to the existing implementation available at 
+# https://github.com/p4lang/p4runtime-shell/blob/main/p4runtime_sh/shell.py
 # and https://github.com/nsg-ethz/p4-utils/tree/master/p4utils
 
 
