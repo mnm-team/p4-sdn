@@ -31,4 +31,14 @@ As a language for programming the data plane, P4 is an elegant option for implem
 
 ## Topology discovery
 
-Discover the introduction or removal of links between P4-switches based on LLDP (Link Layer Discovery Protocol) messages as described in https://volkan.yazi.ci/blog/post/2013/08/06/sdn-discovery/, and update the controller's global view of the network topology accordingly. This is useful in many cases, e.g., preventing traffic to be sent to a black-hole and being dropped without acknowledgement, due to a link being down, or calculating a new shortest path between end-points.
+Discovering the introduction or removal of links between P4-switches based on LLDP (Link Layer Discovery Protocol) messages as described in https://volkan.yazi.ci/blog/post/2013/08/06/sdn-discovery/, and update the controller's global view of the network topology accordingly. This is useful in many cases, e.g., preventing traffic to be sent to a black-hole and being dropped without acknowledgement, due to a link being down, or calculating a new shortest path between end-points.
+
+
+## NDP
+
+Caching the mapping between IPv6 and MAC addresses. This is similar to the [ARPcache](../ARPcache) but is applicable for IPv6. ARPcache creates a mapping between IPv4 and MAC addresses of end-points.
+
+
+## NAT
+
+Implementing Network Address Translation with P4: the NAT function of a normal router will be implemented in a P4-device acting as a gateway of a network.
