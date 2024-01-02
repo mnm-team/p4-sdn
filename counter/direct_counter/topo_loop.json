@@ -1,0 +1,117 @@
+{
+    "nodes": [
+        {
+            "isHost": true,
+            "id": "h1"
+        },
+        {
+            "isHost": true,
+            "id": "h2"
+        },
+        {
+            "isHost": true,
+            "id": "h3"
+        },
+        {
+            "isP4RuntimeSwitch": true,
+            "isP4Switch": true,
+            "isSwitch": true,
+            "device_id": 1,
+            "grpc_port": 50051,
+            "grpc_ip": "192.168.0.51",
+            "json_path": "/root/p4/build/packetinout.json",
+            "p4rt_path": "/root/p4/build/packetinout.p4info.txt",
+            "id": "s1"
+        },
+        {
+            "isP4RuntimeSwitch": true,
+            "isP4Switch": true,
+            "isSwitch": true,
+            "device_id": 2,
+            "grpc_port": 50051,
+            "grpc_ip": "192.168.0.52",
+            "json_path": "/root/p4/build/packetinout.json",
+            "p4rt_path": "/root/p4/build/packetinout.p4info.txt",
+            "id": "s2"
+        },
+        {
+            "isP4RuntimeSwitch": true,
+            "isP4Switch": true,
+            "isSwitch": true,
+            "device_id": 3,
+            "grpc_port": 50051,
+            "grpc_ip": "192.168.0.53",
+            "json_path": "/root/p4/build/packetinout.json",
+            "p4rt_path": "/root/p4/build/packetinout.p4info.txt",
+            "id": "s3"
+        }
+    ],
+    "links": [
+        {
+            "weight": 1,
+            "intfName1": "eth1",
+            "intfName2": "eth1",
+            "node1": "s1",
+            "node2": "h1",
+            "port1": 1,
+            "port2": 1,
+            "source": "h1",
+            "target": "s1"
+        },
+        {
+            "weight": 1,
+            "intfName1": "eth1",
+            "intfName2": "eth1",
+            "node1": "s2",
+            "node2": "h2",
+            "port1": 1,
+            "port2": 1,
+            "source": "h2",
+            "target": "s2"
+        },
+        {
+            "weight": 1,
+            "intfName1": "eth1",
+            "intfName2": "eth1",
+            "node1": "s3",
+            "node2": "h3",
+            "port1": 1,
+            "port2": 1,
+            "source": "h3",
+            "target": "s3"
+        },
+        {
+            "weight": 1,
+            "intfName1": "eth2",
+            "intfName2": "eth2",
+            "node1": "s1",
+            "node2": "s2",
+            "port1": 2,
+            "port2": 2,
+            "source": "s2",
+            "target": "s1"
+        },
+        {
+            "weight": 1,
+            "intfName1": "eth3",
+            "intfName2": "eth2",
+            "node1": "s1",
+            "node2": "s3",
+            "port1": 3,
+            "port2": 2,
+            "source": "s3",
+            "target": "s1"
+        },
+        {
+            "weight": 1,
+            "intfName1": "eth3",
+            "intfName2": "eth3",
+            "node1": "s2",
+            "node2": "s3",
+            "port1": 3,
+            "port2": 3,
+            "source": "s3",
+            "target": "s2"
+        }
+    ]
+}

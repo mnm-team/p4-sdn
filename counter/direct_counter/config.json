@@ -1,0 +1,6 @@
+{
+    "p4rt_path" : "build/packetinout_directcounter.p4info.txt",
+    "json_path" : "build/packetinout_directcounter.json",
+    "topo" : "topo_loop.json",
+    "switches" : ["s1", "s2", "s3"]
+}
