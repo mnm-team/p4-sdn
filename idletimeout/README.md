@@ -46,7 +46,6 @@ file `arpcache.py`:
    ...
 
            priority = raw.idle_timeout_notification.table_entry[0].priority
-           #print(f"priority from idle timeout notification: {priority}")
            print(f"delete that entry")
            self.con[switch1].controller.table_delete_match(table_name, normal_match, priority)
 ```
@@ -110,3 +109,5 @@ Life: 544ms since hit, timeout is 10000ms
 The timeout information is not shown for rules in table `smac` when we check its rules using `simple_switch_CLI` in a similar way.
 
 More instructions on using `simple_switch_CLI` are provided in [simple\_demo](../simple_demo).
+
+When we terminate the traffic flow between end-points, the corresponding rules will be automatically removed after a period of TIMEOUT, in this case, after 10s.
