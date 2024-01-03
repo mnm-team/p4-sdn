@@ -88,6 +88,11 @@ sudo simple_switch_grpc -i 1@eth1 -i 2@eth2 -i 3@eth3 --pcap pcaps --nanolog ipc
 ```
 It is important to specify the CPU-port to be the same port declared in the P4 code (file `packetinout.p4`), being 255 in this case.
 
+Executing the controller program:
+```
+python arpcache.py
+```
+
 Generating traffic between end-points, e.g., using netcat:
 
 PC1: `nc -lk 12345 -vn`
