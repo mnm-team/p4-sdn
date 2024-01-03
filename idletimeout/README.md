@@ -90,7 +90,7 @@ We can use the command `simple_switch_CLI` to check the effect of timeout:
 In switch S1:
 ```
 simple_switch_CLI
-table_dump `dmac`
+table_dump dmac
 ```
 The output looks like:
 ```
