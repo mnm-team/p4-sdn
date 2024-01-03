@@ -59,7 +59,7 @@ If a rule is inactive for the TIMEOUT period (e.g., 10s), the switch sends a not
 
 We modify the `table_add` function to support timeout, by default `idle_timeout = 0`, and the corresponding rule is not "timed out".
 
-Note that, in this example, only the `dmac` rule table support timeout, the `smac` rule table does not.
+Note that, in this example, only the `dmac` rule table supports timeout, the `smac` rule table does not.
 
 ## Execution
 
