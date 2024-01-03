@@ -59,6 +59,7 @@ ip link set eth1 up
 
 ### Executing the control application
 
+Execute the controller program in the controller machine:
 ```
 python controller.py
 ```
