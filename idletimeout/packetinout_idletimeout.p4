@@ -2,7 +2,7 @@
 __author__ = 'Cuong Tran'
 __email__ = 'cuongtran@mnm-team.org'
 __licence__ = 'GPL2.0'
-__version__ = '1.0' 202312
+__version__ = '2.0' 202401
 */
 
 
@@ -220,18 +220,15 @@ control MyIngress(inout headers hdr,
     }
 
     table smac {
-
         key = {
             hdr.ethernet.srcAddr: exact;
         }
-
         actions = {
             send_to_cpu;
             NoAction;
         }
         size = 256;
         default_action = send_to_cpu;
-        //default_action = mac_learn;
     }
 
     action forward(bit<9> egress_port) {
@@ -242,7 +239,6 @@ control MyIngress(inout headers hdr,
         key = {
             hdr.ethernet.dstAddr: exact;
         }
-
         actions = {
             forward;
             send_to_cpu;
@@ -251,7 +247,6 @@ control MyIngress(inout headers hdr,
         size = 256;
         support_timeout = true;
         default_action = send_to_cpu;
-        //default_action = NoAction;
     }
 
     action set_mcast_grp(bit<16> mcast_grp) {
@@ -259,35 +254,19 @@ control MyIngress(inout headers hdr,
     }
 
     apply {
-
         if (hdr.packet_out.isValid()) {
             // Implement logic such that if this is a packet-out from the
             // controller:
             // 1. Set the packet egress port to that found in the cpu_out header
             // 2. Remove (set invalid) the cpu_out header
             // 3. Exit the pipeline here (no need to go through other tables
-
             standard_metadata.egress_spec = hdr.packet_out.egress_port;
             hdr.packet_out.setInvalid();
             exit;
         }
-
         if (smac.apply().hit){
             dmac.apply();
         } 
-
-        //if (!hdr.arp.isValid() && !sec.apply().hit) {
-        //    //
-        //}
-        //else {
-        //    smac.apply();
-        //    //if (dmac.apply().hit){
-        //    //    //
-        //    //}
-        //    //else {
-        //    //    broadcast.apply();
-        //    //}
-        //}
     }
 }
 
