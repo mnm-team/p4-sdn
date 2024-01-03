@@ -29,7 +29,7 @@ To enable idle timeout for rules in a rule table, we need to specify the `suppor
     }
 ```
 
-We implemented the support for idle timeout in the `p4utils` library. The timeout notifications sent by a switch to the controller is stored in a queue at the controller:
+We implemented the support for idle timeout in the `p4utils` library. The timeout notifications sent by a switch to the controller are stored in a queue at the controller:
 file `appcore.py`:
 ```
     self.to_noti = queue.Queue() #timeout notification
@@ -38,7 +38,7 @@ file `appcore.py`:
 
     self.to_noti = self.controller.sniff_timeout_notification()
 ```
-and is processed one by one:
+and are processed one by one:
 file `arpcache.py`:
 ```
    for (switch1, queue1) in self.to_noti.items():
