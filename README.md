@@ -20,7 +20,7 @@ One can also create his/her own test-bed (e.g., in a laptop) by following instru
 
 + The controller can measure the data throughput of a switch's port, or the number of packets matched by a certain rule in a switch. [Counters](counters) are used for these purposes.
 
-+ In some case, we might want to remove idle rules, i.e., rules that do not match any packet for some lapse of time. The rule\_timeout example demonstrates how this can be achieved.
++ In some case, we might want to remove idle rules, i.e., rules that do not match any packet for some lapse of time. The [idle timeout](idletimeout) example demonstrates how this can be achieved.
 
 + SDN boosts the adoption of policy-based network management, and recently intent-based networking. In this regard, we provide an example, in which the SDN controller exposes useful REST APIs for controlling the data plane. Check it out in [Intent-based Networking](Intent-based-Networking).
 
