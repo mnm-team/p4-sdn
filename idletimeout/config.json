@@ -1,0 +1,6 @@
+{
+    "p4rt_path" : "build/packetinout_idletimeout.p4info.txt",
+    "json_path" : "build/packetinout_idletimeout.json",
+    "topo" : "topo_loop.json",
+    "switches" : ["s1", "s2", "s3"]
+}
