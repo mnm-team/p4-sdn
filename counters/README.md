@@ -74,7 +74,7 @@ counter_value = self.con[1].controller.counter_read('port_counter',i)
 Explanation of counters is also provided as comments at:
 https://github.com/p4lang/p4c/blob/main/p4include/v1model.p4
 
-The APIs `direct_counter_read` and `counter_read` are described at: https://nsg-ethz.github.io/p4-utils/p4utils.utils.sswitch\_p4runtime\_API.html
+The APIs `direct_counter_read` and `counter_read` are described at: https://nsg-ethz.github.io/p4-utils/p4utils.utils.sswitch_p4runtime_API.html
 
 Certainly, the two types of counters can be used in a switch.
 
