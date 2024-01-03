@@ -1,0 +1,6 @@
+{
+    "p4rt_path" : "build/ibn_sw.p4info.txt",
+    "json_path" : "build/ibn_sw.json",
+    "topo" : "topo_loop.json",
+    "switches" : ["s1", "s2", "s3"]
+}
