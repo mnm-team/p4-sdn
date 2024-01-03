@@ -58,7 +58,7 @@ class ARPCache(threading.Thread):
                 #logging.debug("sw = %s, qu = %s"%(sw,qu))
                 # this sleeping is to reduce the CPU occupation of this thread,
                 # otherwise, cpu usage is almost always 99%
-                time.sleep(0.1) 
+                time.sleep(0.05) 
                 if not qu.empty():
                     raw = qu.get()
                     pkt = Ether(raw.packet.payload) #pkt: packet
