@@ -21,6 +21,8 @@
 
 Testing different scenarios, e.g., a network with mixture from P4-based SDN and normal switches, normal routers, or combining two SDNs via a normal network. In the test-bed, we can use Open vSwitch for normal switches, and FRRouting for normal routers.
 
+An example can be found at: https://github.com/nsg-ethz/p4-utils/tree/master/examples/frrouters
+
 
 ## Implementing MEADcast with P4
 

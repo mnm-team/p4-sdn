@@ -29,7 +29,7 @@ To enable idle timeout for rules in a rule table, we need to specify the `suppor
     }
 ```
 
-We implemented the support for idle timeout in the `p4utils` library. The timeout notifications sent by a switch to the controller are stored in a queue at the controller:
+We implemented the support for idle timeout in the `p4utils` library (as of January 2024, the original p4utils library at https://github.com/nsg-ethz/p4-utils/tree/master/p4utils). The timeout notifications sent by a switch to the controller are stored in a queue at the controller:
 file `appcore.py`:
 ```
     self.to_noti = queue.Queue() #timeout notification
@@ -57,7 +57,7 @@ When installing a rule in the switch, the controller specifies the timeout value
 ```
 If a rule is inactive for the TIMEOUT period (e.g., 10s), the switch sends a notification to the controller, the controller then removes that rule as shown in the code snippet above.
 
-We modify the `table_add` function to support timeout, by default `idle_timeout = 0`, and the corresponding rule is not "timed out".
+We modify the `table_add` function to support timeout, by default `idle_timeout = 0`, and the corresponding rule is not "timed out". The modification of the original p4utils library is made in the files `p4utils/utils/sswitch_p4runtime_API.py` and `p4utils/utils/p4runtime_API/api.py`.
 
 Note that, in this example, only the `dmac` rule table supports timeout, the `smac` rule table does not.
 

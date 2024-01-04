@@ -31,3 +31,19 @@ python ibn_api.py
 Generating traffic between end-points, e.g., using ping:
 
 PC1: `ping 192.168.1.2`
+
+curl -X POST -d '{"src_ipv4_addr":"192.168.1.1", "dst_ipv4_addr":"192.168.1.2", "ip_proto":6, "src_port":1000, "dst_port":5000}' http://192.168.0.22:8080/allow
+
+curl -X POST -d '{"src_ipv4_addr":"192.168.1.1", "dst_ipv4_addr":"192.168.1.2", "ip_proto":6, "src_port":1000, "dst_port":5000}' http://192.168.0.22:8080/deny
+
+
+
+
+curl -X POST -d '{"src_ipv4_addr":"192.168.1.1", "dst_ipv4_addr":"192.168.1.2", "ip_proto":6, "dst_port":5000}' http://192.168.0.22:8080/allow
+
+PC2: nc -lk 5000 -vn
+PC1: nc 192.168.1.2 5000 -vn
+--> success.
+
+curl -X POST -d '{"src_ipv4_addr":"192.168.1.1", "dst_ipv4_addr":"192.168.1.2", "ip_proto":6, "dst_port":5000}' http://192.168.0.22:8080/allow
+--> The existing nc between PC1 and PC2 is terminated.
