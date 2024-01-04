@@ -6,6 +6,12 @@ The network topology used in this example:
 
 The previous examples: [simple\_demo](../simple_demo), [simple\_switch](../simple_switch) and [ARPcache](../ARPcache) should be made familiar in order to understand this one.
 
+Software-defined Networking (SDN) facilitates the policy-based network management (PBNM) approach thanks to the centralized control of the network by the controller. Policies can be defined, translated, refined, optimized... and the controller can help enforce them in network devices in an easy way. This is much harder to accomplish in traditional networks with distributed control plane in each network device (see a comparison between SDN and traditional networks in [explaining SDN](../explaining_SDN)). The capability of programming networks in SDN creates a big difference to traditional networks which support mainly manual network configuration.
+
+In this example, we demonstrate the capability of leveraging SDN for PBNM by implementing two APIs: allow and deny, which allow and deny the communcation between two given end-points, respectively. As shown in the picture, an application or an administrator can invoke these APIs to enable or disable the communication, without having to configure each network device manually.
+
+The ambition "Intent-based Networking" (IBN) is far to achieve. However, without a big dream, we are less motivated to go far. Refer to [RFC9315](https://www.rfc-editor.org/rfc/rfc9315.html), [RFC9316](https://www.rfc-editor.org/rfc/rfc9316) and [RFC9417](https://www.rfc-editor.org/rfc/rfc9417) for more information on IBN. Obviously, SDN can contribute efficiently to this long-term goal.
+
 
 ## Implementation
 
