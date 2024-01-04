@@ -1,4 +1,4 @@
-# Links to the useful resources:
+# Links to useful resources and materials
 
 P4 Language Cheat Sheet: https://github.com/p4lang/tutorials/blob/master/p4-cheat-sheet.pdf
 V1Model: https://github.com/p4lang/p4c/blob/main/p4include/v1model.p4
