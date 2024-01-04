@@ -81,6 +81,7 @@ By default, ARP traffic is processed by the `smac` and `dmac` rule tables. IP tr
     }
 
 ```
+More information on P4 table's behaviours is provided at: https://github.com/jafingerhut/p4-guide/blob/master/docs/p4-table-behaviors.md
 
 
 ### Controller
