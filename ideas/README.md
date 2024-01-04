@@ -43,4 +43,4 @@ Caching the mapping between IPv6 and MAC addresses. This is similar to the [ARPc
 
 ## NAT
 
-Implementing Network Address Translation with P4: the NAT function of a normal router will be implemented in a P4-device acting as a gateway of a network.
+Implementing Network Address Translation with P4: the NAT function of a normal router will be implemented in a P4-device acting as the gateway of a network.
