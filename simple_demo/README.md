@@ -1,6 +1,6 @@
 # A simple demo of P4-based SDN
 
-We demonstrate SDN via a simple example, showing how a controller can install rules in two switches to allow traffic between two end-points.
+We demonstrate SDN via a simple example, showing how a controller can install rules in two switches to allow traffic between two end-points. We provide a brief introduction of SDN in [explaining SDN](../explaining_SDN).
 
 The network topology used in this example is shown below. The dashed links between Controller and switches represent the management network, the solid links are for the actual connections in the data plane. Note that the controller can only control the P4-switches (s1 and s2), not the hosts (h1, h2). The numbers around a switch indicate its port number (port 1, port 2...).
 
