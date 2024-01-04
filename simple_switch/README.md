@@ -44,7 +44,7 @@ Consider the `apply` block of the P4 program:
     }
 ```
 
-First, the `smac` table is used to match incoming packets, then `dmac` is checked, if a packet is not matched by any rule in the `dmac` table, the `broadcast` table will be applied on it.
+First, the `smac` table is used to match incoming packets, then `dmac` is checked, if a packet is not matched by any rule in the `dmac` table, the `broadcast` table will be applied on it. The P4 table's behaviours are explained at https://github.com/jafingerhut/p4-guide/blob/master/docs/p4-table-behaviors.md
 
 The `smac` table:
 ```
