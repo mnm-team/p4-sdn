@@ -60,6 +60,8 @@ Compared to the previous examples, the IBN P4-switch can mirror traffic by the t
         default_action = send_to_cpu;
     }
 ```
+The match kinds: `ternary`, `range` are explained at https://github.com/p4lang/behavioral-model/blob/main/docs/simple_switch.md#table-match-kinds-supported
+
 By default, ARP traffic is processed by the `smac` and `dmac` rule tables. IP traffic is regulated by the `tab_ibn` table.
 ```
     apply {
