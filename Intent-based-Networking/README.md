@@ -174,6 +174,6 @@ curl -X POST -d '{"src_ipv4_addr":"192.168.1.1", "dst_ipv4_addr":"192.168.1.2", 
 
 ## Conclusion
 
-We demonstrated the two simple APIs `allow` and `deny`, as a proof-of-concept for employing P4-based SDN for the policy-based network management approach. In the same manner, further APIs can be implemented. Refinement, translation techniques for different level of policies (see the below picture from Vitalian Danciu, also in the book [Conflict detection in software-defined networks](https://edoc.ub.uni-muenchen.de/30344/)) in the upper plane (above the controller) can then help the ambition of Intent-based Networking come true.
+We demonstrated the two simple APIs `allow` and `deny`, as a proof-of-concept for employing P4-based SDN for the policy-based network management approach. In the same manner, further APIs can be implemented. Refinement, translation techniques for different levels of policies (see the below picture from Vitalian Danciu, also in the book [Conflict detection in software-defined networks](https://edoc.ub.uni-muenchen.de/30344/)) in the upper plane above the controller can then help the ambition of Intent-based Networking come true.
 
 ![policy hierarchy](policy_hierarchy.svg)
