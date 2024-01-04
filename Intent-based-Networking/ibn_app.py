@@ -7,7 +7,6 @@ __version__ = '1.0' 20240103
 
 '''
 
-
 import struct
 from scapy.all import ARP, Ether
 import threading

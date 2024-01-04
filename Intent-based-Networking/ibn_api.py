@@ -1,7 +1,14 @@
+__author__ = 'Cuong Tran'
+__email__ = 'cuongtran@mnm-team.org'
+__licence__ = 'GPL2.0'
+
+'''
+__version__ = '1.0' 20240103
+
+'''
+
 import logging
 import json
-
-from dataclasses import dataclass
 
 from flask import Flask, jsonify, request
 from flask_restful import Api

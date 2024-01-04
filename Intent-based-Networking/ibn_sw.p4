@@ -10,7 +10,7 @@ __version__ = '1.0' 202401
 #include <core.p4>
 #include <v1model.p4>
 
-//compile the packetinout.p4 file by: p4c-bm2-ss --p4v 16 --p4runtime-files build/packetinout.p4info.txt -o build/packetinout.json packetinout.p4
+//compile the ibn_sw.p4 file by: p4c-bm2-ss --p4v 16 --p4runtime-files build/ibn_sw.p4info.txt -o build/ibn_sw.json ibn_sw.p4
 
 #define CPU_PORT 255
 // the mirroring port is at the controller as port 254, we need to specify this port when starting the p4 switch. In the below example of starting the p4-switch, interface eth5 is mapped to port 254, all traffic will be cloned/mirrored on this port.
