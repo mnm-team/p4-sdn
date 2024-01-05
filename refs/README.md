@@ -26,6 +26,12 @@ Exercises and solutions (2): https://github.com/nsg-ethz/p4-learning/tree/master
 
 Specifications: https://p4.org/specs/
 
+FAQ to P4 Hardware, e.g., are P4 switches slower than normal ones, does P4 replace OpenFlow...:
+
+  https://www.intel.de/content/www/de/de/products/details/ethernet/programmable-ethernet-switch.html
+
+  https://opennetworking.org/news-and-events/blog/clarifying-the-differences-between-p4-and-openflow/
+
 
 Further links:
 
