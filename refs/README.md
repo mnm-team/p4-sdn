@@ -40,3 +40,7 @@ https://github.com/p4lang/tutorials
 https://github.com/nsg-ethz/p4-learning
 
 https://github.com/nsg-ethz/p4-utils
+
+https://github.com/p4lang/p4app
+
+https://github.com/p4lang/behavioral-model/tree/main/docs (debugger for P4...)
