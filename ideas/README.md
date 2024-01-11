@@ -17,6 +17,12 @@
 
 + Long-term (for theses): translating high-level policies (intent) into low-level one (rules in P4-devices)
 
+## Implementing BGP with P4
+
+Similar to the implementation of OSPF with P4: https://github.com/fno2010/pwospf-p4/
+
+Testing: an Autonomous System (AS)  with OSPF (using FRRouting) "talks" with another P4-based AS via BGP.
+
 ## Combining P4-based SDN and traditional networks
 
 Testing different scenarios, e.g., a network with mixture from P4-based SDN and normal switches, normal routers, or combining two SDNs via a normal network. In the test-bed, we can use Open vSwitch for normal switches, and FRRouting for normal routers.
