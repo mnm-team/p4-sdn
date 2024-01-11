@@ -23,6 +23,8 @@ Testing different scenarios, e.g., a network with mixture from P4-based SDN and 
 
 An example can be found at: https://github.com/nsg-ethz/p4-utils/tree/master/examples/frrouters
 
+OSPF with P4: https://github.com/fno2010/pwospf-p4/
+
 
 ## Implementing MEADcast with P4
 
