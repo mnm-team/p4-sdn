@@ -17,6 +17,12 @@
 
 + Long-term (for theses): translating high-level policies (intent) into low-level one (rules in P4-devices)
 
+## Implementing stateful firewall
+
+Once a stateful connection is specified from A to B, A can initiate the communication and B will respond, the firewall allows this. The firewall does not allow B to initiate the communication.
+
+A simple example using Bloom filter can be found here: https://github.com/nsg-ethz/p4-learning/tree/master/examples/stateful_firewall
+
 ## Implementing BGP with P4
 
 Similar to the implementation of OSPF with P4: https://github.com/fno2010/pwospf-p4/
