@@ -4,7 +4,7 @@ In another repository (https://github.com/mnm-team/sdn-conflicts/tree/main/topog
 
 ## Goal:
 
-Create a big outer VM, in which a network of KVM-based VMs constituting the test-bed is constructed, these internal KVM-based VMs can be hosts, switches, controllers, security servers.
+Create a big outer VM, in which a network of KVM-based VMs constituting the test-bed is constructed, these internal KVM-based VMs can be hosts, switches, routers, controllers, security servers or whatever we want to test.
 
 The test-bed is "packed" in a big VM, so that its network is isolated from the outside network, and also isolated from other test-beds in the same physical machine. Therefore, our testing will not influence the other networks and vice versa.
 
@@ -49,4 +49,6 @@ Each switch or host corresponds to a VM. Their connections are realized via a br
 
 <img src="testbed-explain-2.svg" alt="Explaining testbed 2" width="80%"/>
 
-The test-bed can be described in json format. For example, host h1 is connected to bridge br\_s1h1, switch s1 is also connected to this bridge; thus, host h1 and switch s1 are connected. We use Open vSwitch to realize the bridge connecting two VMs. The bridge br\_man (management bridge) is connected to all VMs and also to the outer VM.
+The test-bed can be described in json format. For example, host h1 is connected to bridge br\_s1h1, switch s1 is also connected to this bridge; thus, host h1 and switch s1 are connected. We use Open vSwitch to realize the bridge connecting two VMs. The bridge br\_man (management bridge) is connected to all VMs and also to the outer VM. 
+
+As mentioned before, we use  the old simple scheme for network interface name (eth0, eth1...). Hence, in this example, host h1 has 2 interfaces: eth0 connected to the management bridge br\_man, eth1 connected to the interface eth1 of switch s1 (via bridge br\_s1h1). Likewise, host h2 has 2 interfaces: eth0 connected to br\_man, eth1 to the interface eth2 of switch s1 (via bridge br\_s1h2). Switch s1 has 3 interfaces: eth0 connected to br\_man, eth1 to h1 and eth2 to h2. Note that the first interface eth0 of each VM (h1, h2, s1) is always connected to the management bridge br\_man for the management purpose: to start/stop the VM, configure its IP addresses... The other interfaces (eth1, eth2...) are dedicated for the "production" network corresponding to the test-bed, testing traffic should be sent and received on these interfaces.

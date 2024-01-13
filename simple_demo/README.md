@@ -74,6 +74,17 @@ ping 192.168.1.2
 
 The ping should be successful.
 
+The explanation in this paragraph is just relevant if the network infrastructure is constructed based on virtual machines as described in [Infrastructure-as-Code](../Infrastructure-as-Code#4-explaining-the-implementation-of-vm-based-test-bed). In this case, each host has two interfaces `eth0` and `eth1`. The first interface `eth0` is connected to the management network. The second interface `eth1` is dedicated for the "production" network. Testing traffic is sent and received on this interface. We can configure the `eth1` interface of host h1 as the following:
+```
+ip addr add 192.168.1.1/24 broadcast 192.168.1.255 dev eth1
+ip link set eth1 up
+```
+For host h2:
+```
+ip addr add 192.168.1.2/24 broadcast 192.168.1.255 dev eth1
+ip link set eth1 up
+```
+
 
 ## Explanation
 
