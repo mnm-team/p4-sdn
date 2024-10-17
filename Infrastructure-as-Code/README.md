@@ -17,13 +17,13 @@ In essence, we assume the existence of the outer VM (or outer machine), then we 
 
 The main user of both the outer and inner machines is *res*.
 
-After installing the basic software with the script: 2\_install\_basic\_software.bash, log out and log in again to update the environment variables and the user group (user res belongs to group libvirt)
+After installing the basic software with the script: 2\_install\_basic\_software.bash, log out and log in again to update the environment variables and the user group (user i*res* belongs to group *libvirt*)
 
 ## 2. Create test-bed (directory 2\_create\_testbed)
 
 File: create\_testbed.bash
 
-The topology for test-bed is specify by the variable TOPO\_JS (topology in json format), which is passed by variable $1 when executing this script.
+The topology for test-bed is specified by the variable TOPO\_JS (topology in json format), which is passed by variable $1 when executing this script.
 
 The test-bed is created using template image base-fresh.qcow2 for all VMs, which can be downloaded at: https://syncandshare.lrz.de/getlink/fig44bCmzi6p9PeaazCRC/base-fresh.qcow2.
 However, we can also differentiate between different types of VM, e.g., host, switch, server, controller; in that case, we can customize the base-fresh.qcow2 to make it become template-images for these types of VM. Adapt the variable BASE\_HOST and BASE\_SW in the script for the correct base images.
