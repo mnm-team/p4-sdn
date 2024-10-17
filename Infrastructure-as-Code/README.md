@@ -17,7 +17,7 @@ In essence, we assume the existence of the outer VM (or outer machine), then we 
 
 The main user of both the outer and inner machines is *res*.
 
-After installing the basic software with the script: 2\_install\_basic\_software.bash, log out and log in again to update the environment variables and the user group (user i*res* belongs to group *libvirt*)
+After installing the basic software with the script: 2\_install\_basic\_software.bash, log out and log in again to update the environment variables and the user group (user *res* belongs to group *libvirt*)
 
 ## 2. Create test-bed (directory 2\_create\_testbed)
 
