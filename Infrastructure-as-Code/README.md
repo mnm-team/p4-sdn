@@ -34,6 +34,19 @@ To recreate a fresh test-bed, we need to first destroy it using the script destr
 
 Once the test-bed is created, we can access to the outer VM, therefrom we can access to each VM using its name or its IP address specified in the json file (this json file is the input to the script create\_testbed.bash), e.g., `ssh h1` to access to the host h1.
 
+To allow the Internet access for the inner VMs (e.g., host *h1*, switch *s1*), we need to:
+
+1. configure NAT for the outer VM (which was already done via the two following commands in the file 1\_setup\_outer\_VM/2\_install\_basic\_software.bash):
+
+  + `sudo iptables -t nat -A POSTROUTING -o ens3 -j MASQUERADE` (*ens3* is the name of the interface via which the outer VM is connected to the Internet)
+
+  + `sudo sysctl -w net.ipv4.ip_forward=1`
+
+2. configure the default route for the inner VM using the command:
+
+  + `ip route add default via 172.16.0.254` (172.16.0.254 is the IP address of the bridge manager *br\_man*, created in this file create\_testbed.bash)
+
+From inside the host *h1*, we may try downloading the page github.com by issuing the command `wget https://github.com`. If this command fails, we may need to configure the correct DNS server for the inner VM by adapting the *nameserver* in the file /etc/resolv.conf of the inner VM to be the same as that of the outer VM.
 
 ## 3. Installing P4 switches and SDN controller (optionally, specific to the P4-based SDN project)
 
