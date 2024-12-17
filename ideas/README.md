@@ -62,3 +62,7 @@ Implementing Network Address Translation with P4: the NAT function of a normal r
 ## VPN
 
 Implementing Virtual Private Network (VPN) with P4.
+
+## Redesigning the Internet
+
+The Internet was not designed with security in mind (ARPANET), it grows into an unmanageable size with lots of complexity and problems, then solutions are proposed making it even more complex. If it were designed with all the today's problems (security, privacy...) in consideration...
