@@ -27,4 +27,4 @@ One can also create his/her own test-bed (e.g., in a laptop) by following instru
 For deeper diving in the area, we propose a selection of [ideas](ideas). They are relevant for small projects in the RNP-Praktikum, some can be developed further for theses.
 
 ## Advanced topics
-+ [Network telemetry](network-telemetry)
++ [Network telemetry](network-telemetry) to acquire and utilize network data remotely for network monitoring and operation.
