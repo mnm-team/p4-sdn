@@ -32,7 +32,7 @@ The template image is created based on the debian11 image: https://cdimage.debia
 
 To recreate a fresh test-bed, we need to first destroy it using the script destroy\_testbed.bash, then run the script create\_testbed.bash as just described above.
 
-Once the test-bed is created, we can access to the outer VM, therefrom we can access to each VM using its name or its IP address specified in the json file (this json file is the input to the script create\_testbed.bash), e.g., `ssh h1` to access to the host h1.
+Once the test-bed is created, we can access to the outer VM, therefrom we can access to each VM using its name or its IP address specified in the json file (this json file is the input to the script create\_testbed.bash), e.g., `ssh h1` to access to the host h1. A terminal multiplexer like [tmux](https://leanpub.com/the-tao-of-tmux/read) is extremely useful for working with VMs in such a test-bed.
 
 To allow the Internet access for the inner VMs (e.g., host *h1*, switch *s1*), we need to:
 
