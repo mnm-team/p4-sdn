@@ -28,4 +28,4 @@ For deeper diving in the area, we propose a selection of [ideas](ideas). They ar
 
 ## Advanced topics
 + [Network telemetry](network-telemetry) to acquire and utilize network data remotely for network monitoring and operation.
-+ Statefulness (TODO)
++ [Statefulness](statefulness) (TODO)
