@@ -15,7 +15,7 @@ The test-bed is "packed" in a big VM, so that its network is isolated from the o
 The steps are described in the directory 1\_setup\_outer\_VM.
 In essence, we assume the existence of the outer VM (or outer machine), then we need to run the script 1\_create\_user\_res.bash and 2\_install\_basic\_software.bash. The outer VM can be created using the provided way described in the script 0\_create\_outervm.bash
 
-The main user of both the outer and inner machines is *res*.
+The main user of both the outer and inner machines is *res* (which is short for Research).
 
 After installing the basic software with the script: 2\_install\_basic\_software.bash, log out and log in again to update the environment variables and the user group (user *res* belongs to group *libvirt*)
 
