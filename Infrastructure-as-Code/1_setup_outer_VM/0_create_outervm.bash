@@ -72,6 +72,6 @@
 
 # Then to boot into the nocloud image, this command can be used:
 # sudo virt-install --name=debian12_nocloud --vcpus=2 --memory=2048 --disk debian-12-nocloud-amd64.qcow2 --import --os-variant=debian12
-# virt-viewer will show an interactive GUI, where we can login as root user, than install openssh-server, checking IP addresses of the machine, create res user... Afterwards, we can ssh from the host machine into this nocloud-based VM.
+# virt-viewer will show an interactive GUI, where we can login as root user, then install openssh-server, check IP addresses of the machine, create res user... Afterwards, we can ssh from the host machine into this nocloud-based VM to carry out further steps in a convenient way.
 
 #4. From OpenStack, Amazon EC2 ...
