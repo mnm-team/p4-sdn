@@ -2,13 +2,13 @@
 
 Statefulness from source A to destination B is understood as: A can initiate the communication to B, but B cannot. B can only answer or communicate with A once A has started that communication.
 
-It is easier to handle statefulness in the controller, however, the packet loss in the data plane can be high when the switch is waiting for instructions from the controller.
+It is easier to handle statefulness in the controller, however, the rate of packet loss in the data plane can be high when the switch is waiting for instructions from the controller.
 
 We want to tackle this problem by sharing the tasks more appropriately between the controller and the switch. Note that P4-switch is not a normal switch, it can be programmable by the P4-language, the control plane can be separated from the data plane, i.e., the data plane resides in the switch while the controller plane can either locate at the same place (as in a normal switch) or at a remote server.
 
-The idea is to use the Bloom filter(see the paper [A Stateful Bloom Filter for Per-Flow State Monitoring](https://ieeexplore.ieee.org/document/9349161)) in the data plane to first handle statefulness immediately (but temporarily) and to avoid packet loss, in the meantime, the controller is notified and will react with proper rule installation, and reset the respective bits of  the Bloom filter corresponding to the temporary statefulness handling. This reduces the False Positive rate of the Bloom filter.
+The idea is to use the Bloom filter (see the paper [A Stateful Bloom Filter for Per-Flow State Monitoring](https://ieeexplore.ieee.org/document/9349161)) in the data plane to first handle statefulness immediately (but temporarily) and to avoid packet loss, in the meantime, the controller is notified and will react with proper rule installation, and reset the respective bits of  the Bloom filter corresponding to the temporary statefulness handling. This reduces the False Positive rate of the Bloom filter in handling subsequent traffic flows.
 
-All in all, the proposed solution helps reduce packet loss, improve performance in statefulness handling, and reduce the false positive rate of the Bloom filter.
+All in all, the proposed solution helps reduce packet loss, improve performance in statefulness handling and reduce the false positive rate of the Bloom filter.
 
 
 ## Bloom filter
