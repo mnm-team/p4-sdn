@@ -92,7 +92,7 @@ The ping should be successful.
 
 ## Explanation
 
-In the P4 program, we specify a table, naming `table_forwarding`.
+In the P4 program, we specify a table, named `table_forwarding`.
 
 ```
     table table_forwarding {
