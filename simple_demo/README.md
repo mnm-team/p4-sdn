@@ -147,6 +147,8 @@ show_tables #show the existing tables in this switch
 table_dump table_forwarding #show the contents of the rule table named table_forwarding
 table_add table_forwarding forward 1 => 2 # add to table table_forwarding a rule, 
                  # match key = 1, action = forward, action parameter = 2
+table_delete table_forwarding 1 # delete entry number 1 (in decimal) from table table_forwarding, 
+                 # the entry number is shown (in hexadecimal) in the output of the command table_dump
 ```
 
 More commands and their details are described at the p4language GitHub [link](https://github.com/p4lang/behavioral-model/blob/main/docs/runtime_CLI.md).
